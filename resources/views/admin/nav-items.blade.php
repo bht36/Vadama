@@ -1,0 +1,59 @@
+<li class="nav-item <?= @$child_nav == 'dashboard' ? 'active bg-gray' : '' ?>">
+    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+        <i class="far fa-regular fa-image nav-icon"></i>
+        <p>{{ __('Dashboard') }}</p>
+    </a>
+    </li>
+
+<li class="nav-item  <?= @$parent_nav == 'participants' ? 'active menu-open' : '' ?>">
+    <a href="#" class="nav-link ">
+
+        <i class="far fa-file-alt nav-icon"></i>
+        <p>{{ __('Participants') }}</p>
+        <i class="right fas fa-angle-right"></i>
+    </a>
+    <ul class="nav nav-treeview pl-3">
+        <li class="nav-item <?= @$child_nav == 'approved_participants' ? 'active bg-gray' : '' ?>">
+            {{-- <a href="{{ route('Registration_Information.index') }}" class="nav-link"> --}}
+            <a href="" class="nav-link">
+                
+
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>{{ __('Approved') }}</p>
+            </a>
+        </li>
+        <li class="nav-item <?= @$child_nav == 'applicants_list' ? 'active bg-gray' : '' ?>">
+            {{-- <a href="{{ route('Applicants_List.index') }}" class="nav-link"> --}}
+                <a href="" class="nav-link">
+
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>{{ __('Applicants list') }}</p>
+            </a>
+        </li>
+        <li class="nav-item <?= @$child_nav == 'suspended_participant_list' ? 'active bg-gray' : '' ?>">
+            {{-- <a href="{{ route('Suspended.index') }}" class="nav-link"> --}}
+            <a href="" class="nav-link">
+
+
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>{{ __('Suspended') }}</p>
+            </a>
+        </li>
+        <li class="nav-item <?= @$child_nav == 'deleted_articipant_list' ? 'active bg-gray' : '' ?>">
+            {{-- <a href="{{ route('Deleted.index') }}" class="nav-link"> --}}
+            <a href="" class="nav-link">
+
+
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>{{ __('Deleted') }}</p>
+            </a>
+        </li>
+        {{-- <li class="nav-item <?= @$child_nav == 'bulk_list' ? 'active bg-gray' : '' ?>">
+            <a href="" class="nav-link">
+
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>{{ __('Bulk list') }}</p>
+            </a>
+        </li> --}}
+    </ul>
+</li>

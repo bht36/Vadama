@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +44,103 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+@extends('auth.layout')
+@section('content')
+    <div class="text-center">
+        @if (session('reset-password-msg'))
+            <div class="alert alert-success  alert-dismissible fade show" id="success-alert">
+                {{ session('reset-password-msg') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <img style="width:60%;" src="" alt="XxDARKDEVILxX" class="img-fluid">
+        <h5>XxDARKDEVILxX</h5>
+    </div>
+    <h5 class="login-box-msg">Sign in</h5>
+    @if (session('message'))
+        <div class="alert alert-success  alert-dismissible fade show">{{ session('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    <form action="{{ route('admin.login.submit') }}" method="post">
+        @csrf
+        <div class="input-group mb-3">
+            <input type="email" class="form-control @if ($errors->has('email')) is-invalid @endif"
+                placeholder="Email" name="email" autocomplete="off">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="password" class="form-control @if ($errors->has('password')) is-invalid @endif"
+                placeholder="Password" name="password" id="passwordInput" autocomplete="off">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-eye-slash mr-2 cursor-pointer" id="togglePassword" style="cursor:pointer"></span>
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group mt-1 ml-1 pl-1">
+                <div class="captcha">
+                    <span></span>
+                    {{-- <button type="button" class="btn btn-success refresh-cpatcha"><i class="fa fa-refresh"></i></button> --}}
+                </div>
+
+                {{-- @error('g-recaptcha-response')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror --}}
+            </div>
+            {{-- <div class="col-8">
+      <div class="icheck-primary">
+        <input type="checkbox" id="remember" name="remember" value="1">
+        <label for="remember">
+          Remember Me
+        </label>
+      </div>
+    </div> --}}
+
+            <!-- /.col -->
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+    <!-- /.social-auth-links -->
+    <p class="mb-1">
+        <a href="">I forgot my password</a>
+
+        {{-- @if (Route::has('password.request'))
+    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+        {{ __('Forgot your password?') }}
+    </a> --}}
+        {{-- @endif --}}
+    </p>
+
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('passwordInput');
+            const toggleIcon = document.getElementById('togglePassword');
+
+            // Toggle the type attribute
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            }
+        });
+    </script>
+@endsection
