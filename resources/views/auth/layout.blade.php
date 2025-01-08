@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Log in</title>
     <link rel="icon" href="{{asset('build/assets/frontend/img/Favicon.png')}}" type="image/png">
-    <!-- Google Font: Source Sans Pro -->
+    <!--  Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
+    {{-- PW seen or ***** --}}
     <link rel="stylesheet" href="{{asset('build/assets/plugins/fontawesome-free/css/all.min.css')}}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{asset('build/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-    <!-- Theme style -->
+    <!-- Main Theme style -->
     <link rel="stylesheet" href="{{asset('build/assets/dist/css/adminlte.min.css')}}">
   </head>
   <body class="hold-transition login-page">
