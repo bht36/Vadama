@@ -11,7 +11,7 @@
                             <h3 class="mb-0">{{('Dashboard')}}</h3> 
                             <h6 class="box-title"> Registration Overview</h6>
                         </div>
-                        <h3 class="mb-0 text-primary mt-xl-2"><b>Total Sales: Rs. </b></h2>
+                        <h3 class="mb-0 text-primary mt-xl-2"><b>Topic </b></h2>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xxl-6">
@@ -46,9 +46,9 @@
                         <div id="graphPieparticipanttype" style="height: 300px; width: 100%"></div>
                     </div>
 
-                    {{-- <div class="col-md-6 col-xl-3 form-group">
+                    <div class="col-md-6 col-xl-3 form-group">
                         <div id="graphPierole" style="height: 300px; width: 100%"></div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
             <!-- Small boxes (Stat box) -->
@@ -98,7 +98,7 @@
                     </a>
                 </div>
 
-                {{-- <div class="col-md-4 col-6">
+                <div class="col-md-4 col-6">
                     <a href="" class="small-box-footer">
                         <div class="info-box d-block p-0">
                             <div class="d-box-top">
@@ -114,9 +114,9 @@
                             </div>
                         </div>
                     </a>
-                </div> --}}
+                </div>
 
-                {{-- <div class="col-md-4 col-6">
+                <div class="col-md-4 col-6">
                     <a href="" class="small-box-footer">
                         <div class="info-box d-block p-0">
                             <div class="d-box-top">
@@ -129,9 +129,9 @@
                             </div>
                         </div>
                     </a>
-                </div> --}}
+                </div>
 
-                {{-- <div class="col-md-4 col-6">
+                <div class="col-md-4 col-6">
                     <a href="" class="small-box-footer">
                         <div class="info-box d-block p-0">
                             <div class="d-box-top">
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </a>
-                </div> --}}
+                </div>
 
             </div>
         </div>
