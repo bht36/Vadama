@@ -48,12 +48,12 @@
                 <p>{{ __('Deleted') }}</p>
             </a>
         </li>
-        {{-- <li class="nav-item <?= @$child_nav == 'bulk_list' ? 'active bg-gray' : '' ?>">
+        <li class="nav-item <?= @$child_nav == 'bulk_list' ? 'active bg-gray' : '' ?>">
             <a href="" class="nav-link">
-
+                {{-- <a href="{{ route('Bulk.index') }}" class="nav-link"> --}}
                 <i class="far fa-file-alt nav-icon"></i>
                 <p>{{ __('Bulk list') }}</p>
             </a>
-        </li> --}}
+        </li>
     </ul>
 </li>
