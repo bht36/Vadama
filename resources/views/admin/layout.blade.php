@@ -121,7 +121,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('admin.dashboard') }}" class="brand-link">
-                <img src="{{ asset('logo/Login.png') }}" alt="XxDARKDEVILxX" class="img-fluid" style="width: 100px; height: auto;">
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('logo/Login.png') }}" alt="XxDARKDEVILxX" class="img-fluid" style="width: 100px; height: auto;">
+                </div>
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
