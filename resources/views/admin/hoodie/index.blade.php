@@ -118,7 +118,7 @@
                                         @endif
 
                                         <tbody>
-                                            {{-- @forelse ($hoodie as $key => $data)
+                                            @forelse ($hoodie as $key => $data)
                                                 <tr>
                                                     <td scope="row">{{ $key + 1 }}</td>
                                                     <td><b>{{ $data->name }}</b></td>
@@ -126,18 +126,16 @@
                                                     <td>
                                                         <div>
                                                             <img src="{{ asset('storage/uploads/hoodie/main_image/' . $data->main_image) }}" alt="Insignia" style="width: 300px; height: 150px;">
-
                                                         </div>
                                                     </td>
-
                                                     <td>
                                                         <div class="d-flex">
-                                                            <a href="{{ route('admin.hoodie.edit', $hoodie->id) }}"
+                                                            <a href="{{ route('admin.hoodie.edit', $data->id) }}"
                                                                 class="btn btn-primary btn-sm mr-1" type="submit"><i
                                                                     class="fas fa-edit" title='Edit'></i>
                                                             </a>
                                                             <form method="POST"
-                                                                action="{{ route('admin.hoodie.delete', $hoodie->id) }}">
+                                                                action="{{ route('admin.hoodie.delete', $data->id) }}">
                                                                 @csrf
                                                                 <input name="_method" type="hidden" value="DELETE">
                                                                 <button type="submit" button
@@ -153,13 +151,11 @@
                                                     <td colspan="7" class="text-center">{{ __('No data available') }}
                                                     </td>
                                                 </tr>
-                                            @endforelse --}}
+                                            @endforelse
 
                                         </tbody>
                                     </table>
                                 </div>
-
-
                                 <div class="justify-content-center">
                                     <ul class="pagination pagination-sm">
                                         {{-- {!! $get_hoodie->links() !!} --}}

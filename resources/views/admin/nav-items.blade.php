@@ -10,7 +10,7 @@
 
         <i class="far fa-file-alt nav-icon"></i>
         <p>{{ __('Item') }}</p>
-        <i class="right fas fa-angle-right"></i>
+        <i class="right fas fa-angle-left"></i>
     </a>
     <ul class="nav nav-treeview pl-3">
         <li class="nav-item <?= @$child_nav == 'hoodie' ? 'active bg-gray' : '' ?>">
