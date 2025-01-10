@@ -5,21 +5,19 @@
     </a>
     </li>
 
-<li class="nav-item  <?= @$parent_nav == 'participants' ? 'active menu-open' : '' ?>">
+<li class="nav-item  <?= @$parent_nav == 'item' ? 'active menu-open' : '' ?>">
     <a href="#" class="nav-link ">
 
         <i class="far fa-file-alt nav-icon"></i>
-        <p>{{ __('Participants') }}</p>
+        <p>{{ __('Item') }}</p>
         <i class="right fas fa-angle-right"></i>
     </a>
     <ul class="nav nav-treeview pl-3">
-        <li class="nav-item <?= @$child_nav == 'approved_participants' ? 'active bg-gray' : '' ?>">
-            {{-- <a href="{{ route('Registration_Information.index') }}" class="nav-link"> --}}
-            <a href="" class="nav-link">
+        <li class="nav-item <?= @$child_nav == 'hoodie' ? 'active bg-gray' : '' ?>">
+            <a href="{{ route('admin.hoodie.index') }}" class="nav-link">
                 
-
                 <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Approved') }}</p>
+                <p>{{ __('Hoodie') }}</p>
             </a>
         </li>
         <li class="nav-item <?= @$child_nav == 'applicants_list' ? 'active bg-gray' : '' ?>">

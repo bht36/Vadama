@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HoodieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -22,4 +23,18 @@ Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.log
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
+
+    Route::prefix('admin')->as('admin.')->group(function () {
+
+        // Route for Hoodies
+        Route::prefix('hoodie')->as('hoodie.')->controller(HoodieController::class)->group(function () {
+            Route::get('/index', 'index')->name('index');
+            Route::get('/create', 'add')->name('add');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::put('/update/{id}', 'update')->name('update');
+            Route::delete('/delete/{id}', 'destroy')->name('destroy');
+        });
+    
+    });
 });
