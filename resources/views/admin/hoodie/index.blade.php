@@ -134,15 +134,13 @@
                                                                 class="btn btn-primary btn-sm mr-1" type="submit"><i
                                                                     class="fas fa-edit" title='Edit'></i>
                                                             </a>
-                                                            <form method="POST"
-                                                                action="{{ route('admin.hoodie.delete', $data->id) }}">
+                                                            <form method="POST" action="{{ route('admin.hoodie.delete', $data->id) }}">
                                                                 @csrf
-                                                                <input name="_method" type="hidden" value="DELETE">
-                                                                <button type="submit" button
-                                                                    class="btn btn-danger btn-sm show_confirm"
-                                                                    data-toggle="tooltip" title='Delete'><i
-                                                                        class="fas fa-trash"></i></button>
-                                                            </form>
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </form>                                                            
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -158,7 +156,7 @@
                                 </div>
                                 <div class="justify-content-center">
                                     <ul class="pagination pagination-sm">
-                                        {{-- {!! $get_hoodie->links() !!} --}}
+                                        {{-- {!! $hoodie->links() !!} --}}
                                     </ul>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 class HoodieController extends Controller
 {
     public function index(){
-        $hoodie = Hoodie::all();
+        $hoodie = Hoodie::paginate(10); 
         $parent_nav = 'item';
         $child_nav = 'hoodie';
         return view("admin.hoodie.index",compact('parent_nav','child_nav','hoodie'));
@@ -75,5 +75,27 @@ class HoodieController extends Controller
         ]);
 
         return redirect()->route('admin.hoodie.index')->with('success', 'Hoodie added successfully!');
+    }
+    public function destroy($id){
+        $hoodie = Hoodie::findOrFail($id);
+
+        if ($hoodie->main_image) {
+            $main_image_path = public_path('storage/uploads/hoodie/main_image/' . $hoodie->main_image);
+            if (File::exists($main_image_path)) {
+                File::delete($main_image_path);
+            }
+        }
+
+        if ($hoodie->mobile_image) {
+            $mobile_image_path = public_path('storage/uploads/hoodie/mobile_image/' . $hoodie->mobile_image);
+            if (File::exists($mobile_image_path)) {
+                File::delete($mobile_image_path);
+            }
+        }
+
+        // Delete the hoodie entry from the database
+        $hoodie->delete();
+
+        return redirect()->route('admin.hoodie.index')->with('success', 'Hoodie deleted successfully!');
     }
 }
