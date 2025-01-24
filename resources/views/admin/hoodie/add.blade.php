@@ -86,36 +86,34 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">                   
+                                <div class="row">
                                     <div class="mb-3 form-group-translation col-md-6" id="media-input-container">
                                         <div class="myDiv1 image_div1" id="showimage1">
                                             <label for="exampleFormControlFile1">
                                                 <span>Main Image</span>:
                                             </label>
-                                            <p class="text-blue">Note: Please upload image of size larger than 1280px x685px .</p>
-                                            <input type="file" class="form-control-file @error('main_image')
-                                                is-invalid
-                                            @enderror" id="exampleFormControlFile1" accept=".jpg,.jpeg,.png"
-                                                name="main_image" value="{{ old('main_image') }}">
+                                            <p class="text-blue">Note: Please upload image of size larger than 1280px x 685px.</p>
+                                            <input type="file" class="form-control-file @error('main_image') is-invalid @enderror" id="exampleFormControlFile1" accept=".jpg,.jpeg,.png" name="main_image" value="{{ old('main_image') }}">
                                             @if ($errors->has('main_image'))
                                                 <span style="color:red;">{{ $errors->first('main_image') }}</span>
                                             @endif
                                         </div>
-                                        <div class="mb-3 form-group-translation col-md-12 image_div1" id="showimage2">
+                                    </div>
+                                
+                                    <div class="mb-3 form-group-translation col-md-6" id="media-input-container">
+                                        <div class="myDiv1 image_div1" id="showimage2">
                                             <label for="exampleFormControlFile2">
                                                 <span>Mobile Image</span>:
                                             </label>
-                                            <p class="text-blue">Note: Please upload image of size larger than 767 x 665px .</p>
-                                            <input type="file" class="form-control-file @error('mobile_image')
-                                                    is-invalid
-                                                @enderror" id="exampleFormControlFile2" accept=".jpg,.jpeg,.png"
-                                                name="mobile_image" value="{{ old('mobile_image') }}">
+                                            <p class="text-blue">Note: Please upload image of size larger than 767px x 665px.</p>
+                                            <input type="file" class="form-control-file @error('mobile_image') is-invalid @enderror" id="exampleFormControlFile2" accept=".jpg,.jpeg,.png" name="mobile_image" value="{{ old('mobile_image') }}">
                                             @if ($errors->has('mobile_image'))
                                                 <span style="color:red;">{{ $errors->first('mobile_image') }}</span>
                                             @endif
-                                        </div>  
+                                        </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="mt-2 col-md-12 text-right">
                                         <button type="submit" class="btn btn-success save-button" value="save"
