@@ -125,7 +125,7 @@
                                                     <td><b>{{ $data->slug }}</b></td>
                                                     <td>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/hoodie/main_image/' . $data->main_image) }}" alt="Insignia" style="width: 300px; height: 150px;">
+                                                            <img src="{{ asset('storage/uploads/hoodie/main_image/' . $data->main_image) }}" alt="Insignia" style="width: 300px; height: 300px;">
                                                         </div>
                                                     </td>
                                                     <td>
