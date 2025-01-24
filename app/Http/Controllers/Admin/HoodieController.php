@@ -29,7 +29,7 @@ class HoodieController extends Controller
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:hoodies,slug',
             'description' => 'required|string',
-            'meta_description' => 'required|string|max:500',
+            'meta_description' => 'nullable|string|max:500',
             'main_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048|',
             'mobile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048|', // mobile image validation
         ], [
@@ -66,10 +66,10 @@ class HoodieController extends Controller
             $mobile_image->move($path, $filename_to_store_mobile); // Store the mobile image
         }
         Hoodie::create([
-            'name' => $validatedData['name'],
-            'slug' => Str::slug($validatedData['slug']),
-            'description' => $validatedData['description'],
-            'meta_description' => $validatedData['meta_description'],
+            'name' => $validatedData['name'] ?? '',
+            'slug' => Str::slug($validatedData['slug'] ?? ''),
+            'description' => $validatedData['description'] ?? '',
+            'meta_description' => $validatedData['meta_description'] ?? '',
             'main_image' => $main_image ?  $filename_to_store : null,
             'mobile_image' => $mobile_image ?  $filename_to_store_mobile : null,
         ]);
