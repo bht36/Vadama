@@ -13,7 +13,7 @@ class HoodieApiController extends Controller
     {
         try {
             // Pull all hoodie data
-            $hoodies = Hoodie::all();
+            $hoodies = Hoodie::orderBy('name','asc')->get();	
 
             // Check if any hoodies were found
             if ($hoodies->isEmpty()) {

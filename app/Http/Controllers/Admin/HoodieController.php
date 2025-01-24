@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 class HoodieController extends Controller
 {
     public function index(){
-        $hoodie = Hoodie::paginate(10); 
+        $hoodie = Hoodie::orderBy('name', 'asc')->paginate(10);
         $parent_nav = 'item';
         $child_nav = 'hoodie';
         return view("admin.hoodie.index",compact('parent_nav','child_nav','hoodie'));
