@@ -46,12 +46,10 @@
                                             <h4>Filter Options</h4>
                                         </div>
                                         <div class="card-body p-0">
-                                            {{-- <form action="{{ route('admin.hoodie.index') }}" method="GET" --}}
-                                             <form action="" method="GET"
-                                                id="filterForm">
-                                                <!-- Search, Date range filter, and buttons in one row -->
+                                            <form action="{{ route('admin.hoodie.index') }}" method="GET" id="filterForm">
                                                 <div class="row align-items-center">
-                                                <div class="col-md-4 mb-3">
+                                                    <!-- Name Filter -->
+                                                    <div class="col-md-4 mb-3">
                                                         <div class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                                                             Name
                                                         </div>
@@ -63,7 +61,8 @@
                                                                 value="{{ request('name') }}">
                                                         </div>
                                                     </div>
-                                                    <!-- Slug -->
+                                        
+                                                    <!-- Slug Filter -->
                                                     <div class="col-md-4 mb-3">
                                                         <div class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                                                             Slug
@@ -77,19 +76,19 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                        
                                                 <!-- Buttons -->
                                                 <div class="row">
                                                     <div class="col-md-12 mb-3">
                                                         <div class="d-flex justify-content-end">
-                                                                           <button type="button" class="btn btn-secondary mr-2" onclick="resetForm()">Reset</button>
-
-                                                            <button type="submit" class="btn btn-primary"
-                                                                id="apply_filter">Apply Filters</button>
+                                                            <button type="button" class="btn btn-secondary mr-2" onclick="resetForm()">Reset</button>
+                                                            <button type="submit" class="btn btn-primary" id="apply_filter">Apply Filters</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
+                                        
                                     </div>
                                 </div>
 
@@ -163,63 +162,41 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.card -->
+
             </div>
-            <!-- /.col -->
-    </div>
-    <!-- /.row -->
-    </div>
-    </div>
 
     </div>
 
-
-    <!-- /.container-fluid -->
+    </div>
+    </div>
+    </div>
     </section>
     </div>
 @endsection
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            swal({
-                    title: `Are you sure you want to delete this record?`,
+    <script>
+        // Confirmation dialog for delete action
+        document.querySelectorAll('.show_confirm').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const form = this.closest("form");
+                swal({
+                    title: "Are you sure you want to delete this record?",
                     text: "If you delete this, it will be gone forever.",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        form.submit();
-                    }
+                }).then(willDelete => {
+                    if (willDelete) form.submit();
                 });
+            });
         });
 
+        // Reset form and redirect to clear filters
         function resetForm() {
-    const form = document.getElementById("filterForm");
-    form.reset(); // Reset all inputs
-
-    // Clear manually set values
-    form.querySelectorAll('input, select').forEach(element => {
-        if (element.type === "text" || element.type === "select-one") {
-            element.value = "";
+            window.location.href = "{{ route('admin.hoodie.index') }}";
         }
-    });
-
-    // Submit the form to clear the query parameters
-    // form.action =
-    //  "{
-    // { route('
-    // admin.hood
-    // ie.index') }}"
-    // ; 
-    // Ensure the form redirects to the base URL without query params
-    form.submit();
-}
     </script>
 @endsection

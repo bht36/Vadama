@@ -11,11 +11,19 @@ use Illuminate\Support\Facades\File;
 
 class HoodieController extends Controller
 {
-    public function index(){
-        $hoodie = Hoodie::orderBy('name', 'asc')->paginate(10);
+    public function index(Request $request)
+    {
+        $query = Hoodie::query();
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+        if ($request->filled('slug')) {
+            $query->where('slug', 'like', '%' . $request->slug . '%');
+        }
+        $hoodie = $query->orderBy('name', 'asc')->paginate(10);
         $parent_nav = 'item';
         $child_nav = 'hoodie';
-        return view("admin.hoodie.index",compact('parent_nav','child_nav','hoodie'));
+        return view('admin.hoodie.index', compact('parent_nav', 'child_nav', 'hoodie'));
     }
 
     public function add(){
