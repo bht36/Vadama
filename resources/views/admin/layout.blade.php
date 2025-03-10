@@ -36,10 +36,10 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
-                </li>
+                </li> -->
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ route('admin.dashboard') }}" class="nav-link">{{ __('Home') }}</a>
                 </li>
@@ -79,7 +79,7 @@
             <!-- Brand Logo -->
             <a href="{{ route('admin.dashboard') }}" class="brand-link">
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('logo/Login.png') }}" alt="XxDARKDEVILxX" class="img-fluid" style="width: 100px; height: auto;">
+                    <img src="{{ asset('logo/Login.png') }}" alt="Bhada Ma" class="img-fluid" style="width: 100px; height: auto;">
                 </div>
             </a>
             <!-- Sidebar -->
@@ -107,7 +107,7 @@
         <!-- /.content-wrapper -->
         {{-- Swoyam footer --}}
         <footer class="main-footer">
-            <strong> {{ __('Copyright') }} &copy;&nbsp;<?php echo date('Y'); ?>&nbsp; {{ __('XxDARKDEVILxX') }}</strong>
+            <strong> {{ __('Copyright') }} &copy;&nbsp;<?php echo date('Y'); ?>&nbsp; {{ __('Bhada Ma') }}</strong>
 
              <div class="float-right d-none d-sm-inline-block">
           <b>Version</b> 11.0
