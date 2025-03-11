@@ -15,21 +15,17 @@
     <ul class="nav nav-treeview pl-3">
         <li class="nav-item <?= @$child_nav == 'hoodie' ? 'active bg-gray' : '' ?>">
             <a href="{{ route('admin.hoodie.index') }}" class="nav-link">
-                
                 <i class="far fa-file-alt nav-icon"></i>
                 <p>{{ __('Hoodie') }}</p>
             </a>
         </li>
-        <li class="nav-item <?= @$child_nav == 'applicants_list' ? 'active bg-gray' : '' ?>">
-            {{-- <a href="{{ route('Applicants_List.index') }}" class="nav-link"> --}}
-                <a href="" class="nav-link">
-
+        <li class="nav-item <?= @$child_nav == 'banner' ? 'active bg-gray' : '' ?>">
+             <a href="{{ route('admin.banner.index') }}" class="nav-link"> 
                 <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Applicants list') }}</p>
+                <p>{{ __('Banner') }}</p>
             </a>
         </li>
         <li class="nav-item <?= @$child_nav == 'suspended_participant_list' ? 'active bg-gray' : '' ?>">
-            {{-- <a href="{{ route('Suspended.index') }}" class="nav-link"> --}}
             <a href="" class="nav-link">
 
 

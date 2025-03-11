@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerCntroller;
 use App\Http\Controllers\Admin\HoodieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -26,8 +27,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('admin')->as('admin.')->group(function () {
 
-        // Route for Hoodies
+       
         Route::prefix('hoodie')->as('hoodie.')->controller(HoodieController::class)->group(function () {
+            Route::get('/index', 'index')->name('index');
+            Route::get('/create', 'add')->name('add');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::put('/update/{id}', 'update')->name('update');
+            Route::delete('/destroy/{id}', 'destroy')->name('delete');
+        });
+
+        // Route for Banner
+        Route::prefix('banner')->as('banner.')->controller(BannerCntroller::class)->group(function () {
             Route::get('/index', 'index')->name('index');
             Route::get('/create', 'add')->name('add');
             Route::post('/store', 'store')->name('store');
