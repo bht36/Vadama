@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerCntroller;
 use App\Http\Controllers\Admin\HoodieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +49,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     
     });
+});
+
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+
+// frontend routes
+Route::prefix('index')->as('index.')->controller(FrontendController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
 });

@@ -11,7 +11,7 @@
                             <h3 class="mb-0">{{('Dashboard')}}</h3> 
                             <h6 class="box-title"> Registration Overview</h6>
                         </div>
-                        <h3 class="mb-0 text-primary mt-xl-2"><b>Topic </b></h2>
+                        <h3 class="mb-0 text-primary mt-xl-2"><b>Sales : </b></h2>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xxl-6">
@@ -32,25 +32,6 @@
     <section class="content">
 
         <div class="container-fluid">
-            <div class="box-body mb-3">
-                <div class="row" style="background: #fff;">
-                    <div class="col-md-6 col-xl-3 form-group">
-                        <div id="graphPiedevice" style="height: 300px; width: 100%"></div>
-                    </div>
-
-                    <div class="col-md-6 col-xl-3 form-group">
-                        <div id="graphPiecard" style="height: 300px; width: 100%"></div>
-                    </div>
-
-                    <div class="col-md-6 col-xl-3 form-group">
-                        <div id="graphPieparticipanttype" style="height: 300px; width: 100%"></div>
-                    </div>
-
-                    <div class="col-md-6 col-xl-3 form-group">
-                        <div id="graphPierole" style="height: 300px; width: 100%"></div>
-                    </div>
-                </div>
-            </div>
             <!-- Small boxes (Stat box) -->
             <div class="row">
 

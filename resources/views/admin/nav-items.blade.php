@@ -16,7 +16,7 @@
         <li class="nav-item <?= @$child_nav == 'hoodie' ? 'active bg-gray' : '' ?>">
             <a href="{{ route('admin.hoodie.index') }}" class="nav-link">
                 <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Hoodie') }}</p>
+                <p>{{ __('Hello') }}</p>
             </a>
         </li>
         <li class="nav-item <?= @$child_nav == 'banner' ? 'active bg-gray' : '' ?>">
@@ -42,12 +42,12 @@
                 <p>{{ __('Deleted') }}</p>
             </a>
         </li>
-        <li class="nav-item <?= @$child_nav == 'bulk_list' ? 'active bg-gray' : '' ?>">
+        <!-- <li class="nav-item <?= @$child_nav == 'bulk_list' ? 'active bg-gray' : '' ?>">
             <a href="" class="nav-link">
                 {{-- <a href="{{ route('Bulk.index') }}" class="nav-link"> --}}
                 <i class="far fa-file-alt nav-icon"></i>
                 <p>{{ __('Bulk list') }}</p>
             </a>
-        </li>
+        </li> -->
     </ul>
 </li>
