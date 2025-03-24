@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header Menu</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    
+    <!-- Bootstrap CSS (Use Bootstrap's default styles) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- FontAwesome Icons (Used for icons in UI) -->
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/fontawesome-free/css/all.min.css') }}">
+    
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="{{ asset('build/assets/dist/css/adminlte.min.css') }}">
+    
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    
+    <!-- Custom CSS (Admin-specific styles) -->
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v={{ rand() }}">
 
-        body {
-            font-family: Arial, sans-serif;
-        }
+    <!-- Highcharts for Pie charts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/venn.js"></script>
+    
+    <!-- jQuery and Bootstrap Bundle JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: white;
-            padding: 15px 20px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    <!-- jQuery for AdminLTE functionalities -->
+    <script src="{{ asset('build/assets/plugins/jquery/jquery.min.js') }}"></script>
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin: 0 15px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .signup-btn {
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-            font-weight: bold;
-            border: 2px solid black;
-            padding: 8px 15px;
-            border-radius: 5px;
-        }
-
-        .signup-btn:hover {
-            background-color: black;
-            color: white;
-        }
-
-        .content {
-            /* margin-top: 20px; */
-            padding: 20px;
-        }
-    </style>
+    @yield('header-styles')
+    @yield('header-scripts')
 </head>
 <body>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contacts</a></li>
-        </ul>
-        <a href="#" class="signup-btn">Signup</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <!-- Brand (Optional) -->
+            <a class="navbar-brand" href="#">Logo</a>
+
+            <!-- Navbar Links (Centered) -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#">Contacts</a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-outline-dark font-weight-bold ml-3">Signup</a>
+            </div>
+        </div>
     </nav>
 
+    <!-- Content -->
     <div class="content">
         @yield('content')
     </div>
+
+    <!-- Bootstrap JS and other dependencies -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
