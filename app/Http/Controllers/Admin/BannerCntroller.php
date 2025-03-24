@@ -35,7 +35,7 @@ class BannerCntroller extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|regex:/^[a-z0-9-]+$/|unique:banner,slug',
+            'slug' => 'required|string|max:255|regex:/^[a-z0-9-]+$/|unique:banners,slug',
             'meta_description' => 'nullable|string|max:500',
             'main_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048|',
         ], [
