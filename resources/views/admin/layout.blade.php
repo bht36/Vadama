@@ -28,6 +28,11 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/venn.js"></script>
+
+    <!-- Code for the filter pop-up in the admin panel -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
     
     <!-- jQuery (Required for AdminLTE and Bootstrap functionalities) -->
     <script src="{{ asset('build/assets/plugins/jquery/jquery.min.js') }}"></script>
