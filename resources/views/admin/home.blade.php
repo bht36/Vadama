@@ -36,79 +36,104 @@
             <div class="row">
 
             <div class="container mt-4">
-    <div class="row g-3">
-        <!-- Total Users -->
-        <div class="col-md-4 col-6">
-            <div class="card text-center shadow-sm">
-                <div class="card-body">
-                    <i class="fa fa-users fa-3x text-primary"></i>
-                    <h5 class="card-title mt-2">Total Users</h5>
-                    <p><strong>150</strong> : Registered Users</p>
-                    <p><strong>30</strong> : Active Users</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subscriptions -->
-        <div class="col-md-4 col-6">
-            <div class="card text-center shadow-sm">
-                <div class="card-body">
-                    <i class="fa fa-credit-card fa-3x text-success"></i>
-                    <h5 class="card-title mt-2">Subscriptions</h5>
-                    <p><strong>80</strong> : Active Subscriptions</p>
-                    <p><strong>20</strong> : Expired Subscriptions</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Orders -->
-        <div class="col-md-4 col-6">
-            <div class="card text-center shadow-sm">
-                <div class="card-body">
-                    <i class="fa fa-shopping-cart fa-3x text-danger"></i>
-                    <h5 class="card-title mt-2">Orders</h5>
-                    <p><strong>120</strong> : Completed Orders</p>
-                    <p><strong>10</strong> : Pending Orders</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Revenue -->
-        <div class="col-md-4 col-6">
-            <div class="card text-center shadow-sm">
-                <div class="card-body">
-                    <i class="fa fa-dollar-sign fa-3x text-warning"></i>
-                    <h5 class="card-title mt-2">Revenue</h5>
-                    <p><strong>$15,000</strong> : Total Revenue</p>
-                    <p><strong>$2,500</strong> : This Month</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Support Tickets -->
-        <div class="col-md-4 col-6">
-            <div class="card text-center shadow-sm">
-                <div class="card-body">
-                    <i class="fa fa-ticket-alt fa-3x text-info"></i>
-                    <h5 class="card-title mt-2">Support Tickets</h5>
-                    <p><strong>5</strong> : Open Tickets</p>
-                    <p><strong>20</strong> : Resolved Tickets</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- System Status -->
-        <div class="col-md-4 col-6">
-            <div class="card text-center shadow-sm">
-                <div class="card-body">
-                    <i class="fa fa-server fa-3x text-dark"></i>
-                    <h5 class="card-title mt-2">System Status</h5>
-                    <p><strong>99.9%</strong> : Uptime</p>
-                    <p><strong>1</strong> : Active Maintenance</p>
-                </div>
+            <div class="row g-3">
+    <!-- Total Users -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-users fa-3x text-primary"></i>
+                <h5 class="card-title mt-2">Total Users</h5>
+                <p><strong>150</strong> : Registered Users</p>
+                <p><strong>30</strong> : Active Users</p>
             </div>
         </div>
     </div>
+
+    <!-- Active Listings -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-building fa-3x text-success"></i>
+                <h5 class="card-title mt-2">Active Listings</h5>
+                <p><strong>50</strong> : Available Properties</p>
+                <p><strong>20</strong> : Booked Properties</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscriptions -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-credit-card fa-3x text-success"></i>
+                <h5 class="card-title mt-2">Subscriptions</h5>
+                <p><strong>80</strong> : Active Subscriptions</p>
+                <p><strong>20</strong> : Expired Subscriptions</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookings -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-calendar-check fa-3x text-danger"></i>
+                <h5 class="card-title mt-2">Bookings</h5>
+                <p><strong>100</strong> : Completed Bookings</p>
+                <p><strong>15</strong> : Pending Bookings</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revenue -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-dollar-sign fa-3x text-warning"></i>
+                <h5 class="card-title mt-2">Revenue</h5>
+                <p><strong>$15,000</strong> : Total Revenue</p>
+                <p><strong>$2,500</strong> : This Month</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Tickets -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-ticket-alt fa-3x text-info"></i>
+                <h5 class="card-title mt-2">Support Tickets</h5>
+                <p><strong>5</strong> : Open Tickets</p>
+                <p><strong>20</strong> : Resolved Tickets</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-server fa-3x text-dark"></i>
+                <h5 class="card-title mt-2">System Status</h5>
+                <p><strong>99.9%</strong> : Uptime</p>
+                <p><strong>1</strong> : Active Maintenance</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Rent Payments -->
+    <div class="col-md-4 col-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <i class="fa fa-money-bill-wave fa-3x text-danger"></i>
+                <h5 class="card-title mt-2">Pending Rent Payments</h5>
+                <p><strong>10</strong> : Pending Payments</p>
+                <p><strong>$5,000</strong> : Total Pending</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 

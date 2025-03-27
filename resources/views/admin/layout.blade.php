@@ -59,19 +59,25 @@
                         Admin
                     </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                        <!-- Change Password -->
                         <a href="" class="dropdown-item">
                             <i class="fas fa-cog"></i> Change Password
                         </a>
+
                         <div class="dropdown-divider"></div>
+
+                        <!-- Logout -->
                         <a href="#" class="dropdown-item">
-                            <form class="d-inline" action="" method="post">
+                            <form class="d-inline" action="{{ route('admin.logout') }}" method="POST">
                                 @csrf
                                 <button class="logout_btn btn btn-success" type="submit">
-                                    <i class="fas fa-sign-out-alt"></i> {{ __('logout') }}
+                                    <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                                 </button>
                             </form>
                         </a>
-                    </div> 
+                    </div>
+
+
                 </li>
             </ul>
         </nav>

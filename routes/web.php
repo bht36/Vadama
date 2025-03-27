@@ -9,7 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 | Define routes for the web interface here. Group routes logically for 
@@ -18,17 +18,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Admin Routes
+// Route to show login form
 Route::get('/admin', [AuthController::class, 'showLoginForm'])->name('admin.login');
+
+// Route to handle login submission
 Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
+
+// Route to handle logout
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
+// Routes protected by authentication
 Route::middleware(['auth', 'verified'])->group(function () {
+    // Dashboard Route for Admin
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Admin profile edit route
     Route::get('admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
 
+    // Admin Routes with a prefix 'admin'
     Route::prefix('admin')->as('admin.')->group(function () {
 
-       
+        // Routes for Hoodie Management
         Route::prefix('hoodie')->as('hoodie.')->controller(HoodieController::class)->group(function () {
             Route::get('/index', 'index')->name('index');
             Route::get('/create', 'add')->name('add');
@@ -38,7 +48,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::delete('/destroy/{id}', 'destroy')->name('delete');
         });
 
-        // Route for Banner
+        // Routes for Banner Management
         Route::prefix('banner')->as('banner.')->controller(BannerCntroller::class)->group(function () {
             Route::get('/index', 'index')->name('index');
             Route::get('/create', 'add')->name('add');
@@ -51,9 +61,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+// Frontend Routes
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 
-// frontend routes
+// Frontend routes under 'index' prefix
 Route::prefix('index')->as('index.')->controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('index');
 });
