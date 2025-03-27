@@ -56,8 +56,8 @@
                 </button>
             </div>
         @endif
-        <img style="width:60%;" src="{{ asset('logo/Login.png') }}" alt="Bhada Ma" class="img-fluid">
-        <h5 class="mt-3">Bhada Ma</h5>
+        <img style="width:60%;" src="{{ asset('logo/Login.png') }}" alt="Vada Ma" class="img-fluid">
+        <h5 class="mt-3">Vada Ma</h5>
     </div>
     <h5 class="login-box-msg">Sign in</h5>
     @if (session('message'))

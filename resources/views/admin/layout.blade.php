@@ -81,7 +81,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="{{ route('admin.dashboard') }}" class="brand-link">
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('logo/Login.png') }}" alt="Bhada Ma" class="img-fluid" style="width: 100px; height: auto;">
+                    <img src="{{ asset('logo/Login.png') }}" alt="Vada Ma" class="img-fluid" style="width: 100px; height: auto;">
                 </div>
             </a>
             <div class="sidebar">
@@ -99,7 +99,7 @@
         
         <!-- Footer -->
         <footer class="main-footer">
-            <strong> {{ __('Copyright') }} &copy;&nbsp;<?php echo date('Y'); ?>&nbsp; {{ __('Bhada Ma') }}</strong>
+            <strong> {{ __('Copyright') }} &copy;&nbsp;<?php echo date('Y'); ?>&nbsp; {{ __('Vada Ma') }}</strong>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 11.0
             </div>
