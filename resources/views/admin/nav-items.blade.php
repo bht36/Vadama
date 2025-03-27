@@ -25,29 +25,5 @@
                 <p>{{ __('Banner') }}</p>
             </a>
         </li>
-        <li class="nav-item <?= @$child_nav == 'suspended_participant_list' ? 'active bg-gray' : '' ?>">
-            <a href="" class="nav-link">
-
-
-                <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Suspended') }}</p>
-            </a>
-        </li>
-        <li class="nav-item <?= @$child_nav == 'deleted_articipant_list' ? 'active bg-gray' : '' ?>">
-            {{-- <a href="{{ route('Deleted.index') }}" class="nav-link"> --}}
-            <a href="" class="nav-link">
-
-
-                <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Deleted') }}</p>
-            </a>
-        </li>
-        <!-- <li class="nav-item <?= @$child_nav == 'bulk_list' ? 'active bg-gray' : '' ?>">
-            <a href="" class="nav-link">
-                {{-- <a href="{{ route('Bulk.index') }}" class="nav-link"> --}}
-                <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Bulk list') }}</p>
-            </a>
-        </li> -->
-    </ul>
+        </ul>
 </li>

@@ -35,97 +35,83 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
 
-                <div class="col-md-4 col-6">
-                    <a href="" class="small-box-footer">
-                        <div class="info-box d-block p-0">
-                            <div class="d-box-top">
-                                <span class="d-box-icon-w"><i class="fa fa-users fa-2x"></i></span>
-                                <span class="info-box-number">Participants</span>
-                            </div>
-                            <div class="d-box-content">
-                                <div class=""><b></b> : Approved Participants</div>
-                                <div class=""><b></b> : Online Participants</div>
-                            </div>
-                        </div>
-                    </a>
+            <div class="container mt-4">
+    <div class="row g-3">
+        <!-- Total Users -->
+        <div class="col-md-4 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-users fa-3x text-primary"></i>
+                    <h5 class="card-title mt-2">Total Users</h5>
+                    <p><strong>150</strong> : Registered Users</p>
+                    <p><strong>30</strong> : Active Users</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-4 col-6">
-                    <a href="" class="small-box-footer">
-                        <div class="info-box d-block p-0">
-                            <div class="d-box-top">
-                                <span class="d-box-icon-w"><i class="fa fa-user-plus fa-2x"></i></span>
-                                <span class="info-box-number">Applicatnts</span>
-                            </div>
-                            <div class="d-box-content">
-                                <div class=""><b></b> : New Applicants</div>
-                                <div class=""><b></b> : Suspended Applicants</div>
-                            </div>
-                        </div>
-                    </a>
+        <!-- Subscriptions -->
+        <div class="col-md-4 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-credit-card fa-3x text-success"></i>
+                    <h5 class="card-title mt-2">Subscriptions</h5>
+                    <p><strong>80</strong> : Active Subscriptions</p>
+                    <p><strong>20</strong> : Expired Subscriptions</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-4 col-6">
-                    <a href="" class="small-box-footer">
-                        <div class="info-box d-block p-0">
-                            <div class="d-box-top">
-                                <span class="d-box-icon-w"><i class="fa fa-user-plus fa-2x"></i></span>
-                                <span class="info-box-number">Unpaid Applicants</span>
-                            </div>
-                            <div class="d-box-content">
-                                <div class=""><b>38</b> : Applicants(whose payment is pending [except cash])</div>
-                            </div>
-                        </div>
-                    </a>
+        <!-- Orders -->
+        <div class="col-md-4 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-shopping-cart fa-3x text-danger"></i>
+                    <h5 class="card-title mt-2">Orders</h5>
+                    <p><strong>120</strong> : Completed Orders</p>
+                    <p><strong>10</strong> : Pending Orders</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-4 col-6">
-                    <a href="" class="small-box-footer">
-                        <div class="info-box d-block p-0">
-                            <div class="d-box-top">
-                                <span class="d-box-icon-w"><i class="fa fa-calendar-check-o fa-2x"></i></span>
-                                <span class="info-box-number">Session</span>
-                            </div>
-                            <div class="d-box-content">
-                                <div class=""><b>0</b> : No. of Participant </div>
-                                <div class=""><b>0</b> : Total Live Session </div>
-                                <div class=""><b>0</b> : Current Session</div>
-                                <div class=""><b>14</b> : Upcoming Session </div>
-                                <div class=""><b>40</b> : Total Session</div>
-                            </div>
-                        </div>
-                    </a>
+        <!-- Revenue -->
+        <div class="col-md-4 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-dollar-sign fa-3x text-warning"></i>
+                    <h5 class="card-title mt-2">Revenue</h5>
+                    <p><strong>$15,000</strong> : Total Revenue</p>
+                    <p><strong>$2,500</strong> : This Month</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-4 col-6">
-                    <a href="" class="small-box-footer">
-                        <div class="info-box d-block p-0">
-                            <div class="d-box-top">
-                                <span class="d-box-icon-w"><i class="fa fa-envelope fa-2x"></i></span>
-                                <span class="info-box-number">Contact Messages</span>
-                            </div>
-                            <div class="d-box-content">
-                                <div class=""><b>4</b> : New Contact Messages</div>
-                                <div class=""><b>7</b> : Total Contact Messages</div>
-                            </div>
-                        </div>
-                    </a>
+        <!-- Support Tickets -->
+        <div class="col-md-4 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-ticket-alt fa-3x text-info"></i>
+                    <h5 class="card-title mt-2">Support Tickets</h5>
+                    <p><strong>5</strong> : Open Tickets</p>
+                    <p><strong>20</strong> : Resolved Tickets</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-4 col-6">
-                    <a href="" class="small-box-footer">
-                        <div class="info-box d-block p-0">
-                            <div class="d-box-top">
-                                <span class="d-box-icon-w"><i class="fa fa-users fa-2x"></i></span>
-                                <span class="info-box-number">Live Participants</span>
-                            </div>
-                            <div class="d-box-content">
-                                <div class=""><b>0</b> : 5 minutes </div>
-                                <div class=""><b>0</b> : 1 hour </div>
-                            </div>
-                        </div>
-                    </a>
+        <!-- System Status -->
+        <div class="col-md-4 col-6">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-server fa-3x text-dark"></i>
+                    <h5 class="card-title mt-2">System Status</h5>
+                    <p><strong>99.9%</strong> : Uptime</p>
+                    <p><strong>1</strong> : Active Maintenance</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
             </div>
         </div>
