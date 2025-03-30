@@ -12,4 +12,12 @@ class FrontendController extends Controller
         $banner =Banner::all();  
         return view("vadama.index", compact("banner"));
     }
+    public function signup(Request $request)
+    {
+        return view("vadama.signup");
+    }
+    public function login(Request $request)
+    {
+        return view("vadama.login");
+    }
 }
