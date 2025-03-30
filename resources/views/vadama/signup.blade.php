@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SIGN up</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  <style>
   <style>
     * {
       background-color: #ffffff;
@@ -80,10 +81,10 @@
     <!-- Left Side: Logo + Image -->
     <div class="col-md-6 d-none d-md-block image-section">
       <div class="logo-container text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo">
+        <img src="{{ asset('logo\Login.png') }}" alt="Logo">
       </div>
       <div class="image-holder">
-        <img src="{{ asset('storage/uploads/banner/main_image/1743057470_1500x450.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="height: 430px;" alt="...">
       </div> 
     </div>
 
@@ -91,7 +92,7 @@
     <div class="col-md-6 d-flex align-items-center justify-content-center">
       <div class="card p-4 shadow-lg login-form">
         <div class="text-center">
-          <h4 class="mt-3">Sign up</h4>
+          <h4 class="mt-3 fw-semibold text-dark fs-3">Sign up</h4>
         </div>
         <form>
           <!-- Username Field -->
@@ -101,31 +102,29 @@
           </div>
 
           <!-- Email Address Field -->
-          <div class="mb-3">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-control" required>
+          <div class="mb-3 position-relative">
+          <label class="form-label">Email</label>
+             <div class="position-relative">
+            <input type="email" class="form-control pe-5" required placeholder="Enter your email">
+          <!-- Mail Icon inside the input field, aligned to the left -->
+            <i class="fas fa-envelope position-absolute top-50 end-0 translate-middle-y me-3"></i>
           </div>
-
+          </div>
           <!-- Password Field -->
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" required>
+          <div class="mb-3 position-relative password-wrapper">
+          <label class="form-label">Password</label>
+          <div class="position-relative">
+          <input type="password" class="form-control" id="password" required>
+           <!-- Eye Icon for Password Visibility Toggle -->
+          <i class="fas fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3 " id="togglePassword"></i>
           </div>
-
+          </div>
           <!-- Phone Number Field -->
           <div class="mb-3">
             <label class="form-label">Phone Number</label>
             <input type="tel" class="form-control" required>
           </div>
-
-          <div class="d-flex justify-content-between">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="rememberMe">
-              <label class="form-check-label" for="rememberMe">Remember Me</label>
-            </div>
-            <a href="#" class="text-decoration-none">Forgot Password?</a>
-          </div>
-          <div class="mt-3">
+          <div class="mt-4">
             <!-- Apply custom button styles -->
             <button class="btn custom-btn w-100">Signup</button>
           </div>
@@ -140,5 +139,24 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript to toggle password visibility -->
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    // Add event listener for the toggle password click event
+    togglePassword.addEventListener('click', function () {
+      // Toggle the input type between 'password' and 'text'
+      const type = password.type === 'password' ? 'text' : 'password';
+      password.type = type;
+
+      // Toggle the eye icon between open and closed
+      this.classList.toggle('fa-eye-slash');
+    });
+  });
+</script>
 </body>
 </html>

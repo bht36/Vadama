@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>forgetpassword</title>
+  <title>Email Confirmation</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <style>
     * {
       background-color: #ffffff;
@@ -108,39 +107,36 @@
             <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="height: 430px;" alt="...">
             </div> 
           </div>
-          <div class="col-md-6 d-flex align-items-center justify-content-center">
-  <div class="card p-4 shadow-lg login-form">
-    
-  <form>
-      <!-- Email Confirmation Heading -->
-      <div class="mt-5 mb-5 text-center">
-        <h4 class="fw-bold text-dark fs-3 mb-4">Forgot your password?</h4>
-        <p class="mb-3 text-dark fs-5">
-          Enter the email associated with your<br>
-          Vada Ma account to receive a reset<br>
-          password link.
-        </p>
+
+    <!-- Right Side: Email Confirmation -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="card p-4 shadow-lg login-form">
+        <div class="log2 text-center">
+          <img src="{{ asset('picture\MAIL.png') }}" alt="Logo">
+        </div>
+        <form>
+          <!-- Email Confirmation Heading -->
+          <div class="mb-4 text-center">
+            <h4 class="mb-3">Check your email</h4>
+            <p>We have sent a password reset link to the following email address:</p>
+            <a href="#" class="d-block mb-3">johitthebe@gmail.com</a>
+            <p>You will receive a password reset link shortly.</p>
+          </div>
+
+          <!-- Resend Button -->
+          <div class="mt-3">
+            <button class="btn custom-btn w-100">Resend Mail</button>
+          </div>
+
+          <!-- Footer Text -->
+          <div class="text-center mt-3">
+            <p>Don't have an account? <a href="{{ route('index.signup') }}" class="text-decoration-none">Sign up</a></p>
+          </div>
+        </form>
       </div>
-      <!-- Email Input Field with Mail Icon -->
-<div class="mb-4 position-relative">
-  <label class="form-label">Email address</label>
-  <div class="position-relative">
-    <input type="email" class="form-control pe-5" required placeholder="Enter your email">
-    <!-- Mail Icon inside the input field, aligned to the left -->
-    <i class="fas fa-envelope position-absolute top-50 end-0 translate-middle-y me-3"></i>
+    </div>
   </div>
 </div>
-
-<!-- Continue Button -->
-<div>
-  <button onclick="window.location.href='{{ route('index.forgetconfirmation') }}'" class="btn custom-btn w-100">Continue</button>
-</div>
-
-<!-- Footer Text -->
-<div class="text-center mt-3">
-  <a href="{{ route('index.login')}}" class="text-decoration-none">Return to Login</a>
-</div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

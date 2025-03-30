@@ -20,4 +20,12 @@ class FrontendController extends Controller
     {
         return view("vadama.login");
     }
+    public function forgetpassword(Request $request)
+    {
+        return view("vadama.forgetpassword");
+    }
+    public function forgetconfirmation(Request $request)
+    {
+        return view("vadama.forgetconfirmation");
+    }
 }

@@ -69,4 +69,6 @@ Route::prefix('index')->as('index.')->controller(FrontendController::class)->gro
     Route::get('/', 'index')->name('index');
     Route::get('/signup', 'signup')->name('signup');
     Route::get('/login', 'login')->name('login');
+    Route::get('/forgetpassword', 'forgetpassword')->name('forgetpassword');
+    Route::get('/forgetconfirmation', 'forgetconfirmation')->name('forgetconfirmation');
 });
