@@ -65,7 +65,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware('guest')->group(function () {
     // Password reset request route (for the email form)
     Route::get('forgot-password', [ForgetPasswordController::class, 'forgetPassword'])->name('password.request');
-    
     // Password reset email route (to send the reset link)
     Route::post('forgot-password', [ForgetPasswordController::class, 'sendResetLink'])->name('password.email');
 
@@ -76,9 +75,6 @@ Route::middleware('guest')->group(function () {
 
 
 // Frontend Routes
-Route::get('/', [FrontendController::class, 'index'])->name('home');
-
-// Frontend routes under 'index' prefix
-Route::prefix('index')->as('index.')->controller(FrontendController::class)->group(function () {
+Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('index');
 });
