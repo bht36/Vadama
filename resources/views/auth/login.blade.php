@@ -117,7 +117,7 @@
     </form>
     <!-- /.social-auth-links -->
     <p class="mb-1">
-        <a href="">I forgot my password</a>
+        <a href="{{ route('password.request') }}">I forgot my password</a>
 
         {{-- @if (Route::has('password.request'))
     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
