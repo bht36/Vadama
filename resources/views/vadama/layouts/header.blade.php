@@ -62,7 +62,7 @@
                         <a class="nav-link font-weight-bold" href="#">Contacts</a>
                     </li>
                 </ul>
-                <a href="{{ route('index.login') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
                 </div>
         </div>
     </nav>

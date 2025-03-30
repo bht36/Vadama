@@ -130,7 +130,7 @@
           </div>
 
         <div class="text-center mt-3">
-          <p>Already have an account? <a href="{{ route('index.login') }}" class="text-decoration-none">Login</a></p>
+          <p>Already have an account? <a href="{{ route('login') }}" class="text-decoration-none">Login</a></p>
         </div>
     </form>
       </div>

@@ -130,7 +130,7 @@
 
           <!-- Footer Text -->
           <div class="text-center mt-3">
-            <p>Don't have an account? <a href="{{ route('index.signup') }}" class="text-decoration-none">Sign up</a></p>
+            <p>Don't have an account? <a href="{{ route('signup') }}" class="text-decoration-none">Sign up</a></p>
           </div>
         </form>
       </div>

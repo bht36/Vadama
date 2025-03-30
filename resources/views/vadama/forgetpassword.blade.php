@@ -133,12 +133,12 @@
 
 <!-- Continue Button -->
 <div>
-  <button onclick="window.location.href='{{ route('index.forgetconfirmation') }}'" class="btn custom-btn w-100">Continue</button>
+  <button onclick="window.location.href='{{ route('forgetconfirmation') }}'" class="btn custom-btn w-100">Continue</button>
 </div>
 
 <!-- Footer Text -->
 <div class="text-center mt-3">
-  <a href="{{ route('index.login')}}" class="text-decoration-none">Return to Login</a>
+  <a href="{{ route('login')}}" class="text-decoration-none">Return to Login</a>
 </div>
 
 

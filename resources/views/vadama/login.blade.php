@@ -106,7 +106,7 @@
           </div>
           </div>
       <div class="d-flex justify-content-between">
-        <a href="{{ route('index.forgetpassword') }}" class="text-decoration-none">Forgot Password?</a>
+        <a href="{{ route('forgetpassword') }}" class="text-decoration-none">Forgot Password?</a>
       </div>
       <div class="mt-3">
         <!-- Apply custom button styles -->
@@ -115,7 +115,7 @@
     </form>
     <div class="text-center mt-3">  <!-- Adjusted margin for consistency -->
       <p class="py-2">  <!-- Added padding for spacing -->
-        Don't have an account? <a href="{{ route('index.signup') }}" class="text-decoration-none">Sign up</a>
+        Don't have an account? <a href="{{ route('signup') }}" class="text-decoration-none">Sign up</a>
       </p>
     </div>
   </div>
