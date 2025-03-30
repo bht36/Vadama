@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerCntroller;
 use App\Http\Controllers\Admin\HoodieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -61,11 +62,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
-// Frontend Routes
-Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::middleware('guest')->group(function () {
+    // Password reset request route (for the email form)
+    Route::get('forgot-password', [ForgetPasswordController::class, 'forgetPassword'])->name('password.request');
+    // Password reset email route (to send the reset link)
+    Route::post('forgot-password', [ForgetPasswordController::class, 'sendResetLink'])->name('password.email');
 
-// Frontend routes under 'index' prefix
-Route::prefix('index')->as('index.')->controller(FrontendController::class)->group(function () {
+    Route::get('reset-password/{token}', [ForgetPasswordController::class, 'resetPassword'])->name('reset.password');
+
+    Route::post('reset-password', [ForgetPasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
+});
+
+
+// Frontend Routes
+Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/signup', 'signup')->name('signup');
     Route::get('/login', 'login')->name('login');

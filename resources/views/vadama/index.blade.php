@@ -9,40 +9,48 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        .slider-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+        .slider-item {
+            flex: 0 0 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .slider-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <header>
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ asset('storage/uploads/banner/main_image/1743057470_1500x450.png') }}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('storage/uploads/banner/main_image/1743057470_1500x450.png') }}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('storage/uploads/banner/main_image/1743057470_1500x450.png') }}" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <!-- Optional: Controls for manual navigation -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</header>
-    <!-- <header class="hero text-white text-center d-flex align-items-center justify-content-center" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/screencapture-realtor-rentals-2025-03-12-07_30_21%20%281%29.png-lzGooxWprjpSDTRMskNkMAFzfel2Nj.jpeg'); background-size: cover; background-position: center; height: 500px;">
-        <div class="container">
+    <!-- Hero Section with Slider -->
+    <div class="hero-slider">
+        <!-- Fixed Content Overlay -->
+        <div class="slider-content">
             <h1 class="display-4 fw-bold">The #1 site real estate professionals trust<sup>*</sup></h1>
             <ul class="nav nav-tabs justify-content-center mt-3">
                 <li class="nav-item"><a class="nav-link active" href="#">Buy</a></li>
@@ -57,7 +65,14 @@
                 <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
             </div>
         </div>
-    </header> -->
+        
+        <!-- Image Slider with dynamic images from database -->
+        <div class="slider-container" id="sliderContainer">
+            @foreach($banner as $bannerimage)
+                <div class="slider-item" style="background-image: url({{ asset('storage/uploads/banner/main_image/'. $bannerimage->main_image) }});"></div>
+            @endforeach
+        </div>
+    </div>
 
     <!-- Listings Section -->
     <section class="listings bg-dark text-white py-5">
@@ -79,6 +94,28 @@
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderContainer = document.getElementById('sliderContainer');
+            const slides = document.querySelectorAll('.slider-item');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Only initialize slider if there are slides
+            if (slideCount > 0) {
+                // Set initial position
+                sliderContainer.style.transform = 'translateX(0)';
+                
+                // Start auto rotation after 3 seconds
+                setTimeout(() => {
+                    setInterval(() => {
+                        currentSlide = (currentSlide + 1) % slideCount;
+                        sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    }, 5000); // Change slide every 5 seconds
+                }, 3000); // Start 3 seconds after page load
+            }
+        });
+    </script>
 </body>
 <!-- Bootstrap JS (Make sure this is included before the script) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
