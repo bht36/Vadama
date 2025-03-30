@@ -68,5 +68,5 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::prefix('index')->as('index.')->controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/signup', 'signup')->name('signup');
-    Route::get('/login', 'signup')->name('signup');
+    Route::get('/login', 'login')->name('login');
 });
