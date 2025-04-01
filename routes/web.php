@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\BannerCntroller;
 use App\Http\Controllers\Admin\HoodieController;
 use App\Http\Controllers\AuthController;
@@ -81,4 +82,9 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::get('/forgetpassword', 'forgetpassword')->name('forgetpassword');
     Route::get('/forgetconfirmation', 'forgetconfirmation')->name('forgetconfirmation');
+});
+
+Route::controller(AccountController::class)->group(function () {
+    Route::post('/user_info_store', 'user_info_store')->name('register_acc');
+    Route::post('/user_info_login', 'user_info_login')->name('login_acc');
 });
