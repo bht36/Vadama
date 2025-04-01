@@ -45,8 +45,8 @@
       border-radius: 10px;
     }
     .login-form {
-      height: 580px;
-      max-width: 400px;
+      height: px;
+      max-width: 450px;
       width: 100%;
     }
 
@@ -95,17 +95,37 @@
           <h4 class="mt-3 fw-semibold text-dark fs-3">Sign up</h4>
         </div>
         <form>
+        <!-- first name Field -->
+        <div class="mt-3mb-3 mb-3">
+        <div class="row">
+        <!-- First name Field -->
+        <div class="col-md-6">
+            <label class="form-label">First name</label>
+            <input type="text" class="form-control" required>
+        </div>
+        <!-- Last name Field -->
+        <div class="col-md-6">
+            <label class="form-label">Last name</label>
+            <input type="text" class="form-control" required>
+        </div>
+         </div>
+        </div>
+
           <!-- Username Field -->
           <div class="mb-3">
             <label class="form-label">Username</label>
             <input type="text" class="form-control" required>
           </div>
-
+          <!-- Phone Number Field -->
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" required>
+          </div>
           <!-- Email Address Field -->
           <div class="mb-3 position-relative">
           <label class="form-label">Email</label>
              <div class="position-relative">
-            <input type="email" class="form-control pe-5" required placeholder="Enter your email">
+            <input type="email" class="form-control pe-5">
           <!-- Mail Icon inside the input field, aligned to the left -->
             <i class="fas fa-envelope position-absolute top-50 end-0 translate-middle-y me-3"></i>
           </div>
@@ -118,11 +138,6 @@
            <!-- Eye Icon for Password Visibility Toggle -->
           <i class="fas fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3 " id="togglePassword"></i>
           </div>
-          </div>
-          <!-- Phone Number Field -->
-          <div class="mb-3">
-            <label class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" required>
           </div>
           <div class="mt-4">
             <!-- Apply custom button styles -->
