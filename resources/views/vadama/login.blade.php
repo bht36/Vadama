@@ -92,19 +92,19 @@
      <div class="mb-3 position-relative">
           <label class="form-label">Email</label>
              <div class="position-relative">
-            <input type="email" class="form-control pe-5" >
+            <input type="email" class="form-control pe-5">
           <!-- Mail Icon inside the input field, aligned to the left -->
             <i class="fas fa-envelope position-absolute top-50 end-0 translate-middle-y me-3"></i>
           </div>
           </div>
           <div class="mb-3 position-relative password-wrapper">
-            <label class="form-label">Password</label>
-            <div class="position-relative">
-              <input type="password" class="form-control" id="password" required>
-              <!-- Eye Icon for Password Visibility Toggle -->
-              <i class="fas fa-eye-slash toggle-password position-absolute top-50 end-0 translate-middle-y me-3" id="togglePassword"></i>
-            </div>
+          <label class="form-label">Password</label>
+          <div class="position-relative">
+            <input type="password" class="form-control" id="password" required>
+            <!-- Eye Icon for Password Visibility Toggle -->
+            <i class="fas fa-eye-slash toggle-password position-absolute top-50 end-0 translate-middle-y me-3" id="togglePassword"></i>
           </div>
+        </div>
       <div class="d-flex justify-content-between">
         <a href="{{ route('forgetpassword') }}" class="text-decoration-none">Forgot Password?</a>
       </div>
