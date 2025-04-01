@@ -132,12 +132,12 @@
           </div>
           <!-- Password Field -->
           <div class="mb-3 position-relative password-wrapper">
-          <label class="form-label">Password</label>
-          <div class="position-relative">
-          <input type="password" class="form-control" id="password" required>
-           <!-- Eye Icon for Password Visibility Toggle -->
-          <i class="fas fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3 " id="togglePassword"></i>
-          </div>
+            <label class="form-label">Password</label>
+            <div class="position-relative">
+              <input type="password" class="form-control" id="password" required>
+              <!-- Eye Icon for Password Visibility Toggle -->
+              <i class="fas fa-eye-slash toggle-password position-absolute top-50 end-0 translate-middle-y me-3" id="togglePassword"></i>
+            </div>
           </div>
           <div class="mt-4">
             <!-- Apply custom button styles -->
@@ -157,19 +157,18 @@
 
 <!-- JavaScript to toggle password visibility -->
 <script>
-  // Wait for the DOM to be fully loaded
   document.addEventListener('DOMContentLoaded', function () {
     const togglePassword = document.getElementById('togglePassword');
     const password = document.getElementById('password');
 
-    // Add event listener for the toggle password click event
     togglePassword.addEventListener('click', function () {
-      // Toggle the input type between 'password' and 'text'
-      const type = password.type === 'password' ? 'text' : 'password';
-      password.type = type;
+      // Toggle password visibility
+      const isPasswordHidden = password.type === 'password';
+      password.type = isPasswordHidden ? 'text' : 'password';
 
-      // Toggle the eye icon between open and closed
-      this.classList.toggle('fa-eye-slash');
+      // Toggle eye icon based on visibility
+      this.classList.toggle('fa-eye', isPasswordHidden);
+      this.classList.toggle('fa-eye-slash', !isPasswordHidden);
     });
   });
 </script>
