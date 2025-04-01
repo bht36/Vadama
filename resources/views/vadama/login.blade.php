@@ -92,7 +92,7 @@
      <div class="mb-3 position-relative">
           <label class="form-label">Email</label>
              <div class="position-relative">
-            <input type="email" class="form-control pe-5" required placeholder="Enter your email">
+            <input type="email" class="form-control pe-5">
           <!-- Mail Icon inside the input field, aligned to the left -->
             <i class="fas fa-envelope position-absolute top-50 end-0 translate-middle-y me-3"></i>
           </div>
