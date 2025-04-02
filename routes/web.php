@@ -9,6 +9,7 @@ use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |---------------------------------------------------------------------------
@@ -86,5 +87,11 @@ Route::controller(FrontendController::class)->group(function () {
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
-    Route::post('/user_info_login', 'user_info_login')->name('login_acc');
+    Route::post('/login', 'user_info_login')->name('login_acc');
+    Route::get('/logout', 'user_info_logout')->name('logout_acc');
 });
+
+// Dashboard Route (Protected by Middleware)
+Route::get('/dashboard', function () {
+    return view('dashboard'); 
+})->middleware('session.auth')->name('dashboard');

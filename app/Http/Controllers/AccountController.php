@@ -4,11 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
-    public function user_info_login(Request $request){
-        
+    public function user_info_login(Request $request)
+    {
+        // Validate credentials
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+    
+        // Attempt authentication using Laravel's built-in system
+        if (Auth::attempt($credentials)) {
+            // dd(Auth::user());
+            $request->session()->regenerate();  // Important security measure
+    
+            // Store user details in session (optional if using Auth facade elsewhere)
+            session(['user' => [
+                'id' => Auth::id(),
+                'name' => Auth::user()->username,
+                'email' => Auth::user()->email
+            ]]);
+    
+            return redirect()->intended(route('login'))->with('success', 'Logged in successfully!');
+        }
+    
+        return back()->withErrors(['email' => 'Invalid credentials!']);
+    }
+
+    public function user_info_logout(Request $request){
+         Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     public function user_info_store(Request $request)
@@ -30,7 +64,7 @@ class AccountController extends Controller
             'username' => $validatedData['username'],
             'phone_number' => $validatedData['phone_number'],
             'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']), // Hash password
+            'password' => Hash::make($validatedData['password']), // Proper Laravel hashing
         ]);
 
         // Redirect to a specific page after successful registration

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class Account extends Authenticatable
 {
     use HasFactory;
 
@@ -27,10 +27,4 @@ class Account extends Model
     protected $hidden = [
         'password',
     ];
-
-    // You may also want to use Laravel's hashing function to automatically hash passwords
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
 }

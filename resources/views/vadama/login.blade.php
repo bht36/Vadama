@@ -5,12 +5,12 @@
         <div class="row login-container">
             <!-- Left Side: Logo + Image -->
             <div class="col-md-6 d-none d-md-block image-section">
-              <div class="logo-container text-center">
-                <img src="{{ asset('logo/Login.png') }}" alt="Logo" >
-              </div>
-              <div class="image-holder">
-                <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: auto;" alt="...">
-              </div>
+                <div class="logo-container text-center">
+                    <img src="{{ asset('logo/Login.png') }}" alt="Logo">
+                </div>
+                <div class="image-holder">
+                    <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: auto;" alt="...">
+                </div>
             </div>
 
             <!-- Right Side: Login Form -->
@@ -26,41 +26,34 @@
                         <h4 class="mt-3 fw-semibold text-dark fs-3">Login</h4>
                     </div>
                     <form method="POST" action="{{ route('login_acc') }}">
-                      @csrf
-                  
-                      <!-- Email Address Field -->
-                      <div class="mb-3 position-relative">
-                          <label class="form-label">Email</label>
-                          <div class="position-relative d-flex align-items-center">
-                              <input type="email" name="email" class="form-control pe-5 @error('email') is-invalid @enderror" value="{{ old('email') }}" required autofocus>
-                              <i class="fas fa-envelope position-absolute top-50 end-0 translate-middle-y me-3"></i>
-                          </div>
-                          @error('email')
-                              <div class="invalid-feedback">{{ $message }}</div>
-                          @enderror
-                      </div>
-                  
-                      <!-- Password Field -->
-                      <div class="mb-3 position-relative password-wrapper">
-                          <label class="form-label">Password</label>
-                          <div class="position-relative d-flex align-items-center">
-                              <input type="password" name="password" class="form-control" id="password" required>
-                              <i class="fas fa-eye-slash toggle-password position-absolute top-50 end-0 translate-middle-y me-3" id="togglePassword"></i>
-                          </div>
-                          @error('password')
-                              <div class="invalid-feedback">{{ $message }}</div>
-                          @enderror
-                      </div>
-                  
-                      <div class="d-flex justify-content-between">
-                          <a href="{{ route('forgetpassword') }}" class="text-decoration-none">Forgot Password?</a>
-                      </div>
-                  
-                      <div class="mt-3">
-                          <button class="btn custom-btn w-100">Login</button>
-                      </div>
-                  </form>
-                  
+                        @csrf
+                        <!-- Email Address -->
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <div class="position-relative">
+                                <input type="password" name="password" id="password" class="form-control" required>
+                                <i id="togglePassword" class="fa fa-eye position-absolute top-50 end-0 translate-middle-y" style="right: 10px; cursor: pointer;"></i>
+                            </div>
+                            @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </div>
+                    </form>
+
                     <div class="text-center mt-3">
                         <p class="py-2">
                             Don't have an account? <a href="{{ route('signup') }}" class="text-decoration-none">Sign up</a>

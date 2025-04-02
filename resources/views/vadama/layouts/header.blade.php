@@ -43,29 +43,28 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <!-- Brand (Optional) -->
-            <a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="#">Logo</a>
+        
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link font-weight-bold" href="#">About Us</a></li>
+                <li class="nav-item"><a class="nav-link font-weight-bold" href="#">Contacts</a></li>
+            </ul>
 
-            <!-- Navbar Links (Centered) -->
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#">Contacts</a>
-                    </li>
-                </ul>
-                <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
-                </div>
+            @if(Session::has('user'))
+                <span class="mr-3">Welcome, {{ Session::get('user')['name'] ?? 'User' }}</span>
+                <a href="{{ route('logout_acc') }}" class="btn btn-danger">Logout</a>
+            @else
+                <a href="{{ route('login_acc') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
+            @endif
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Content -->
     <div class="content">
