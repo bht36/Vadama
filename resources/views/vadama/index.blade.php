@@ -110,7 +110,7 @@
   <img src="..." class="card-img-top" alt="...">
 <!-- Rent House Section -->
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center, mt-4 mb-2">
     <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   </div>
 
@@ -208,7 +208,7 @@
 
 <!-- Rent Room Section -->
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
     <h2 class="fw-bold" style="font-size: 20px;">Rent Room</h2>
   </div>
 
@@ -296,7 +296,7 @@
 
 <!-- Rent Apartment Section -->
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
     <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
   </div>
 
