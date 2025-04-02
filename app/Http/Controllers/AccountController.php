@@ -6,42 +6,31 @@ use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
     public function user_info_login(Request $request)
     {
-        // Validate credentials
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-    
-        // Attempt authentication using Laravel's built-in system
-        if (Auth::attempt($credentials)) {
-            // dd(Auth::user());
-            $request->session()->regenerate();  // Important security measure
-    
-            // Store user details in session (optional if using Auth facade elsewhere)
-            session(['user' => [
-                'id' => Auth::id(),
-                'name' => Auth::user()->username,
-                'email' => Auth::user()->email
-            ]]);
-    
-            return redirect()->intended(route('login'))->with('success', 'Logged in successfully!');
+
+        if (Auth::guard('account')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('success', 'Logged in successfully!');
         }
-    
+
         return back()->withErrors(['email' => 'Invalid credentials!']);
     }
 
-    public function user_info_logout(Request $request){
-         Auth::logout();
-
+    
+    public function user_info_logout(Request $request)
+    {
+        Auth::guard('account')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
+        
         return redirect('/');
     }
 

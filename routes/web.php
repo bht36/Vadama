@@ -88,7 +88,7 @@ Route::controller(FrontendController::class)->group(function () {
 Route::controller(AccountController::class)->group(function () {
     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
     Route::post('/login', 'user_info_login')->name('login_acc');
-    Route::get('/logout', 'user_info_logout')->name('logout_acc');
+    Route::post('/logout', 'user_info_logout')->name('logout_acc');
 });
 
 // Dashboard Route (Protected by Middleware)
