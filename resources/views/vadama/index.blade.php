@@ -57,6 +57,11 @@
     color: black;
     cursor: pointer;
   }
+  .card.hover-card:hover {
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.6); /* Red shadow */
+  transform: scale(1.05); /* Optional: slightly enlarge the card */
+  transition: all 0.3s ease; /* Smooth transition */
+}
     </style>
 </head>
 <body>
@@ -110,14 +115,14 @@
   <img src="..." class="card-img-top" alt="...">
 <!-- Rent House Section -->
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center, mt-4 mb-2">
+  <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   </div>
 
   <div class="row justify-content-center g-4">
-    <!-- Card 1 -->
+    <!-- Card 1 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card hover-card position-relative">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
              class="card-img-top img-fluid" alt="House 1">
         
@@ -137,9 +142,9 @@
       </div>
     </div>
 
-    <!-- Card 2 -->
+    <!-- Card 2 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card hover-card position-relative">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
              class="card-img-top img-fluid" alt="House 2">
         
@@ -159,9 +164,9 @@
       </div>
     </div>
 
-    <!-- Card 3 -->
+    <!-- Card 3 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card hover-card position-relative">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
              class="card-img-top img-fluid" alt="House 3">
         
@@ -181,9 +186,9 @@
       </div>
     </div>
 
-    <!-- Card 4 -->
+    <!-- Card 4 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card hover-card position-relative">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
              class="card-img-top img-fluid" alt="House 4">
         
@@ -205,7 +210,6 @@
   </div>
 </div>
 
-
 <!-- Rent Room Section -->
 <div class="container">
   <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
@@ -213,85 +217,86 @@
   </div>
 
   <div class="row justify-content-center g-4">
-    <!-- Room 1 -->
-<div class="col-md-3 col-sm-6">
-  <div class="card position-relative">
-    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-         class="card-img-top img-fluid" alt="Room 1">
-    <!-- Love Icon -->
-    <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
-    <div class="card-body d-flex flex-column">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="card-text mb-0">Price: $800</p>
-        <div>
-          <i class="bi bi-star-fill text-warning"></i> 4.85
+    <!-- Room 1 with red shadow hover effect -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card hover-card position-relative">
+        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
+             class="card-img-top img-fluid" alt="Room 1">
+        <!-- Love Icon -->
+        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="card-text mb-0">Price: $800</p>
+            <div>
+              <i class="bi bi-star-fill text-warning"></i> 4.85
+            </div>
+          </div>
+          <p class="card-text text-muted">Berlin, Germany</p>
+          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
-      <p class="card-text text-muted">Berlin, Germany</p>
-      <a href="#" class="btn btn-primary mt-auto">View Details</a>
     </div>
-  </div>
-</div>
 
-<!-- Room 2 -->
-<div class="col-md-3 col-sm-6">
-  <div class="card position-relative">
-    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-         class="card-img-top img-fluid" alt="Room 2">
-    <!-- Love Icon -->
-    <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
-    <div class="card-body d-flex flex-column">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="card-text mb-0">Price: $750</p>
-        <div>
-          <i class="bi bi-star-fill text-warning"></i> 4.75
+    <!-- Room 2 with red shadow hover effect -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card hover-card position-relative">
+        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
+             class="card-img-top img-fluid" alt="Room 2">
+        <!-- Love Icon -->
+        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="card-text mb-0">Price: $750</p>
+            <div>
+              <i class="bi bi-star-fill text-warning"></i> 4.75
+            </div>
+          </div>
+          <p class="card-text text-muted">Tokyo, Japan</p>
+          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
-      <p class="card-text text-muted">Tokyo, Japan</p>
-      <a href="#" class="btn btn-primary mt-auto">View Details</a>
     </div>
-  </div>
-</div>
 
-<!-- Room 3 -->
-<div class="col-md-3 col-sm-6">
-  <div class="card position-relative">
-    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-         class="card-img-top img-fluid" alt="Room 3">
-    <!-- Love Icon -->
-    <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
-    <div class="card-body d-flex flex-column">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="card-text mb-0">Price: $820</p>
-        <div>
-          <i class="bi bi-star-fill text-warning"></i> 4.90
+    <!-- Room 3 with red shadow hover effect -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card hover-card position-relative">
+        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
+             class="card-img-top img-fluid" alt="Room 3">
+        <!-- Love Icon -->
+        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="card-text mb-0">Price: $820</p>
+            <div>
+              <i class="bi bi-star-fill text-warning"></i> 4.90
+            </div>
+          </div>
+          <p class="card-text text-muted">Paris, France</p>
+          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
-      <p class="card-text text-muted">Paris, France</p>
-      <a href="#" class="btn btn-primary mt-auto">View Details</a>
     </div>
-  </div>
-</div>
 
-<!-- Room 4 -->
-<div class="col-md-3 col-sm-6">
-  <div class="card position-relative">
-    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-         class="card-img-top img-fluid" alt="Room 4">
-    <!-- Love Icon -->
-    <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
-    <div class="card-body d-flex flex-column">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="card-text mb-0">Price: $780</p>
-        <div>
-          <i class="bi bi-star-fill text-warning"></i> 4.80
+    <!-- Room 4 with red shadow hover effect -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card hover-card position-relative">
+        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
+             class="card-img-top img-fluid" alt="Room 4">
+        <!-- Love Icon -->
+        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="card-text mb-0">Price: $780</p>
+            <div>
+              <i class="bi bi-star-fill text-warning"></i> 4.80
+            </div>
+          </div>
+          <p class="card-text text-muted">Madrid, Spain</p>
+          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
-      <p class="card-text text-muted">Madrid, Spain</p>
-      <a href="#" class="btn btn-primary mt-auto">View Details</a>
     </div>
   </div>
-</div>
 </div>
 
 <!-- Rent Apartment Section -->
@@ -303,7 +308,7 @@
   <div class="row justify-content-center g-4">
     <!-- Apartment 1 -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card position-relative hover-card">
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 1">
         
@@ -325,7 +330,7 @@
 
     <!-- Apartment 2 -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card position-relative hover-card">
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 2">
         
@@ -346,7 +351,7 @@
 
     <!-- Apartment 3 -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card position-relative hover-card">
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 3">
         
@@ -367,7 +372,7 @@
 
     <!-- Apartment 4 -->
     <div class="col-md-3 col-sm-6">
-      <div class="card position-relative">
+      <div class="card position-relative hover-card">
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 4">
         
