@@ -50,7 +50,7 @@
 
                         <!-- Submit Button -->
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <button type="submit" class="btn btn-primary w-100" style="background-color: #79090f; border-color: #79090f;">Login</button>
                         </div>
                     </form>
 
