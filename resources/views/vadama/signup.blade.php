@@ -5,10 +5,11 @@
   <div class="row login-container">
     <!-- Left Side: Logo + Image -->
     <div class="col-md-6 d-none d-md-block image-section">
-      <div class="logo-container text-center">
-        <img src="{{ asset('logo/Login.png') }}" alt="Logo" >
-      </div>
-      
+    <div class="logo-container text-center">
+       <a href="{{ route('index') }}">
+        <img src="{{ asset('logo\Login.png') }}" alt="Logo">
+       </a>
+    </div>
       <div class="image-holder">
         <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: auto;" alt="...">
       </div> 
