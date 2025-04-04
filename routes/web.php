@@ -83,6 +83,11 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::get('/forgetpassword', 'forgetpassword')->name('forgetpassword');
     Route::get('/forgetconfirmation', 'forgetconfirmation')->name('forgetconfirmation');
+    Route::get('/dashboard', function () {
+        return view('vadama.dashboard'); 
+    })->middleware('auth')->name('dashboard');
+    
+    
 });
 
 Route::controller(AccountController::class)->group(function () {
@@ -90,8 +95,3 @@ Route::controller(AccountController::class)->group(function () {
     Route::post('/login', 'user_info_login')->name('login_acc');
     Route::post('/logout', 'user_info_logout')->name('logout_acc');
 });
-
-// Dashboard Route (Protected by Middleware)
-Route::get('/dashboard', function () {
-    return view('dashboard'); 
-})->middleware('session.auth')->name('dashboard');

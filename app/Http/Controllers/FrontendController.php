@@ -28,4 +28,8 @@ class FrontendController extends Controller
     {
         return view("vadama.forgetconfirmation");
     }
+    public function dashboard(Request $request)
+    {
+        return view("vadama.dashboard");
+    }
 }
