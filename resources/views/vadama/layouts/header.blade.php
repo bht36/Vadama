@@ -97,7 +97,7 @@
                         <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
                     </a>
                     <a class="dropdown-item" href="">
-                        <i class="fas fa-home mr-2"></i> Upload House
+                        <i class="fas fa-home mr-2"></i> Lease Property
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout_acc') }}">
