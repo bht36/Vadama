@@ -127,7 +127,7 @@
              class="card-img-top img-fluid" alt="House 1">
         
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -137,7 +137,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Cape Town, South Africa</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -149,7 +148,7 @@
              class="card-img-top img-fluid" alt="House 2">
         
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -159,7 +158,6 @@
             </div>
           </div>
           <p class="card-text text-muted">New York, USA</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -171,7 +169,7 @@
              class="card-img-top img-fluid" alt="House 3">
         
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -181,7 +179,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Sydney, Australia</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -193,7 +190,7 @@
              class="card-img-top img-fluid" alt="House 4">
         
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -203,7 +200,6 @@
             </div>
           </div>
           <p class="card-text text-muted">London, UK</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -223,7 +219,7 @@
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
              class="card-img-top img-fluid" alt="Room 1">
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
             <p class="card-text mb-0">Price: $800</p>
@@ -232,7 +228,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Berlin, Germany</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -243,7 +238,7 @@
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
              class="card-img-top img-fluid" alt="Room 2">
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
             <p class="card-text mb-0">Price: $750</p>
@@ -252,7 +247,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Tokyo, Japan</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -263,7 +257,7 @@
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
              class="card-img-top img-fluid" alt="Room 3">
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
             <p class="card-text mb-0">Price: $820</p>
@@ -272,7 +266,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Paris, France</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -283,7 +276,7 @@
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
              class="card-img-top img-fluid" alt="Room 4">
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
             <p class="card-text mb-0">Price: $780</p>
@@ -292,7 +285,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Madrid, Spain</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -313,7 +305,7 @@
              class="card-img-top img-fluid" alt="Apartment 1">
         
         <!-- Love Icon -->
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -323,7 +315,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Los Angeles, USA</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -334,7 +325,7 @@
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 2">
         
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+             <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -344,7 +335,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Dubai, UAE</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -355,7 +345,7 @@
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 3">
         
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+             <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -365,7 +355,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Toronto, Canada</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -376,7 +365,7 @@
         <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
              class="card-img-top img-fluid" alt="Apartment 4">
         
-        <i class="bi bi-heart love-icon" onclick="toggleLoveIcon(this)"></i>
+             <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
@@ -386,7 +375,6 @@
             </div>
           </div>
           <p class="card-text text-muted">Singapore</p>
-          <a href="#" class="btn btn-primary mt-auto">View Details</a>
         </div>
       </div>
     </div>
@@ -416,9 +404,9 @@
             }
         });
         function toggleLoveIcon(icon) {
-    icon.classList.toggle("bi-heart");
-    icon.classList.toggle("bi-heart-fill");
-    icon.classList.toggle("text-danger");
+    icon.classList.toggle("bi-bookmark");
+    icon.classList.toggle("bi-bookmark-fill");
+    icon.style.color = icon.classList.contains('bi-bookmark-fill') ? 'white' : 'white';
   }
     </script>
 </body>
