@@ -98,7 +98,7 @@
     .logo-container {
         position: absolute;
         top: 20px;
-        left: 50%;
+        left: 70%;
         transform: translateX(-50%);
         background: rgba(255, 255, 255, 0.8);
         padding: 10px 20px;
@@ -114,7 +114,7 @@
     .welcome-message {
         position: absolute;
         top: 35%;
-        left: 50%;
+        left: 70%;
         transform: translate(-50%, -50%);
         background-color: rgba(255, 255, 255, 0.8);
         padding:px;
@@ -126,7 +126,7 @@
     .image-holder {
         position: absolute;
         top: 15%;
-        left: 50%;
+        left: 70%;
         transform: translate(-50%, 50%);
         width: 500px;
         height: 350px;

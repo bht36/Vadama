@@ -6,20 +6,23 @@
     <!-- Left Side: Logo + Image -->
     <div class="col-md-6 d-none d-md-block image-section">
     <div class="logo-container text-center">
-       <a href="{{ route('index') }}">
-        <img src="{{ asset('logo\Login.png') }}" alt="Logo">
-       </a>
+    <a href="{{ route('index') }}">
+    <img src="{{ asset('logo/Login.png') }}" alt="Logo">
+      </a>
+       <div class="welcome-message mb-2">
+        <h1>Search better with an account</h1>
     </div>
-      <div class="image-holder">
-        <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: auto;" alt="...">
+    </div>
+      <div class="image-holder mt-4">
+        <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: 100%;" alt="...">
       </div> 
     </div>
 
     <!-- Right Side: Registration Form -->
     <div class="col-md-6 d-flex align-items-center justify-content-center">
-      <div class="card p-4 shadow-lg login-form" style="width: 100%; max-width: 500px;">
+      <div class="card p-4 shadow-lg login-form" style="width: 100%; max-width: 450px;">
         <div class="text-center">
-          <h4 class="mt-3 fw-semibold text-dark fs-3">Sign up</h4>
+          <h4 class="mt-2 fw-semibold text-dark fs-3">Sign up</h4>
         </div>
         <form action="{{ route('register_acc') }}" method="POST">
           @csrf
@@ -140,7 +143,14 @@
   .login-container {
     height: 100vh;
   }
+  login-form .form-label {
+    font-size: 0.875rem; 
+  }
 
+  .form-control {
+    font-size: 0.875rem; 
+    padding: 8px;
+  }
   .image-section {
     background: url('https://source.unsplash.com/800x800/?office') no-repeat center center;
     background-size: cover;
@@ -165,20 +175,20 @@
 
   .image-holder {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     margin-top: 45px;
     margin-left: 100px;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 400px;
+    height: 390px;
     background: #ccc;
     border-radius: 10px;
   }
 
   .login-form {
-    height: auto;
-    max-width: 450px;
+    height: 700;
+    max-width: 400px;
     width: 100%;
   }
 
@@ -203,5 +213,15 @@
   .login-form .form-label {
     font-size: 1rem;
   }
+  .welcome-message {
+  margin-top: 30px;
+  text-align: center;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  font-size: 1.5rem;
+  margin-left: 200px; /* Adjust this value to move it right */
+}
+
 </style>
 @endsection
