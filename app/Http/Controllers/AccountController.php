@@ -59,4 +59,70 @@ class AccountController extends Controller
         // Redirect to a specific page after successful registration
         return view('vadama.login')->with('success', 'Account created successfully!');
     }
+
+    // AccountController.php
+    public function accountProfile()
+    {
+        // Get the authenticated user
+        $user = Auth::guard('account')->user();
+        
+        // Pass the user data to the view
+        return view('vadama.accountprofile', ['user' => $user]);
+    }
+
+
+    public function editprofile()
+    {
+        $user = Auth::guard('account')->user();
+        
+        // Pass the user data to the view
+        return view('vadama.editprofile', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Find the account by ID
+        $account = Account::findOrFail($id);
+
+        // Validate incoming request data
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'username' => 'required|string|max:255|unique:accounts,username,' . $account->id,  // Ensure username is unique except for the current account
+            'phone_number' => 'required|string|regex:/^\d{7,15}$/',
+        ]);
+
+        // Get the authenticated user (optional, depends on your authorization logic)
+        $user = Auth::guard('account')->user();
+
+        // Ensure the user is authorized to update this account (if needed)
+        if ($user->id !== (int) $id) {
+            return redirect()->route('accountprofile')->with('error', 'Unauthorized action');
+        }
+
+        // Update account details
+        $account->update([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'username' => $validatedData['username'],
+            'email' => $validatedData['email'],
+            'phone_number' => $validatedData['phone_number'],
+        ]);
+
+        // Redirect back to profile page with success message
+        return redirect()->route('accountprofile')->with('success', 'Profile updated successfully!');
+    }
+
+    public function dashboard()
+    {
+        return view('vadama.dashboard');
+    }
+
+    
+
+    public function leaseProperty()
+    {
+        return view('vadama.leaseproperty');
+    }
 }

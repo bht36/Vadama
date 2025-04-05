@@ -83,15 +83,28 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::get('/forgetpassword', 'forgetpassword')->name('forgetpassword');
     Route::get('/forgetconfirmation', 'forgetconfirmation')->name('forgetconfirmation');
-    Route::get('/dashboard', function () {
-        return view('vadama.dashboard'); 
-    })->middleware('auth')->name('dashboard');
-    
-    
+   
 });
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
     Route::post('/login', 'user_info_login')->name('login_acc');
-    Route::post('/logout', 'user_info_logout')->name('logout_acc');
+    
+    // Authenticated routes (require auth:account middleware)
+    Route::middleware(['auth:account'])->group(function () {
+        Route::post('/logout', 'user_info_logout')->name('logout_acc');
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/accountprofile', 'accountProfile')->name('accountprofile');
+        Route::get('/editprofile', 'editprofile')->name('editprofile');
+        Route::put('/update/{id}', 'update')->name('update'); // Update route
+        Route::get('/leaseproperty', 'leaseProperty')->name('leaseproperty');
+    });
 });
+// Route::controller(AccountController::class)->group(function () {
+//     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
+//     Route::post('/login', 'user_info_login')->name('login_acc');
+//     Route::post('/logout', 'user_info_logout')->name('logout_acc');
+//     Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
+//     Route::get('/accountprofile', 'accountProfile')->middleware('auth')->name('accountprofile');
+//     Route::get('/leaseproperty', 'leaseProperty')->middleware('auth')->name('leaseproperty');
+// });
