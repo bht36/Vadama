@@ -113,7 +113,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="profile-image-container">
-                    <img src="https://via.placeholder.com/300" alt="Profile picture" class="img-fluid">
+                    <img id="profilePreview" src="{{ $user->profile_picture ? asset('storage/uploads/profile_pictures/' . $user->profile_picture) : asset('logo/User.png') }}" alt="Profile picture" class="img-fluid rounded">
                     <button class="camera-button">
                         <i class="fa-solid fa-camera"></i>
                     </button>

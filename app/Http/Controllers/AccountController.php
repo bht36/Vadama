@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -80,39 +81,65 @@ class AccountController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        // Find the account by ID
-        $account = Account::findOrFail($id);
+{
+    // Find the account by ID
+    $account = Account::findOrFail($id);
+    // dd($request);
+    // Validate incoming request data
+    $validatedData = $request->validate([
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'username' => 'required|string|max:255|unique:accounts,username,' . $account->id,  // Ensure username is unique except for the current account
+        'phone_number' => 'required|string|regex:/^\d{7,15}$/',
+        'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'citizenship_document' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
+    ]);
+   
 
-        // Validate incoming request data
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'username' => 'required|string|max:255|unique:accounts,username,' . $account->id,  // Ensure username is unique except for the current account
-            'phone_number' => 'required|string|regex:/^\d{7,15}$/',
-        ]);
+    // Get the authenticated user (optional, depends on your authorization logic)
+    $user = Auth::guard('account')->user();
 
-        // Get the authenticated user (optional, depends on your authorization logic)
-        $user = Auth::guard('account')->user();
-
-        // Ensure the user is authorized to update this account (if needed)
-        if ($user->id !== (int) $id) {
-            return redirect()->route('accountprofile')->with('error', 'Unauthorized action');
+    // Ensure the user is authorized to update this account (if needed)
+    if ($user->id !== (int) $id) {
+        return redirect()->route('accountprofile')->with('error', 'Unauthorized action');
+    }
+    // Handle profile picture upload if available
+    $profile_picture = $account->profile_picture; // Keep existing profile picture if no new image is uploaded
+    if ($request->hasFile('profile_picture')) {
+        // Remove old profile picture if it exists
+        if (File::exists(public_path('storage/uploads/profile_pictures/' . $profile_picture))) {
+            File::delete(public_path('storage/uploads/profile_pictures/' . $profile_picture));
         }
 
-        // Update account details
-        $account->update([
-            'first_name' => $validatedData['first_name'],
-            'last_name' => $validatedData['last_name'],
-            'username' => $validatedData['username'],
-            'email' => $validatedData['email'],
-            'phone_number' => $validatedData['phone_number'],
-        ]);
+        // Upload new profile picture
+        $profile_picture_file = $request->file('profile_picture');
+        $filename_to_store = time() . '_' . $profile_picture_file->getClientOriginalName();
+        $path = public_path('storage/uploads/profile_pictures/');
 
-        // Redirect back to profile page with success message
-        return redirect()->route('accountprofile')->with('success', 'Profile updated successfully!');
+        // Ensure the directory exists
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        // Move the uploaded file to the destination folder
+        $profile_picture_file->move($path, $filename_to_store);
+        $profile_picture = $filename_to_store;
     }
+
+    // Update account details
+    $account->update([
+        'first_name' => $validatedData['first_name'],
+        'last_name' => $validatedData['last_name'],
+        'username' => $validatedData['username'],
+        'email' => $validatedData['email'],
+        'phone_number' => $validatedData['phone_number'],
+        'profile_picture' => $profile_picture, // Update profile_picture with the new or existing one
+    ]);
+
+    // Redirect back to profile page with success message
+    return redirect()->route('accountprofile')->with('success', 'Profile updated successfully!');
+}
 
     public function dashboard()
     {

@@ -131,33 +131,46 @@
         @endif
 
         <!-- Edit Profile Form -->
-        <form method="POST" action="{{ route('update', ['id' => $user->id]) }}">
+        <form method="POST" action="{{ route('update', ['id' => $user->id]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="profile-image-container">
-                        <img src="https://via.placeholder.com/300" alt="Profile picture" class="img-fluid">
-                        <button type="button" class="camera-button">
-                            <i class="fa-solid fa-camera"></i>
-                        </button>
+                 <!-- Left Column: Profile & Documents Upload -->
+                 <div class="col-md-6">
+                    <div class="profile-image-container position-relative mb-3">
+                        <img id="profilePreview" src="{{ $user->profile_picture ? asset('storage/uploads/profile_pictures/' . $user->profile_picture) : asset('logo/User.png') }}" alt="Profile picture" class="img-fluid rounded">
                     </div>
-
+                
+                    <!-- File Inputs (Hidden) -->
+                    <input type="file" id="profileUpload" name="profile_picture" accept="image/*" style="display: none;" onchange="previewProfile(this)" />
+                    <input type="file" id="citizenUpload" name="citizenship_document" accept=".jpg,.jpeg,.png,.pdf" style="display: none;" />
+                
+                    <!-- Upload Boxes -->
                     <div class="row">
+                        <!-- Profile Upload -->
                         <div class="col-6">
-                            <div class="dashed-box">
-                                <span class="dashed-box-text">Logo</span>
+                            <div class="dashed-box text-center py-3" onclick="document.getElementById('profileUpload').click()" style="cursor: pointer; border: 2px dashed #aaa;">
+                                <span class="dashed-box-text d-block">Upload Profile</span>
+                                <i class="fa-solid fa-plus mt-2" style="color: #aaa; font-size: 18px;"></i>
                             </div>
+                            <!-- Validation error for profile picture -->
+                            @error('profile_picture')
+                                <div class="invalid-feedback" style="display: block;">{{ $message }}</div>
+                            @enderror
                         </div>
+                
+                        <!-- Citizenship Upload -->
                         <div class="col-6">
-                            <div class="dashed-box">
+                            <div class="dashed-box text-center py-3" onclick="document.getElementById('citizenUpload').click()" style="cursor: pointer; border: 2px dashed #aaa;">
                                 <i class="fa-solid fa-upload" style="color: #aaa; font-size: 14px;"></i>
-                                <span class="dashed-box-text">Vendor Documents</span>
+                                <span class="dashed-box-text">Upload Citizenship</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                
 
                 <div class="col-md-6">
                     <div class="mt-4 mt-md-0">
@@ -219,6 +232,22 @@
             </div>
         </form>
     </div>
+    <script>
+        function previewProfile(input) {
+            const file = input.files[0]; // Get the selected file
+            const reader = new FileReader(); // Create a new file reader
+    
+            reader.onload = function (e) {
+                // Set the preview image source to the uploaded file
+                document.getElementById('profilePreview').src = e.target.result;
+            };
+    
+            // Check if the file exists and read it
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 @endsection
 
 @section('scripts')

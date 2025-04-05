@@ -7,7 +7,9 @@
     
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    
+
+    <!-- Add this inside the <head> section -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"> 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
@@ -87,10 +89,10 @@
             @auth('account')
             <div class="nav-item dropdown user-profile">
                 <a href="#" id="profileDropdown" class="nav-link dropdown-toggle d-flex align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ Auth::guard('account')->user()->profile_picture ? asset(Auth::guard('account')->user()->profile_picture) : asset('logo/User.png') }}" 
-                         alt="User Image" 
-                         class="rounded-circle" 
-                         width="40" height="40">
+                    <img src="{{ Auth::guard('account')->user()->profile_picture ? asset('storage/uploads/profile_pictures/' . Auth::guard('account')->user()->profile_picture) : asset('logo/User.png') }}" 
+                        alt="User Image" 
+                        class="rounded-circle" 
+                        width="40" height="40">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right mt-2 shadow" aria-labelledby="profileDropdown">
                     <a class="dropdown-item" href="{{ route('dashboard') }}">
