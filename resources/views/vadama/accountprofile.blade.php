@@ -5,12 +5,9 @@
             --primary-color: #79090f;
             --secondary-color: #e6b52b;
         }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
         }
-        
         .page-title {
             display: flex;
             align-items: center;
@@ -105,15 +102,20 @@
     </style>
 
     <div class="container">
-        <div class="page-title">
-            <div class="page-title-indicator"></div>
+        <div class="page-title mt-3">
+            <div class="page-title-indicator "></div>
             <h1 class="h5 mb-0">Profile</h1>
         </div>
         
         <div class="row">
             <div class="col-md-6">
-                <div class="profile-image-container">
-                    <img id="profilePreview" src="{{ $user->profile_picture ? asset('storage/uploads/profile_pictures/' . $user->profile_picture) : asset('logo/User.png') }}" alt="Profile picture" class="img-fluid rounded">
+            <div class="profile-image-container" style="width: 400px; height: 400px;">
+            <img id="profilePreview"
+     src="{{ $user->profile_picture ? asset('storage/uploads/profile_pictures/' . $user->profile_picture) : asset('logo/User.png') }}"
+     alt="Profile picture"
+     class="img-fluid rounded"
+     width="400"
+     height="150">
                     <button class="camera-button">
                         <i class="fa-solid fa-camera"></i>
                     </button>

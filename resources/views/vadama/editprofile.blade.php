@@ -9,7 +9,6 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
         }
         
         .page-title {
@@ -112,7 +111,7 @@
     </style>
 
     <div class="container">
-        <div class="page-title">
+        <div class="page-title mt-3">
             <div class="page-title-indicator"></div>
             <h1 class="h5 mb-0">Edit Profile</h1>
         </div>
@@ -138,9 +137,13 @@
             <div class="row">
                  <!-- Left Column: Profile & Documents Upload -->
                  <div class="col-md-6">
-                    <div class="profile-image-container position-relative mb-3">
-                        <img id="profilePreview" src="{{ $user->profile_picture ? asset('storage/uploads/profile_pictures/' . $user->profile_picture) : asset('logo/User.png') }}" alt="Profile picture" class="img-fluid rounded">
-                    </div>
+                    <div class="profile-image-container position-relative mb-3 " style="width: 400px; height: 400px;">
+                    <img id="profilePreview"
+     src="{{ $user->profile_picture ? asset('storage/uploads/profile_pictures/' . $user->profile_picture) : asset('logo/User.png') }}"
+     alt="Profile picture"
+     class="img-fluid rounded"
+     width="400"
+     height="150">                    </div>
                 
                     <!-- File Inputs (Hidden) -->
                     <input type="file" id="profileUpload" name="profile_picture" accept="image/*" style="display: none;" onchange="previewProfile(this)" />
