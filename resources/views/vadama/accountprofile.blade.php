@@ -124,13 +124,13 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="dashed-box">
-                            <span class="dashed-box-text">Logo</span>
+                            <span class="dashed-box-text">User Profile</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="dashed-box">
                             <i class="fa-solid fa-upload" style="color: #aaa; font-size: 14px;"></i>
-                            <span class="dashed-box-text">Vendor Documents</span>
+                            <span class="dashed-box-text">Citizen Documents</span>
                         </div>
                     </div>
                 </div>
