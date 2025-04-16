@@ -165,7 +165,7 @@ class AccountController extends Controller
 
         if (Auth::guard('account')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/dashboard')->with('success', 'Seller logged in successfully!');
+            return redirect()->route('leaseproperty')->with('success', 'Seller logged in successfully!');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials or not a seller!']);
