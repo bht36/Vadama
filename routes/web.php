@@ -88,7 +88,11 @@ Route::controller(FrontendController::class)->group(function () {
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
+    Route::post('/login_seller_account', 'login_seller_account')->name('login_seller_account');
+    Route::post('/seller_info_store', 'seller_info_store')->name('seller_info_store');
+    Route::get('/login_seller', 'login_seller')->name('login_seller');
     Route::post('/login', 'user_info_login')->name('login_acc');
+    Route::get('/register_seller', 'register_seller')->name('register_seller');
     
     // Authenticated routes (require auth:account middleware)
     Route::middleware(['auth:account'])->group(function () {

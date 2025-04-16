@@ -81,6 +81,9 @@
                     <a class="nav-link font-weight-bold" href="#">About Us</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="#">Contacts</a>
                 </li>
             </ul>

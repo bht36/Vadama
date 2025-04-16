@@ -21,6 +21,7 @@ class Account extends Authenticatable
         'email',
         'password',
         'profile_picture',
+        'user_type',
     ];
 
     // Define hidden attributes (for example, to hide password in API responses)

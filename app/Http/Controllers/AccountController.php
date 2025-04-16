@@ -17,12 +17,15 @@ class AccountController extends Controller
             'password' => 'required|min:8',
         ]);
 
+        // Add user_type to credentials
+        $credentials['user_type'] = 'buyer';
+
         if (Auth::guard('account')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect('/')->with('success', 'Logged in successfully!');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials!']);
+        return back()->withErrors(['email' => 'Invalid credentials or not a buyer!']);
     }
 
     
@@ -140,16 +143,61 @@ class AccountController extends Controller
     // Redirect back to profile page with success message
     return redirect()->route('accountprofile')->with('success', 'Profile updated successfully!');
 }
-
     public function dashboard()
     {
         return view('vadama.dashboard');
     }
-
-    
-
     public function leaseProperty()
     {
         return view('vadama.leaseproperty');
+    }
+    public function login_seller()
+    {
+        return view('vadama.login_seller');
+    }
+    public function login_seller_account(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+        $credentials['user_type'] = 'seller';
+
+        if (Auth::guard('account')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/dashboard')->with('success', 'Seller logged in successfully!');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials or not a seller!']);
+    }
+
+    public function seller_info_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:accounts,username', // Ensures username is unique
+            'phone_number' => 'required|string|regex:/^\d{7,15}$/', // Only digits, 7 to 15 characters long
+            'email' => 'required|email|max:255|unique:accounts,email', // Ensures valid email and uniqueness
+            'password' => 'required|string|min:8|confirmed', // Enforces strong password rule
+        ]);
+      
+        // Create a new Account record using the create method
+        Account::create([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'username' => $validatedData['username'],
+            'user_type' =>  'seller',
+            'phone_number' => $validatedData['phone_number'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']), // Proper Laravel hashing
+        ]);
+
+        // Redirect to a specific page after successful registration
+        return view('vadama.login_seller');
+    }
+    public function register_seller()
+    {
+        return view('vadama.signup_seller');
     }
 }
