@@ -104,11 +104,3 @@ Route::controller(AccountController::class)->group(function () {
         Route::get('/leaseproperty', 'leaseProperty')->name('leaseproperty');
     });
 });
-// Route::controller(AccountController::class)->group(function () {
-//     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
-//     Route::post('/login', 'user_info_login')->name('login_acc');
-//     Route::post('/logout', 'user_info_logout')->name('logout_acc');
-//     Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
-//     Route::get('/accountprofile', 'accountProfile')->middleware('auth')->name('accountprofile');
-//     Route::get('/leaseproperty', 'leaseProperty')->middleware('auth')->name('leaseproperty');
-// });
