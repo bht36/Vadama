@@ -236,26 +236,25 @@ class AccountController extends Controller
             'tags' => $validatedData['tags'] ?? '',
             'status' => 'available', // default status
         ]);
-    
-        // Handle Multiple Image Upload
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
-                $path = public_path('storage/uploads/properties/images/');
-    
-                if (!File::isDirectory($path)) {
-                    File::makeDirectory($path, 0777, true, true);
-                }
-    
-                $image->move($path, $filename);
-    
-                PropertyImage::create([
-                    'property_id' => $property->id,
-                    'image_path' => 'uploads/properties/images/' . $filename,
-                ]);
+
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $path = public_path('storage/uploads/properties/images/');
+
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
+
+            $image->move($path, $filename);
+
+            PropertyImage::create([
+                'property_id' => $property->id,
+                'image_path' => $filename, // Only store the filename
+            ]);
         }
+    }
     
-        return redirect()->route('/')->with('success', 'Property uploaded successfully!');
+        return redirect()->route('index')->with('success', 'Property uploaded successfully!');
     }
 }
