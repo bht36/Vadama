@@ -13,16 +13,18 @@
     <style>
       .marketing-solutions {
         padding: 40px 20px;
-        max-width: 1200px;
+        max-width: 1600px;
         margin: 0 auto;
-    }
+        background-color: black;
+        margin-bottom: 50px;
+      }
 
     /* Heading styles */
     .marketing-solutions-heading {
         text-align: center;
         font-size: 36px;
         font-weight: 700;
-        color: #2d2d2d;
+        color:rgb(255, 255, 255);
         margin-bottom: 60px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
@@ -60,7 +62,7 @@
         font-size: 24px;
         font-weight: 700;
         text-align: center;
-        color: #2d2d2d;
+        color:rgb(255, 243, 243);
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         line-height: 1.3;
     }
@@ -77,7 +79,7 @@
             margin-bottom: 40px;
         }
     }
-    
+
         .hero-slider {
             position: relative;
             width: 100%;
@@ -159,7 +161,7 @@
         </div>
     </div>
 
-    <!-- Listings Section -->
+    <!-- advertising secton -->
     <div class="marketing-solutions">
     <h1 class="marketing-solutions-heading">More lead and marketing solutions for:</h1>
     
