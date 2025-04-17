@@ -25,12 +25,14 @@ class Property extends Model
         'checkout_time ',
         'key_points',
     ];
-
-    // Define the relationship with the Account model (each property belongs to one account)
     public function account()
     {
         return $this->belongsTo(Account::class, 'account_id');
     }
 
-    // Optionally, you can define a method for any custom logic on property status, price, etc.
+    // A property can have many images
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class, 'property_id');
+    }
 }

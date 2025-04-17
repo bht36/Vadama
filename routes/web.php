@@ -104,5 +104,6 @@ Route::controller(AccountController::class)->group(function () {
         Route::get('/leaseproperty', 'leaseProperty')->name('leaseproperty');
 
         Route::post('/property_upload', 'property_upload')->name('property_upload');
+        Route::get('/view_leaseproperty', 'view_leaseproperty')->name('view_leaseproperty');
     });
 });

@@ -28,4 +28,8 @@ class Account extends Authenticatable
     protected $hidden = [
         'password',
     ];
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'account_id');
+    }
 }

@@ -257,4 +257,31 @@ class AccountController extends Controller
     
         return redirect()->route('index')->with('success', 'Property uploaded successfully!');
     }
+    public function view_leaseproperty(Request $request)
+{
+    // Base query with optional filtering by name and slug
+    $query = Property::query();
+
+    if ($request->filled('name')) {
+        $query->where('title', 'like', '%' . $request->name . '%'); // Assuming 'title' is the correct field instead of 'name'
+    }
+
+    if ($request->filled('slug')) {
+        $query->where('slug', 'like', '%' . $request->slug . '%'); // Only if 'slug' column exists
+    }
+
+    // Optional: paginated result if you need filtered + paginated list
+    // $hoodie = $query->orderBy('title', 'asc')->paginate(10);
+
+    // Fetch properties with related images and account (eager loading), only available ones
+    $properties = $query->with(['images', 'account'])
+                        ->where('status', 'available')
+                        ->latest()
+                        ->get();
+
+    // Return view with results
+    return view('vadama.rental_list', compact('properties'));
+}
+
+    
 }
