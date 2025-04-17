@@ -102,5 +102,7 @@ Route::controller(AccountController::class)->group(function () {
         Route::get('/editprofile', 'editprofile')->name('editprofile');
         Route::put('/update/{id}', 'update')->name('update'); // Update route
         Route::get('/leaseproperty', 'leaseProperty')->name('leaseproperty');
+
+        Route::post('/property_upload', 'property_upload')->name('property_upload');
     });
 });

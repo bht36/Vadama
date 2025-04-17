@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Property;
+use App\Models\PropertyImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -199,5 +202,60 @@ class AccountController extends Controller
     public function register_seller()
     {
         return view('vadama.signup_seller');
+    }
+    public function property_upload(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255|unique:properties,title',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price_per_month' => 'required|numeric',
+            'type' => 'nullable|string|max:255',
+            'checkin_time' => 'nullable',
+            'checkout_time' => 'nullable',
+            'key_points' => 'nullable|string|max:1000',
+            'tags' => 'nullable|string|max:500',
+            'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+        // dd([
+        //     'account_id' => Auth::id(),
+        //     'data' => $validatedData
+        // ]);
+        
+        // Create Property
+        $property = Property::create([
+            'account_id' => Auth::id(), // Assumes user is logged in
+            'title' => $validatedData['title'] ?? '',
+            'location' => $validatedData['location'] ?? '',
+            'description' => $validatedData['description'] ?? '',
+            'price_per_month' => $validatedData['price_per_month'] ?? 0,
+            'type' => $validatedData['type'] ?? '',
+            'checkin_time' => $validatedData['checkin_time'] ?? null,
+            'checkout_time' => $validatedData['checkout_time'] ?? null,
+            'key_points' => $validatedData['key_points'] ?? '',
+            'tags' => $validatedData['tags'] ?? '',
+            'status' => 'available', // default status
+        ]);
+    
+        // Handle Multiple Image Upload
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+                $path = public_path('storage/uploads/properties/images/');
+    
+                if (!File::isDirectory($path)) {
+                    File::makeDirectory($path, 0777, true, true);
+                }
+    
+                $image->move($path, $filename);
+    
+                PropertyImage::create([
+                    'property_id' => $property->id,
+                    'image_path' => 'uploads/properties/images/' . $filename,
+                ]);
+            }
+        }
+    
+        return redirect()->route('/')->with('success', 'Property uploaded successfully!');
     }
 }

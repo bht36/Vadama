@@ -21,6 +21,9 @@ class Property extends Model
         'price_per_month',
         'type',
         'status',
+        'checkin_time',
+        'checkout_time ',
+        'key_points',
     ];
 
     // Define the relationship with the Account model (each property belongs to one account)
