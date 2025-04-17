@@ -81,6 +81,9 @@
                     <a class="nav-link font-weight-bold" href="#">About Us</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="#">Contacts</a>
                 </li>
             </ul>
@@ -101,9 +104,16 @@
                     <a class="dropdown-item" href="{{ route('accountprofile') }}">
                         <i class="fas fa-user mr-2"></i> Profile
                     </a>                    
-                    <a class="dropdown-item" href="{{ route('leaseproperty') }}">
-                        <i class="fas fa-home mr-2"></i> Lease Property
-                    </a>
+                    @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'seller')
+                        <a class="dropdown-item" href="{{ route('leaseproperty') }}">
+                            <i class="fas fa-home mr-2"></i> Lease Property
+                        </a>
+                    @endif
+                    @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'seller')
+                        <a class="dropdown-item" href="{{ route('view_leaseproperty') }}">
+                            <i class="fas fa-home mr-2"></i> Rental Listings
+                        </a>
+                    @endif
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout_acc') }}">
                         @csrf

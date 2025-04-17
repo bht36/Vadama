@@ -88,7 +88,11 @@ Route::controller(FrontendController::class)->group(function () {
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
+    Route::post('/login_seller_account', 'login_seller_account')->name('login_seller_account');
+    Route::post('/seller_info_store', 'seller_info_store')->name('seller_info_store');
+    Route::get('/login_seller', 'login_seller')->name('login_seller');
     Route::post('/login', 'user_info_login')->name('login_acc');
+    Route::get('/register_seller', 'register_seller')->name('register_seller');
     
     // Authenticated routes (require auth:account middleware)
     Route::middleware(['auth:account'])->group(function () {
@@ -98,13 +102,8 @@ Route::controller(AccountController::class)->group(function () {
         Route::get('/editprofile', 'editprofile')->name('editprofile');
         Route::put('/update/{id}', 'update')->name('update'); // Update route
         Route::get('/leaseproperty', 'leaseProperty')->name('leaseproperty');
+
+        Route::post('/property_upload', 'property_upload')->name('property_upload');
+        Route::get('/view_leaseproperty', 'view_leaseproperty')->name('view_leaseproperty');
     });
 });
-// Route::controller(AccountController::class)->group(function () {
-//     Route::post('/user_info_store', 'user_info_store')->name('register_acc');
-//     Route::post('/login', 'user_info_login')->name('login_acc');
-//     Route::post('/logout', 'user_info_logout')->name('logout_acc');
-//     Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
-//     Route::get('/accountprofile', 'accountProfile')->middleware('auth')->name('accountprofile');
-//     Route::get('/leaseproperty', 'leaseProperty')->middleware('auth')->name('leaseproperty');
-// });

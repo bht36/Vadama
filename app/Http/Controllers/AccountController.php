@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Property;
+use App\Models\PropertyImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,12 +20,15 @@ class AccountController extends Controller
             'password' => 'required|min:8',
         ]);
 
+        // Add user_type to credentials
+        $credentials['user_type'] = 'buyer';
+
         if (Auth::guard('account')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect('/')->with('success', 'Logged in successfully!');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials!']);
+        return back()->withErrors(['email' => 'Invalid credentials or not a buyer!']);
     }
 
     
@@ -140,16 +146,142 @@ class AccountController extends Controller
     // Redirect back to profile page with success message
     return redirect()->route('accountprofile')->with('success', 'Profile updated successfully!');
 }
-
     public function dashboard()
     {
         return view('vadama.dashboard');
     }
-
-    
-
     public function leaseProperty()
     {
         return view('vadama.leaseproperty');
     }
+    public function login_seller()
+    {
+        return view('vadama.login_seller');
+    }
+    public function login_seller_account(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+        $credentials['user_type'] = 'seller';
+
+        if (Auth::guard('account')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('leaseproperty')->with('success', 'Seller logged in successfully!');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials or not a seller!']);
+    }
+
+    public function seller_info_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:accounts,username', // Ensures username is unique
+            'phone_number' => 'required|string|regex:/^\d{7,15}$/', // Only digits, 7 to 15 characters long
+            'email' => 'required|email|max:255|unique:accounts,email', // Ensures valid email and uniqueness
+            'password' => 'required|string|min:8|confirmed', // Enforces strong password rule
+        ]);
+      
+        // Create a new Account record using the create method
+        Account::create([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'username' => $validatedData['username'],
+            'user_type' =>  'seller',
+            'phone_number' => $validatedData['phone_number'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']), // Proper Laravel hashing
+        ]);
+
+        // Redirect to a specific page after successful registration
+        return view('vadama.login_seller');
+    }
+    public function register_seller()
+    {
+        return view('vadama.signup_seller');
+    }
+    public function property_upload(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255|unique:properties,title',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price_per_month' => 'required|numeric',
+            'type' => 'nullable|string|max:255',
+            'checkin_time' => 'nullable',
+            'checkout_time' => 'nullable',
+            'key_points' => 'nullable|string|max:1000',
+            'tags' => 'nullable|string|max:500',
+            'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+        // dd([
+        //     'account_id' => Auth::id(),
+        //     'data' => $validatedData
+        // ]);
+        
+        // Create Property
+        $property = Property::create([
+            'account_id' => Auth::id(), // Assumes user is logged in
+            'title' => $validatedData['title'] ?? '',
+            'location' => $validatedData['location'] ?? '',
+            'description' => $validatedData['description'] ?? '',
+            'price_per_month' => $validatedData['price_per_month'] ?? 0,
+            'type' => $validatedData['type'] ?? '',
+            'checkin_time' => $validatedData['checkin_time'] ?? null,
+            'checkout_time' => $validatedData['checkout_time'] ?? null,
+            'key_points' => $validatedData['key_points'] ?? '',
+            'tags' => $validatedData['tags'] ?? '',
+            'status' => 'available', // default status
+        ]);
+
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $path = public_path('storage/uploads/properties/images/');
+
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
+            }
+
+            $image->move($path, $filename);
+
+            PropertyImage::create([
+                'property_id' => $property->id,
+                'image_path' => $filename, // Only store the filename
+            ]);
+        }
+    }
+    
+        return redirect()->route('index')->with('success', 'Property uploaded successfully!');
+    }
+    public function view_leaseproperty(Request $request)
+{
+    // Base query with optional filtering by name and slug
+    $query = Property::query();
+
+    if ($request->filled('name')) {
+        $query->where('title', 'like', '%' . $request->name . '%'); // Assuming 'title' is the correct field instead of 'name'
+    }
+
+    if ($request->filled('slug')) {
+        $query->where('slug', 'like', '%' . $request->slug . '%'); // Only if 'slug' column exists
+    }
+
+    // Optional: paginated result if you need filtered + paginated list
+    // $hoodie = $query->orderBy('title', 'asc')->paginate(10);
+
+    // Fetch properties with related images and account (eager loading), only available ones
+    $properties = $query->with(['images', 'account'])
+                        ->where('status', 'available')
+                        ->latest()
+                        ->get();
+
+    // Return view with results
+    return view('vadama.rental_list', compact('properties'));
+}
+
+    
 }

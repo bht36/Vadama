@@ -18,6 +18,7 @@ class CreateAccountsTable extends Migration
             $table->string('first_name')->nullable(); 
             $table->string('last_name')->nullable();  
             $table->string('username')->nullable();
+            $table->enum('user_type', ['seller', 'buyer'])->default('buyer');
             $table->string('phone_number')->nullable(); 
             $table->string('email')->nullable(); 
             $table->string('password')->nullable(); 

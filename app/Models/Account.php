@@ -21,10 +21,15 @@ class Account extends Authenticatable
         'email',
         'password',
         'profile_picture',
+        'user_type',
     ];
 
     // Define hidden attributes (for example, to hide password in API responses)
     protected $hidden = [
         'password',
     ];
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'account_id');
+    }
 }
