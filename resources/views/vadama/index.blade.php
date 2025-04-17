@@ -11,6 +11,73 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+      .marketing-solutions {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Heading styles */
+    .marketing-solutions-heading {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #2d2d2d;
+        margin-bottom: 60px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* Solutions grid */
+    .solutions-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    /* Solution card */
+    .solution-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+    }
+
+    /* Icon container */
+    .icon-container {
+        background-color: #f0f0f0;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    /* Category title */
+    .category-title {
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        color: #2d2d2d;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        line-height: 1.3;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .solutions-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .marketing-solutions-heading {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+    }
+    
         .hero-slider {
             position: relative;
             width: 100%;
@@ -93,26 +160,68 @@
     </div>
 
     <!-- Listings Section -->
-    <section class="listings bg-dark text-white py-5">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold">Newest listings</h2>
+    <div class="marketing-solutions">
+    <h1 class="marketing-solutions-heading">More lead and marketing solutions for:</h1>
+    
+    <div class="solutions-grid">
+        <!-- Builders -->
+        <div class="solution-card">
+            <div class="icon-container">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35 30C35 30 40 25 45 30L55 40C55 40 60 45 55 50L50 55C50 55 45 60 40 55L30 45C30 45 25 40 30 35L35 30Z" fill="#CCCCCC" stroke="#333333" stroke-width="2"/>
+                    <path d="M60 55C60 55 65 50 70 55L80 65C80 65 85 70 80 75L75 80C75 80 70 85 65 80L55 70C55 70 50 65 55 60L60 55Z" fill="#CCCCCC" stroke="#333333" stroke-width="2"/>
+                    <rect x="30" y="50" width="40" height="30" rx="2" fill="#E32222"/>
+                    <path d="M35 50V65" stroke="#333333" stroke-width="2"/>
+                    <path d="M45 50V65" stroke="#333333" stroke-width="2"/>
+                    <path d="M55 50V65" stroke="#333333" stroke-width="2"/>
+                    <path d="M65 50V65" stroke="#333333" stroke-width="2"/>
+                </svg>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card bg-dark text-white">
-                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="House">
-                        <div class="card-body">
-                            <h5 class="card-title">$2,500</h5>
-                            <p class="card-text">123 Main St, Austin, TX</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2 class="category-title">Builders</h2>
         </div>
-    </section>
-    <div class="card">
-  <img src="..." class="card-img-top" alt="...">
+        
+        <!-- Property Managers -->
+        <div class="solution-card">
+            <div class="icon-container">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="20" width="30" height="60" fill="#FFFFFF" stroke="#333333" stroke-width="2"/>
+                    <rect x="20" y="40" width="30" height="40" fill="#FFFFFF" stroke="#333333" stroke-width="2"/>
+                    <rect x="55" y="25" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="65" y="25" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="55" y="35" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="65" y="35" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="55" y="45" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="65" y="45" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="25" y="45" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="35" y="45" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="25" y="55" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="35" y="55" width="5" height="5" fill="#FFFFFF" stroke="#333333" stroke-width="1"/>
+                    <rect x="25" y="65" width="20" height="15" fill="#E32222"/>
+                    <rect x="55" y="65" width="20" height="15" fill="#E32222"/>
+                </svg>
+            </div>
+            <h2 class="category-title">Property<br>Managers</h2>
+        </div>
+        
+        <!-- Brand Advertisers -->
+        <div class="solution-card">
+            <div class="icon-container">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="25" width="60" height="50" rx="3" fill="#FFFFFF" stroke="#333333" stroke-width="2"/>
+                    <rect x="20" y="25" width="60" height="10" rx="3" fill="#333333"/>
+                    <circle cx="25" cy="30" r="2" fill="#FFFFFF"/>
+                    <circle cx="32" cy="30" r="2" fill="#FFFFFF"/>
+                    <circle cx="39" cy="30" r="2" fill="#FFFFFF"/>
+                    <rect x="25" y="45" width="20" height="5" fill="#333333"/>
+                    <rect x="25" y="55" width="15" height="5" fill="#333333"/>
+                    <rect x="50" y="45" width="25" height="20" fill="#E32222"/>
+                    <path d="M65 55L70 60" stroke="#FFFFFF" stroke-width="2"/>
+                </svg>
+            </div>
+            <h2 class="category-title">Brand<br>Advertisers</h2>
+        </div>
+    </div>
+</div>
 <!-- Rent House Section -->
 <div class="container">
   <div class="d-flex justify-content-between align-items-center mb-4">
@@ -380,8 +489,7 @@
     </div>
   </div>
 </div>
-
-
+@include('vadama.layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sliderContainer = document.getElementById('sliderContainer');
