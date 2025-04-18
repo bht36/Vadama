@@ -258,30 +258,27 @@ class AccountController extends Controller
         return redirect()->route('index')->with('success', 'Property uploaded successfully!');
     }
     public function view_leaseproperty(Request $request)
-{
-    // Base query with optional filtering by name and slug
-    $query = Property::query();
-
-    if ($request->filled('name')) {
-        $query->where('title', 'like', '%' . $request->name . '%'); // Assuming 'title' is the correct field instead of 'name'
+    {
+        $user = Auth::user(); // Get the currently authenticated user
+    
+        // Base query, only selecting properties that belong to the logged-in user
+        $query = Property::where('account_id', $user->id);
+    
+        if ($request->filled('name')) {
+            $query->where('title', 'like', '%' . $request->name . '%');
+        }
+    
+        if ($request->filled('slug')) {
+            $query->where('slug', 'like', '%' . $request->slug . '%');
+        }
+    
+        // Eager load related images and account data
+        $properties = $query->with(['images', 'account'])
+                            ->where('status', 'available')
+                            ->latest()
+                            ->get();
+    
+        return view('vadama.rental_list', compact('properties'));
     }
-
-    if ($request->filled('slug')) {
-        $query->where('slug', 'like', '%' . $request->slug . '%'); // Only if 'slug' column exists
-    }
-
-    // Optional: paginated result if you need filtered + paginated list
-    // $hoodie = $query->orderBy('title', 'asc')->paginate(10);
-
-    // Fetch properties with related images and account (eager loading), only available ones
-    $properties = $query->with(['images', 'account'])
-                        ->where('status', 'available')
-                        ->latest()
-                        ->get();
-
-    // Return view with results
-    return view('vadama.rental_list', compact('properties'));
-}
-
     
 }
