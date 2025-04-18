@@ -83,7 +83,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::get('/forgetpassword', 'forgetpassword')->name('forgetpassword');
     Route::get('/forgetconfirmation', 'forgetconfirmation')->name('forgetconfirmation');
-   
+    Route::get('/housing', 'housing')->name('housing');
 });
 
 Route::controller(AccountController::class)->group(function () {

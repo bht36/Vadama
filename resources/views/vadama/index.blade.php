@@ -139,14 +139,6 @@
         <!-- Fixed Content Overlay -->
         <div class="slider-content">
             <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
-            <ul class="nav nav-tabs justify-content-center mt-3">
-                <li class="nav-item"><a class="nav-link active" href="#">Buy</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Rent</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sell</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Pre-approval</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Just sold</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Home value</a></li>
-            </ul>
             <div class="input-group mt-3 mx-auto" style="max-width: 800px;">
                 <input type="text" class="form-control" placeholder="Address, School, City, Zip or Neighborhood">
                 <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
@@ -233,6 +225,7 @@
   <div class="row justify-content-center g-4">
     <!-- Card 1 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
+    <a href="{{ route('housing') }}">
       <div class="card hover-card position-relative">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
              class="card-img-top img-fluid" alt="House 1">
@@ -250,6 +243,7 @@
           <p class="card-text text-muted">Cape Town, South Africa</p>
         </div>
       </div>
+      </a>
     </div>
 
     <!-- Card 2 with red shadow hover effect -->
