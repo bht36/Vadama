@@ -51,17 +51,7 @@
             text-decoration: line-through;
             color: #ddd;
         }
-        .rating-bar {
-            width: 100px;
-            height: 4px;
-            background-color: #ddd;
-            border-radius: 2px;
-        }
-        .rating-bar-fill {
-            height: 100%;
-            background-color: #222;
-            border-radius: 2px;
-        }
+
     </style>
 </head>
 <body>
@@ -198,11 +188,11 @@
         </div>
     </div>
 <!-- Reviews Section -->
-<div class="container my-5">
+<<div class="container px-4">
     <h2 class="fs-4 fw-bold mb-4"><i class="bi bi-star-fill"></i> 5.0 · 111 reviews</h2>
 
     <!-- Individual Review -->
-    <div class="mb-4">
+    <div class="mb-4 mx-2">
         <div class="d-flex align-items-center mb-2">
             <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar me-3" alt="Reviewer">
             <div>
@@ -214,7 +204,7 @@
     </div>
 
     <!-- Another Review -->
-    <div class="mb-4">
+    <div class="mb-4 mx-2">
         <div class="d-flex align-items-center mb-2">
             <img src="https://randomuser.me/api/portraits/men/44.jpg" class="avatar me-3" alt="Reviewer">
             <div>
@@ -224,9 +214,10 @@
         </div>
         <p class="mb-0">Friendly host and great location. The guesthouse had everything we needed. Would definitely come back!</p>
     </div>
-    <!-- Bootstrap JS (Optional for interactivity) -->
-@include('vadama.layouts.footer')
+</div>
+
 </body>
+@include('vadama.layouts.footer')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
 @endsection
