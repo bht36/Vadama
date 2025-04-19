@@ -61,13 +61,9 @@
             <label for="type">Type of Rental</label>
             <select class="form-control" id="type" name="type">
                 <option value="" disabled {{ old('type') ? '' : 'selected' }}>Select rental type</option>
-                <option value="Apartment" {{ old('type') == 'Apartment' ? 'selected' : '' }}>Apartment</option>
-                <option value="Room" {{ old('type') == 'Room' ? 'selected' : '' }}>Room</option>
-                <option value="House / Independent Home" {{ old('type') == 'House / Independent Home' ? 'selected' : '' }}>House / Independent Home</option>
-                <option value="Villa" {{ old('type') == 'Villa' ? 'selected' : '' }}>Villa</option>
-                <option value="Flat" {{ old('type') == 'Flat' ? 'selected' : '' }}>Flat</option>
-                <option value="Studio Apartment" {{ old('type') == 'Studio Apartment' ? 'selected' : '' }}>Studio Apartment</option>
-                <option value="Commercial Property" {{ old('type') == 'Commercial Property' ? 'selected' : '' }}>Commercial Property</option>
+                <option value="Rent House" {{ old('type') == 'Rent House' ? 'selected' : '' }}>Rent House</option>
+                <option value="Rent Room" {{ old('type') == 'Rent Room' ? 'selected' : '' }}>Rent Room</option>
+                <option value="Rent Apartment" {{ old('type') == 'Rent Apartment' ? 'selected' : '' }}>Rent Apartment</option>
             </select>
             @error('type')
                 <div class="text-danger">{{ $message }}</div>
