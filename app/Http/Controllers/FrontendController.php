@@ -32,4 +32,8 @@ class FrontendController extends Controller
     {
         return view("vadama.dashboard");
     }
+    public function aboutus(Request $request)
+    {
+        return view("vadama.aboutus");
+    }
 }

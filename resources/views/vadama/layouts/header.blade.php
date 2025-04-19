@@ -78,7 +78,7 @@
                     <a class="nav-link font-weight-bold" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="#">About Us</a>
+                    <a class="nav-link font-weight-bold" href="{{ route('aboutus') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
