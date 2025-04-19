@@ -93,6 +93,7 @@
                                             <th class="text-uppercase">#</th>
                                             <th>Title</th>
                                             <th>Image</th>
+                                            <th>Type</th>
                                             <th>Location</th>
                                             <th>Date</th>
                                             <th>Actions</th>
@@ -115,6 +116,7 @@
                                                         No Images
                                                     @endif
                                                 </td>
+                                                <td>{{ $property->type }}</td>
                                                 <td>{{ $property->location }}</td>
                                                 <td>{{ $property->created_at->format('d M Y') }}</td>
                                                 <td>

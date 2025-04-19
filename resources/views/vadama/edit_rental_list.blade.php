@@ -46,7 +46,7 @@
             <div class="col-md-3 mb-3">
                 <label for="type">Type</label>
                 <select class="form-control" name="type">
-                    @foreach(['Apartment', 'Room', 'House / Independent Home', 'Villa', 'Flat', 'Studio Apartment', 'Commercial Property'] as $type)
+                    @foreach(['Rent House', 'Rent Room', 'Rent Apartment'] as $type)
                         <option value="{{ $type }}" {{ old('type', $property->type) == $type ? 'selected' : '' }}>{{ $type }}</option>
                     @endforeach
                 </select>
