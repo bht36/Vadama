@@ -235,6 +235,7 @@
             </div>
         </form>
     </div>
+    @include('vadama.layouts.footer')
     <script>
         function previewProfile(input) {
             const file = input.files[0]; // Get the selected file

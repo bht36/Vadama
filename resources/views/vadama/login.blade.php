@@ -49,7 +49,7 @@
                     </div>
 
                     <!-- Password -->
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="form-label">Password</label>
                         <div class="position-relative">
                             <input type="password" name="password" id="password" class="form-control" required>
@@ -58,6 +58,9 @@
                         @error('password')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="d-flex justify-content-between">
+                    <a href="{{ route('forgetpassword') }}" class="text-decoration-none">Forgot Password?</a>
                     </div>
 
                     <!-- Submit Button -->
