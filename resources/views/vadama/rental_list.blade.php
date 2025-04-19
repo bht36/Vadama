@@ -22,7 +22,6 @@
         </div>
     </div>
 
-    <!-- /.content-header -->           
     <section class="content px-3">
         <div class="container-fluid">
             <div class="content">
@@ -59,18 +58,18 @@
                                                         Title
                                                     </div>
                                                     <input type="text" name="title" placeholder="Property Title"
-                                                        class="form-control form-control-solid w-250px"
-                                                        value="{{ request('title') }}"
-                                                        style="background-color: rgb(245, 245, 245);">
+                                                           class="form-control form-control-solid w-250px"
+                                                           value="{{ request('title') }}"
+                                                           style="background-color: rgb(245, 245, 245);">
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <div class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                                                         Location
                                                     </div>
                                                     <input type="text" name="location" placeholder="Location"
-                                                        class="form-control form-control-solid w-250px"
-                                                        value="{{ request('location') }}"
-                                                        style="background-color: rgb(245, 245, 245);">
+                                                           class="form-control form-control-solid w-250px"
+                                                           value="{{ request('location') }}"
+                                                           style="background-color: rgb(245, 245, 245);">
                                                 </div>
                                             </div>
 
@@ -83,7 +82,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>   
+                                    </div>
                                 </div>
                             </div>
 
@@ -127,10 +126,10 @@
                                                             <form method="POST" action="{{ route('property_destroy', $property->id) }}">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
+                                                                <button type="button" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
                                                                     <i class="fas fa-trash"></i>
                                                                 </button>
-                                                            </form>                                                            
+                                                            </form>
                                                         </div>
                                                 </td>
                                             </tr>
@@ -153,11 +152,32 @@
                 </div>
             </div>
         </div>
+    </section>
 </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
     function resetForm() {
         document.getElementById('filterForm').reset();
     }
+
+    $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            form.submit();
+          }
+        });
+    });
 </script>
 @endsection

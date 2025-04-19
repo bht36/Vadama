@@ -297,7 +297,7 @@ public function property_edit($id)
  
 
 public function property_update(Request $request, $id)
-{
+{ 
     $property = Property::findOrFail($id);
 
     // Validate the updated data
@@ -321,7 +321,7 @@ public function property_update(Request $request, $id)
     // Update the property
     $property->update($validatedData);
 
-    return back()->with('success', 'Property updated successfully!');
+    return redirect()->route('view_leaseproperty')->with('success', 'Property uploaded successfully!');
 }
 
 public function property_destroy($id)
