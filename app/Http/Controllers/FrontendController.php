@@ -36,4 +36,8 @@ class FrontendController extends Controller
     {
         return view("vadama.aboutus");
     }
+    public function housing(Request $request)
+    {
+        return view("vadama.housing");
+    }
 }
