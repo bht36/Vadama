@@ -3,14 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index(Request $request)
     {
-        $banner =Banner::all();  
-        return view("vadama.index", compact("banner"));
+        $banner =Banner::all(); 
+
+        $houses = Property::with(['images'])
+        ->where('type', 'Rent House')
+        ->where('status', 'available')
+        ->get();
+
+        $rooms = Property::with(['images'])
+        ->where('type', 'Rent Room')
+        ->where('status', 'available')
+        ->get();
+
+        $apartments = Property::with(['images'])
+        ->where('type', 'Rent Apartment')
+        ->where('status', 'available')
+        ->get();
+
+
+        return view("vadama.index", compact('banner','houses', 'rooms', 'apartments'));
     }
     public function signup(Request $request)
     {

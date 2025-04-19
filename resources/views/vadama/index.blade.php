@@ -217,127 +217,86 @@
     </div>
 </div>
 <!-- Rent House Section -->
-<div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
-  </div>
-
+<div class="container mt-4">
+  <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   <div class="row justify-content-center g-4">
-    <!-- Card 1 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-    <a href="{{ route('housing') }}">
-      <div class="card hover-card position-relative">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
-             class="card-img-top img-fluid" alt="House 1">
-        
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+      @foreach ($houses as $house)
+      <div class="col-md-3 col-sm-6">
+          <a href="{{ route('housing') }}">
+              <div class="card hover-card position-relative">
 
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $2400</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.94
-            </div>
-          </div>
-          <p class="card-text text-muted">Cape Town, South Africa</p>
-        </div>
+                  @php
+                      $firstImage = $house->images->first();
+                  @endphp
+
+                  @if ($firstImage)
+                  <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                  class="card-img-top img-fluid object-cover"
+                  alt="{{ $house->title }}"
+                  style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+             
+                  @else
+                      <img src="{{ asset('images/no-image.jpg') }}"
+                           class="card-img-top img-fluid"
+                           alt="No Image">
+                  @endif
+
+                  <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+                  <div class="card-body d-flex flex-column">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <p class="card-text mb-0">Price: ${{ $house->price_per_month }}</p>
+                          <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
+                      </div>
+                      <p class="card-text text-muted">{{ $house->location }}</p>
+                  </div>
+              </div>
+          </a>
       </div>
-      </a>
-    </div>
-
-    <!-- Card 2 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
-             class="card-img-top img-fluid" alt="House 2">
-        
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $2500</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.88
-            </div>
-          </div>
-          <p class="card-text text-muted">New York, USA</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
-             class="card-img-top img-fluid" alt="House 3">
-        
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $2300</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.75
-            </div>
-          </div>
-          <p class="card-text text-muted">Sydney, Australia</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbcrj53mGyk-u4JwrIb6z1RBAeCpxR78gfQ&s"
-             class="card-img-top img-fluid" alt="House 4">
-        
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $2600</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.90
-            </div>
-          </div>
-          <p class="card-text text-muted">London, UK</p>
-        </div>
-      </div>
-    </div>
+      @endforeach
   </div>
 </div>
 
 <!-- Rent Room Section -->
-<div class="container">
-  <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
-    <h2 class="fw-bold" style="font-size: 20px;">Rent Room</h2>
-  </div>
-
+<div class="container mt-4">
+  <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   <div class="row justify-content-center g-4">
-    <!-- Room 1 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-             class="card-img-top img-fluid" alt="Room 1">
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $800</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.85
-            </div>
-          </div>
-          <p class="card-text text-muted">Berlin, Germany</p>
-        </div>
-      </div>
-    </div>
+      @foreach ($rooms as $room)
+      <div class="col-md-3 col-sm-6">
+          <a href="{{ route('housing') }}">
+              <div class="card hover-card position-relative">
 
-    <!-- Room 2 with red shadow hover effect -->
+                  @php
+                      $firstImage = $room->images->first();
+                  @endphp
+
+                  @if ($firstImage)
+                  <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                  class="card-img-top img-fluid object-cover"
+                  alt="{{ $room->title }}"
+                  style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+             
+                  @else
+                      <img src="{{ asset('images/no-image.jpg') }}"
+                           class="card-img-top img-fluid"
+                           alt="No Image">
+                  @endif
+
+                  <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+                  <div class="card-body d-flex flex-column">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <p class="card-text mb-0">Price: ${{ $room->price_per_month }}</p>
+                          <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
+                      </div>
+                      <p class="card-text text-muted">{{ $room->location }}</p>
+                  </div>
+              </div>
+          </a>
+      </div>
+      @endforeach
+  </div>
+</div>
+
+    {{-- <!-- Room 2 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
       <div class="card hover-card position-relative">
         <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
@@ -354,135 +313,48 @@
           <p class="card-text text-muted">Tokyo, Japan</p>
         </div>
       </div>
-    </div>
+    </div>--}}
 
-    <!-- Room 3 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-             class="card-img-top img-fluid" alt="Room 3">
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $820</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.90
-            </div>
-          </div>
-          <p class="card-text text-muted">Paris, France</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Room 4 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-             class="card-img-top img-fluid" alt="Room 4">
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $780</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.80
-            </div>
-          </div>
-          <p class="card-text text-muted">Madrid, Spain</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
 <!-- Rent Apartment Section -->
-<div class="container">
-  <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
-    <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
-  </div>
-
+<div class="container mt-4">
+  <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
   <div class="row justify-content-center g-4">
-    <!-- Apartment 1 -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card position-relative hover-card">
-        <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
-             class="card-img-top img-fluid" alt="Apartment 1">
-        
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+      @foreach ($apartments as $apartment)
+      <div class="col-md-3 col-sm-6">
+          <a href="{{ route('housing') }}">
+              <div class="card hover-card position-relative">
 
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $3000</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.92
-            </div>
-          </div>
-          <p class="card-text text-muted">Los Angeles, USA</p>
-        </div>
+                  @php
+                      $firstImage = $apartment->images->first();
+                  @endphp
+
+                  @if ($firstImage)
+                  <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                  class="card-img-top img-fluid object-cover"
+                  alt="{{ $apartment->title }}"
+                  style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+             
+                  @else
+                      <img src="{{ asset('images/no-image.jpg') }}"
+                           class="card-img-top img-fluid"
+                           alt="No Image">
+                  @endif
+
+                  <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+                  <div class="card-body d-flex flex-column">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <p class="card-text mb-0">Price: ${{ $apartment->price_per_month }}</p>
+                          <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
+                      </div>
+                      <p class="card-text text-muted">{{ $apartment->location }}</p>
+                  </div>
+              </div>
+          </a>
       </div>
-    </div>
-
-    <!-- Apartment 2 -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card position-relative hover-card">
-        <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
-             class="card-img-top img-fluid" alt="Apartment 2">
-        
-             <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $2800</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.87
-            </div>
-          </div>
-          <p class="card-text text-muted">Dubai, UAE</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Apartment 3 -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card position-relative hover-card">
-        <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
-             class="card-img-top img-fluid" alt="Apartment 3">
-        
-             <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $3100</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.95
-            </div>
-          </div>
-          <p class="card-text text-muted">Toronto, Canada</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Apartment 4 -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card position-relative hover-card">
-        <img src="https://www.shutterstock.com/shutterstock/photos/2501530247/display_1500/stock-photo-new-modern-block-of-flats-in-green-area-residential-apartment-with-flat-buildings-exterior-luxury-2501530247.jpg"
-             class="card-img-top img-fluid" alt="Apartment 4">
-        
-             <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $2900</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.88
-            </div>
-          </div>
-          <p class="card-text text-muted">Singapore</p>
-        </div>
-      </div>
-    </div>
+      @endforeach
   </div>
 </div>
 @include('vadama.layouts.footer')
