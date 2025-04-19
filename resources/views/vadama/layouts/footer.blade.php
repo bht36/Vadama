@@ -195,20 +195,7 @@
                 <a href="#">Sitemap</a>
                 <a href="#" class="highlight">Do Not Sell or Share My Personal Information</a>
             </nav>
-            
-            <!-- App download section -->
-            <div class="app-section">
-                <h2>Get the app</h2>
-                <div class="app-buttons">
-                    <a href="#" aria-label="Download on the App Store">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=40&width=135" alt="Download on the App Store" class="app-button">
-                    </a>
-                    <a href="#" aria-label="Get it on Google Play">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=40&width=135" alt="Get it on Google Play" class="app-button">
-                    </a>
-                </div>
-            </div>
-            
+             
             <!-- Legal text -->
             <p class="legal-text">
                 Any mortgage lead generation activity in the state of Connecticut is performed by MSIM, LLC (NMLS #1212192), a subsidiary of Move, Inc.
@@ -216,8 +203,8 @@
             
             <!-- Copyright -->
             <div class="copyright">
-                <span class="copyright-symbol">© 1995-2025</span>
-                <a href="#">National Association of REALTORS</a>
+                <span class="copyright-symbol">© 2025-2025</span>
+                <a href="#">Vadama of REALTORS</a>
                 <span>®</span>
                 <span>and</span>
                 <a href="#">Move, Inc.</a>
