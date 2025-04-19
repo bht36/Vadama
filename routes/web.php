@@ -106,5 +106,8 @@ Route::controller(AccountController::class)->group(function () {
 
         Route::post('/property_upload', 'property_upload')->name('property_upload');
         Route::get('/view_leaseproperty', 'view_leaseproperty')->name('view_leaseproperty');
+        Route::get('/property_edit/{id}', 'property_edit')->name('property_edit');
+        Route::put('/property_update/{id}', 'property_update')->name('property_update');
+        Route::delete('/property_destroy/{id}', 'property_destroy')->name('property_destroy');
     });
 });

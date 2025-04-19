@@ -261,7 +261,7 @@ class AccountController extends Controller
     {
         $user = Auth::user(); // Get the currently authenticated user
     
-        // Base query, only selecting properties that belong to the logged-in user
+        // Base query: only selecting properties that belong to the logged-in user
         $query = Property::where('account_id', $user->id);
     
         if ($request->filled('name')) {
@@ -272,7 +272,7 @@ class AccountController extends Controller
             $query->where('slug', 'like', '%' . $request->slug . '%');
         }
     
-        // Eager load related images and account data
+        // Fetch properties with related images and account (eager loading), only available ones
         $properties = $query->with(['images', 'account'])
                             ->where('status', 'available')
                             ->latest()
@@ -281,4 +281,72 @@ class AccountController extends Controller
         return view('vadama.rental_list', compact('properties'));
     }
     
+public function property_edit($id)
+{
+    // Get the currently authenticated seller
+    $user = Auth::guard('account')->user();
+
+    // Fetch the specific property for this seller
+    $property = Property::with('images')
+        ->where('account_id', $user->id)
+        ->where('id', $id)
+        ->firstOrFail(); // Only get one property
+
+    return view('vadama.edit_rental_list', compact('property'));
+}
+ 
+
+public function property_update(Request $request, $id)
+{
+    $property = Property::findOrFail($id);
+
+    // Validate the updated data
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'location' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price_per_month' => 'required|numeric',
+        'type' => 'nullable|string|max:255',
+        'checkin_time' => 'nullable',
+        'checkout_time' => 'nullable',
+        'key_points' => 'nullable|string|max:1000',
+        'tags' => 'nullable|string|max:500',
+    ]);
+
+    // Only allow the owner (seller) to update
+    if ($property->account_id !== Auth::id()) {
+        return back()->with('error', 'Unauthorized action!');
+    }
+
+    // Update the property
+    $property->update($validatedData);
+
+    return back()->with('success', 'Property updated successfully!');
+}
+
+public function property_destroy($id)
+{
+    $property = Property::findOrFail($id);
+
+    // Only allow the owner (seller) to delete
+    if ($property->account_id !== Auth::id()) {
+        return back()->with('error', 'Unauthorized action!');
+    }
+
+    // Delete related images
+    foreach ($property->images as $image) {
+        $imagePath = public_path('storage/uploads/properties/images/' . $image->image_path);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+        $image->delete();
+    }
+
+    // Delete the property
+    $property->delete();
+
+    return back()->with('success', 'Property deleted successfully!');
+}
+
+
 }

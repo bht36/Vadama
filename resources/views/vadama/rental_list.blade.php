@@ -120,11 +120,11 @@
                                                 <td>{{ $property->created_at->format('d M Y') }}</td>
                                                 <td>
                                                 <div class="d-flex">
-                                                            <a href=""
+                                                            <a href="{{ route('property_edit', $property->id) }}"
                                                                 class="btn btn-primary btn-sm mr-1" type="submit"><i
                                                                     class="fas fa-edit" title='Edit'></i>
                                                             </a>
-                                                            <form method="POST" action="">
+                                                            <form method="POST" action="{{ route('property_destroy', $property->id) }}">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
