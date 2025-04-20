@@ -220,101 +220,87 @@
 <div class="container mt-4">
   <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   <div class="row justify-content-center g-4">
-      @foreach ($houses as $house)
-      <div class="col-md-3 col-sm-6">
-          <a href="{{ route('housing') }}">
-              <div class="card hover-card position-relative">
+    @forelse ($houses as $house)
+    <div class="col-md-3 col-sm-6">
+      <a href="{{ route('housing') }}">
+        <div class="card hover-card position-relative">
+          @php
+              $firstImage = $house->images->first();
+          @endphp
 
-                  @php
-                      $firstImage = $house->images->first();
-                  @endphp
+          @if ($firstImage)
+            <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                 class="card-img-top img-fluid object-cover"
+                 alt="{{ $house->title }}"
+                 style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+          @else
+            <img src="{{ asset('images/no-image.jpg') }}"
+                 class="card-img-top img-fluid"
+                 alt="No Image">
+          @endif
 
-                  @if ($firstImage)
-                  <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
-                  class="card-img-top img-fluid object-cover"
-                  alt="{{ $house->title }}"
-                  style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
-             
-                  @else
-                      <img src="{{ asset('images/no-image.jpg') }}"
-                           class="card-img-top img-fluid"
-                           alt="No Image">
-                  @endif
-
-                  <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-                  <div class="card-body d-flex flex-column">
-                      <div class="d-flex justify-content-between align-items-center">
-                          <p class="card-text mb-0">Price: ${{ $house->price_per_month }}</p>
-                          <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
-                      </div>
-                      <p class="card-text text-muted">{{ $house->location }}</p>
-                  </div>
-              </div>
-          </a>
+          <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text mb-0">Price: ${{ $house->price_per_month }}</p>
+              <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
+            </div>
+            <p class="card-text text-muted">{{ $house->location }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    @empty
+      <div class="text-center mt-4">
+        <h5>Coming Soon . . .</h5>
       </div>
-      @endforeach
+    @endforelse
   </div>
 </div>
+
 
 <!-- Rent Room Section -->
 <div class="container mt-4">
   <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   <div class="row justify-content-center g-4">
-      @foreach ($rooms as $room)
-      <div class="col-md-3 col-sm-6">
-          <a href="{{ route('housing') }}">
-              <div class="card hover-card position-relative">
+    @forelse ($rooms as $room)
+    <div class="col-md-3 col-sm-6">
+      <a href="{{ route('housing') }}">
+        <div class="card hover-card position-relative">
 
-                  @php
-                      $firstImage = $room->images->first();
-                  @endphp
+          @php
+              $firstImage = $room->images->first();
+          @endphp
 
-                  @if ($firstImage)
-                  <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
-                  class="card-img-top img-fluid object-cover"
-                  alt="{{ $room->title }}"
-                  style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
-             
-                  @else
-                      <img src="{{ asset('images/no-image.jpg') }}"
-                           class="card-img-top img-fluid"
-                           alt="No Image">
-                  @endif
+          @if ($firstImage)
+            <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                 class="card-img-top img-fluid object-cover"
+                 alt="{{ $room->title }}"
+                 style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+          @else
+            <img src="{{ asset('images/no-image.jpg') }}"
+                 class="card-img-top img-fluid"
+                 alt="No Image">
+          @endif
 
-                  <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-                  <div class="card-body d-flex flex-column">
-                      <div class="d-flex justify-content-between align-items-center">
-                          <p class="card-text mb-0">Price: ${{ $room->price_per_month }}</p>
-                          <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
-                      </div>
-                      <p class="card-text text-muted">{{ $room->location }}</p>
-                  </div>
-              </div>
-          </a>
+          <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text mb-0">Price: ${{ $room->price_per_month }}</p>
+              <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
+            </div>
+            <p class="card-text text-muted">{{ $room->location }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    @empty
+      <div class="text-center mt-4">
+        <h5>Coming Soon . . .</h5>
       </div>
-      @endforeach
+    @endforelse
   </div>
 </div>
-
-    {{-- <!-- Room 2 with red shadow hover effect -->
-    <div class="col-md-3 col-sm-6">
-      <div class="card hover-card position-relative">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1025775067818659597/original/96d33f63-a691-4c51-8755-3bfcaa0ffaf0.jpeg?im_w=720"
-             class="card-img-top img-fluid" alt="Room 2">
-        <!-- Love Icon -->
-        <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="card-text mb-0">Price: $750</p>
-            <div>
-              <i class="bi bi-star-fill text-warning"></i> 4.75
-            </div>
-          </div>
-          <p class="card-text text-muted">Tokyo, Japan</p>
-        </div>
-      </div>
-    </div>--}}
-
   </div>
 </div>
 
@@ -322,41 +308,45 @@
 <div class="container mt-4">
   <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
   <div class="row justify-content-center g-4">
-      @foreach ($apartments as $apartment)
-      <div class="col-md-3 col-sm-6">
-          <a href="{{ route('housing') }}">
-              <div class="card hover-card position-relative">
+    @forelse ($apartments as $apartment)
+    <div class="col-md-3 col-sm-6">
+      <a href="{{ route('housing') }}">
+        <div class="card hover-card position-relative">
 
-                  @php
-                      $firstImage = $apartment->images->first();
-                  @endphp
+          @php
+              $firstImage = $apartment->images->first();
+          @endphp
 
-                  @if ($firstImage)
-                  <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
-                  class="card-img-top img-fluid object-cover"
-                  alt="{{ $apartment->title }}"
-                  style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
-             
-                  @else
-                      <img src="{{ asset('images/no-image.jpg') }}"
-                           class="card-img-top img-fluid"
-                           alt="No Image">
-                  @endif
+          @if ($firstImage)
+            <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                 class="card-img-top img-fluid object-cover"
+                 alt="{{ $apartment->title }}"
+                 style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+          @else
+            <img src="{{ asset('images/no-image.jpg') }}"
+                 class="card-img-top img-fluid"
+                 alt="No Image">
+          @endif
 
-                  <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
-                  <div class="card-body d-flex flex-column">
-                      <div class="d-flex justify-content-between align-items-center">
-                          <p class="card-text mb-0">Price: ${{ $apartment->price_per_month }}</p>
-                          <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
-                      </div>
-                      <p class="card-text text-muted">{{ $apartment->location }}</p>
-                  </div>
-              </div>
-          </a>
+          <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text mb-0">Price: ${{ $apartment->price_per_month }}</p>
+              <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
+            </div>
+            <p class="card-text text-muted">{{ $apartment->location }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    @empty
+      <div class="text-center mt-4">
+        <h5>Coming Soon . . .</h5>
       </div>
-      @endforeach
+    @endforelse
   </div>
 </div>
+
 @include('vadama.layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
