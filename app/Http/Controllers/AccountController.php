@@ -216,12 +216,7 @@ class AccountController extends Controller
             'key_points' => 'nullable|string|max:1000',
             'tags' => 'nullable|string|max:500',
             'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
-        ]);
-        // dd([
-        //     'account_id' => Auth::id(),
-        //     'data' => $validatedData
-        // ]);
-        
+        ]);        
         // Create Property
         $property = Property::create([
             'account_id' => Auth::id(), // Assumes user is logged in
