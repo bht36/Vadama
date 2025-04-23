@@ -57,17 +57,17 @@
 <body>
     <div class="container py-4">
         <!-- Image gallery -->
-        <div class="row g-2 mb-5 position-relative">
+        <div class="row g-1 mb-5 position-relative">
             <div class="col-md-6">
             <img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" alt="Main" 
- class="img-fluid rounded main-img h-150 w-100">
+ class="img-fluid rounded main-img h-140 w-100">
             </div>
             <div class="col-md-6">
                 <div class="row g-2">
-                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" class="image" alt="Interior"></div>
-                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" class="image" alt="Bedroom"></div>
-                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" class="image" alt="Bathroom"></div>
-                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200"  class="image"alt="View"></div>
+                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" class="image w-100" alt="Interior"></div>
+                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" class="image w-100" alt="Bedroom"></div>
+                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200" class="image w-100" alt="Bathroom"></div>
+                    <div class="col-6"><img src="https://a0.muscache.com/im/pictures/miso/Hosting-687326818861051595/original/61beb3c6-6451-4ba3-b886-fcbe76d6f571.jpeg?im_w=1200"  class="image w-100"alt="View"></div>
                 </div>
             </div>
         </div>

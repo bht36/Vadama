@@ -5,7 +5,91 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </div>
-<body class="bg-light">
+    <style>
+        .image-preview {
+            position: relative;
+            height: 160px;
+            border-radius: 0.375rem;
+            overflow: hidden;
+        }
+        
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-preview .remove-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(220, 53, 69, 0.9);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .image-preview:hover .remove-btn {
+            opacity: 1;
+        }
+        
+        .image-preview .main-badge {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+        }
+        
+        .upload-container {
+            border: 2px dashed #dee2e6;
+            border-radius: 0.375rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .upload-container:hover {
+            border-color: #adb5bd;
+            background-color: #f8f9fa;
+        }
+        
+        .add-more-btn {
+            height: 160px;
+            border: 2px dashed #dee2e6;
+            border-radius: 0.375rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .add-more-btn:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<div class="bg-light">
     <div class="container py-4">
         <div class="text-center mb-4">
             <h1 class="h3">Add New Room Listing</h1>
@@ -45,10 +129,21 @@
                                 <option value="room">Room in a home</option>
                                 <option value="apartment">Apartment</option>
                                 <option value="house">Entire house</option>
-                                <option value="guesthouse">Guesthouse</option>
-                                <option value="hotel">Hotel room</option>
                             </select>
                             <div class="invalid-feedback" id="property-type-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="cleaning-price" class="form-label">Cleaning Fee ($)</label>
+                            <input type="number" class="form-control" id="cleaning-price" name="cleaningPrice" min="0" placeholder="e.g., 20">
+                            <div class="invalid-feedback" id="cleaning-price-error"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="service-price" class="form-label">Service Fee ($)</label>
+                            <input type="number" class="form-control" id="service-price" name="servicePrice" min="0" placeholder="e.g., 15">
+                            <div class="invalid-feedback" id="service-price-error"></div>
                         </div>
                     </div>
 
@@ -215,8 +310,8 @@
             </div>
         </div>
     </div>
-
+@include('vadama.layouts.footer')
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-@include('vadama.layouts.footer')
+</div>
 @endsection
