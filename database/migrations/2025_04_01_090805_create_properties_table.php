@@ -19,13 +19,19 @@ class CreatePropertiesTable extends Migration
             $table->string('title')->nullable(); // Required
             $table->text('description')->nullable(); // Optional
             $table->text('type')->nullable(); // Optional
-            $table->string('location')->nullable(); // Optional
             $table->decimal('price_per_month', 10, 2)->nullable(); // Optional
             $table->enum('status', ['available', 'pending', 'rented'])->default('available'); 
             $table->time('checkin_time')->nullable();
             $table->time('checkout_time')->nullable();
-            $table->text('key_points')->nullable();
-            $table->string('tags')->nullable();
+
+            $table->text('location')->nullable(); // Optional
+            $table->text('guest')->nullable(); // Optional
+            $table->text('bedroom')->nullable(); // Optional
+            $table->text('bed')->nullable(); // Optional
+            $table->text('bathroom')->nullable(); // Optional
+            $table->json('amenities')->nullable(); // add this line
+
+
             $table->timestamps(); // created_at, updated_at
             $table->softDeletes(); 
         });

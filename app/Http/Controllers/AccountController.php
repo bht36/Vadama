@@ -203,35 +203,39 @@ class AccountController extends Controller
     {
         return view('vadama.signup_seller');
     }
-    public function property_upload(Request $request)
-    {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255|unique:properties,title',
-            'location' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price_per_month' => 'required|numeric',
-            'type' => 'nullable|string|max:255',
-            'checkin_time' => 'nullable',
-            'checkout_time' => 'nullable',
-            'key_points' => 'nullable|string|max:1000',
-            'tags' => 'nullable|string|max:500',
-            'images.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
-        ]);        
-        // Create Property
-        $property = Property::create([
-            'account_id' => Auth::id(), // Assumes user is logged in
-            'title' => $validatedData['title'] ?? '',
-            'location' => $validatedData['location'] ?? '',
-            'description' => $validatedData['description'] ?? '',
-            'price_per_month' => $validatedData['price_per_month'] ?? 0,
-            'type' => $validatedData['type'] ?? '',
-            'checkin_time' => $validatedData['checkin_time'] ?? null,
-            'checkout_time' => $validatedData['checkout_time'] ?? null,
-            'key_points' => $validatedData['key_points'] ?? '',
-            'tags' => $validatedData['tags'] ?? '',
-            'status' => 'available', // default status
-        ]);
-
+public function property_upload(Request $request)
+{
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255|unique:properties,title',
+        'location' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric', // Changed from price_per_month to price
+        'property_type' => 'required|string|in:room,apartment,house', // Changed from type to property_type
+        'guests' => 'required|integer|min:1|max:8',
+        'bedrooms' => 'required|integer|min:1|max:5',
+        'beds' => 'required|integer|min:1|max:6',
+        'baths' => 'required|numeric|min:1|max:4',
+        'amenities' => 'nullable|array',
+        'images' => 'nullable|array',
+        'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:5120', // Increased to 5MB as per your form
+    ]);
+    // dd($validatedData);
+    // Create Property
+    $property = Property::create([
+        'account_id' => Auth::id(),
+        'title' => $validatedData['title'],
+        'location' => $validatedData['location'],
+        'description' => $validatedData['description'],
+        'price_per_month' => $validatedData['price'], // Map price to price_per_month
+        'type' => $validatedData['property_type'], // Map property_type to type
+        'guest' => $validatedData['guests'],
+        'bedroom' => $validatedData['bedrooms'],
+        'bed' => $validatedData['beds'],
+        'bathroom' => $validatedData['baths'],
+        'amenities' => json_encode($validatedData['amenities'] ?? []),
+        'status' => 'available',
+    ]);
+    // Handle image uploads
     if ($request->hasFile('images')) {
         foreach ($request->file('images') as $image) {
             $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
@@ -245,13 +249,13 @@ class AccountController extends Controller
 
             PropertyImage::create([
                 'property_id' => $property->id,
-                'image_path' => $filename, // Only store the filename
+                'image_path' => $filename,
             ]);
         }
     }
-    
-        return redirect()->route('index')->with('success', 'Property uploaded successfully!');
-    }
+
+    return redirect()->route('index')->with('success', 'Property uploaded successfully!');
+}
     public function view_leaseproperty(Request $request)
     {
         $user = Auth::user(); // Get the currently authenticated user

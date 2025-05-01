@@ -23,7 +23,12 @@ class Property extends Model
         'status',
         'checkin_time',
         'checkout_time ',
-        'key_points',
+        'guest',
+        'bedroom',
+        'bed',
+        'bath',
+        'amenities', 
+        'bathroom', 
     ];
     public function account()
     {
