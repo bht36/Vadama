@@ -1,216 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Footer</title>
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        
-        /* Footer styles */
-        .footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 40px 20px;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Top section with social and logos */
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .social-icon {
-            background-color: white;
-            color: #1a1a1a;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-        
-        .partner-logos {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .partner-logo {
-            background-color: white;
-            border-radius: 20px;
-            padding: 8px 15px;
-            height: 36px;
-        }
-        
-        /* Navigation sections */
-        .footer-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-            font-size: 14px;
-        }
-        
-        .footer-nav a:hover {
-            text-decoration: underline;
-        }
-        
-        .footer-nav a.highlight {
-            color: #f7b500;
-        }
-        
-        /* App download section */
-        .app-section {
-            margin: 40px 0;
-        }
-        
-        .app-section h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        
-        .app-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .app-button {
-            height: 40px;
-        }
-        
-        /* Legal section */
-        .legal-text {
-            font-size: 12px;
-            color: #cccccc;
-            margin-bottom: 10px;
-            max-width: 900px;
-        }
-        
-        .copyright {
-            font-size: 12px;
-            color: #cccccc;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .copyright a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .copyright a:hover {
-            text-decoration: underline;
-        }
-        
-        .copyright-symbol {
-            display: inline-block;
-            margin-right: 5px;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .footer-top {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-            
-            .partner-logos {
-                align-self: flex-end;
-            }
-            
-            .footer-nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vadama ® Footer</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #79090F; /* Changed from green to burgundy */
+      --primary-dark: #5a070b; /* Darker shade of burgundy */
+      --primary-light: #f8e5e6; /* Light shade of burgundy */
+      --primary-bg: #fdf2f3; /* Very light shade of burgundy */
+      --text-color: #333;
+      --text-light: #666;
+      --text-muted: #888;
+      --bg-color: #f9fafb;
+      --footer-bg: #fff;
+      --border-color: #e5e7eb;
+      --card-bg: #f9fafb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.5;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background-color: var(--footer-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0 1rem;
+      box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.03);
+      margin-top:50px
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* Logo Section */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+
+    .highlight {
+      color: var(--primary-color);
+    }
+
+    .description {
+      color: var(--text-light);
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    /* Navigation Section */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      position: relative;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 40%;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: -3px;
+      left: 0;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color); /* Now burgundy */
+    }
+
+    .nav-dot {
+      width: 4px;
+      height: 4px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.2s ease;
+    }
+
+    .nav-links a:hover .nav-dot {
+      background-color: var(--primary-color); /* Now burgundy */
+    }
+
+    /* Contact Section */
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-card {
+      background-color: var(--card-bg);
+      padding: 0.5rem;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(121, 9, 15, 0.1); /* Burgundy shadow */
+    }
+
+    .contact-icon {
+      color: var(--primary-color); /* Now burgundy */
+      font-size: 1rem;
+      margin-top: 0.1rem;
+    }
+
+    .contact-info h4 {
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.1rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-info p {
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .copyright {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .made-with {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+
+    .heart {
+      color: var(--primary-color); /* Now burgundy */
+      font-size: 0.8rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .footer-section {
+        align-items: center;
+        text-align: center;
+      }
+      
+      .section-title::after {
+        left: 30%;
+        width: 40%;
+      }
+      
+      .nav-links {
+        align-items: center;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <footer class="footer mt-4">
-        <div class="footer-container">
-            <!-- Social icons and partner logos -->
-            <div class="footer-top">
-
-                
-                <div class="partner-logos">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=30&width=120" alt="houselogic" class="partner-logo">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder-ob7miW3mUreePYfXdVwkpFWHthzoR5.svg?height=30&width=120" alt="realtor.realestate" class="partner-logo">
-                </div>
+<footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Logo Section -->
+        <div class="footer-section">
+          <div class="logo-container">
+            <div class="logo-image">
+              <!-- Replace with your logo image -->
+              <img src="https://via.placeholder.com/40x40" alt="Vadama Logo">
+              <!-- For a real implementation, you would use:
+              <img src="your-logo.png" alt="Vadama Logo"> -->
             </div>
-            
-            <!-- First navigation row -->
-            <nav class="footer-nav">
-                <a href="#">About us</a>
-                <a href="#">Careers</a>
-                <a href="#">Accessibility</a>
-                <a href="#">Feedback</a>
-                <a href="#">Media room</a>
-                <a href="#">Ad Choices</a>
-                <a href="#">Advertise with us</a>
-                <a href="#">Agent support</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </nav>
-            
-            <!-- Second navigation row -->
-            <nav class="footer-nav">
-                <a href="#">Home Made</a>
-                <a href="#">Tech Blog</a>
-                <a href="#">Agent Blog</a>
-                <a href="#">Sitemap</a>
-                <a href="#" class="highlight">Do Not Sell or Share My Personal Information</a>
-            </nav>
-             
-            <!-- Legal text -->
-            <p class="legal-text">
-                Any mortgage lead generation activity in the state of Connecticut is performed by MSIM, LLC (NMLS #1212192), a subsidiary of Move, Inc.
-            </p>
-            
-            <!-- Copyright -->
-            <div class="copyright">
-                <span class="copyright-symbol">© 2025-2025</span>
-                <a href="#">Vadama of REALTORS</a>
-                <span>®</span>
-                <span>and</span>
-                <a href="#">Move, Inc.</a>
-                <span>All rights reserved.</span>
-            </div>
+            <span class="logo-text"><span class="highlight">Vadama®</span></span>
+          </div>
+          <p class="description">
+            Your trusted partner in finding the perfect rental property in Nepal.
+          </p>
         </div>
-    </footer>
+
+        <!-- Navigation Section -->
+        <div class="footer-section">
+          <h3 class="section-title">Quick Links</h3>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="#"><span class="nav-dot"></span>Home</a></li>
+              <li><a href="#"><span class="nav-dot"></span>About Us</a></li>
+              <li><a href="#"><span class="nav-dot"></span>Properties</a></li>
+              <li><a href="#"><span class="nav-dot"></span>Become a Seller</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-section">
+          <h3 class="section-title">Contact Us</h3>
+          <div class="contact-cards">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Our Location</h4>
+                <p>Kathmandu, Nepal</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Phone Number</h4>
+                <p>+977 1234567890</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="copyright">
+          © 2025 Vadama® and Move, Inc. All rights reserved.
+        </p>
+        <div class="made-with">
+          <span>Made with</span>
+          <span class="heart">❤</span>
+          <span>in Nepal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
