@@ -13,17 +13,17 @@ class FrontendController extends Controller
         $banner =Banner::all(); 
 
         $houses = Property::with(['images'])
-        ->where('type', 'Rent House')
+        ->where('type', 'house')
         ->where('status', 'available')
         ->get();
 
         $rooms = Property::with(['images'])
-        ->where('type', 'Rent Room')
+        ->where('type', 'room')
         ->where('status', 'available')
         ->get();
 
         $apartments = Property::with(['images'])
-        ->where('type', 'Rent Apartment')
+        ->where('type', 'apartment')
         ->where('status', 'available')
         ->get();
 
