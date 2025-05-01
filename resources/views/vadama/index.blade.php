@@ -222,7 +222,7 @@
   <div class="row justify-content-center g-4">
     @forelse ($houses as $house)
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing') }}">
+      <a href="{{ route('housing', ['id' => $house->id]) }}">
         <div class="card hover-card position-relative">
           @php
               $firstImage = $house->images->first();
@@ -265,7 +265,7 @@
   <div class="row justify-content-center g-4">
     @forelse ($rooms as $room)
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing') }}">
+      <a href="{{ route('housing', ['id' => $room->id]) }}">
         <div class="card hover-card position-relative">
 
           @php
@@ -310,7 +310,7 @@
   <div class="row justify-content-center g-4">
     @forelse ($apartments as $apartment)
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing') }}">
+      <a href="{{ route('housing', ['id' => $apartment->id]) }}">
         <div class="card hover-card position-relative">
 
           @php

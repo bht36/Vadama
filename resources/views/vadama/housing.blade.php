@@ -78,7 +78,7 @@
                 <div class="d-flex justify-content-between border-bottom pb-4 mb-4">
                     <div>
                         <h2 class="fs-4 fw-bold">Room in Bhaktapur, Nepal</h2>
-                        <div class="text-secondary">2 guests · 1 bedroom · 1 bed · 1 shared bath</div>
+                        <div class="text-secondary">{{$property->guest}} guests · {{$property->bedroom}} bedroom · {{$property->bed}} bed · {{$property->bathroom}} shared bath</div>
                     </div>
                 </div>
 

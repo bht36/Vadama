@@ -54,8 +54,9 @@ class FrontendController extends Controller
     {
         return view("vadama.aboutus");
     }
-    public function housing(Request $request)
+    public function housing($id)
     {
-        return view("vadama.housing");
+        $property = Property::with('images')->findOrFail($id);
+        return view('vadama.housing', compact('property'));
     }
 }
