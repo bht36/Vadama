@@ -31,6 +31,7 @@ class CreatePropertiesTable extends Migration
             $table->text('bathroom')->nullable(); // Optional
             $table->json('amenities')->nullable(); // add this line
 
+            
 
             $table->timestamps(); // created_at, updated_at
             $table->softDeletes(); 
