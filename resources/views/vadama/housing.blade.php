@@ -1,5 +1,10 @@
 @extends('vadama.layouts.header')
 @section('content')
+<div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</div>
 <div class="container py-4">
     <!-- Image gallery -->
     <div class="row g-1 mb-5 position-relative">
