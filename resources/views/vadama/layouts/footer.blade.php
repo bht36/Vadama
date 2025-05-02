@@ -246,7 +246,7 @@
     <div class="container">
       <div class="footer-grid">
        
-      <!-- Logo Section -->[u]
+      <!-- Logo Section -->
         <div class="footer-section">
           <div class="logo-container">
             <div class="logo-image">
@@ -288,7 +288,6 @@
                 <p>Kathmandu, Nepal</p>
               </div>
             </div>
-
             <div class="contact-card">
               <div class="contact-icon">
                 <i class="fas fa-phone"></i>
