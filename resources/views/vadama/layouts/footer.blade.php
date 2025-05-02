@@ -7,12 +7,11 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Base Styles */
     :root {
-      --primary-color: #79090F; /* Changed from green to burgundy */
-      --primary-dark: #5a070b; /* Darker shade of burgundy */
-      --primary-light: #f8e5e6; /* Light shade of burgundy */
-      --primary-bg: #fdf2f3; /* Very light shade of burgundy */
+      --primary-color: #79090F; 
+      --primary-dark: #5a070b; 
+      --primary-light: #f8e5e6; 
+      --primary-bg: #fdf2f3; 
       --text-color: #333;
       --text-light: #666;
       --text-muted: #888;
@@ -34,8 +33,6 @@
       color: var(--text-color);
       line-height: 1.5;
     }
-
-    /* Footer Styles */
     .footer {
       background-color: var(--footer-bg);
       border-top: 1px solid var(--border-color);
@@ -61,8 +58,6 @@
       flex-direction: column;
       gap: 0.5rem;
     }
-
-    /* Logo Section */
     .logo-container {
       display: flex;
       align-items: center;
@@ -102,8 +97,6 @@
       line-height: 1.4;
       font-size: 0.9rem;
     }
-
-    /* Navigation Section */
     .section-title {
       font-size: 1rem;
       font-weight: 600;
@@ -139,11 +132,9 @@
       font-size: 0.85rem;
       transition: color 0.2s ease;
     }
-
     .nav-links a:hover {
-      color: var(--primary-color); /* Now burgundy */
+      color: var(--primary-color); 
     }
-
     .nav-dot {
       width: 4px;
       height: 4px;
@@ -154,10 +145,8 @@
     }
 
     .nav-links a:hover .nav-dot {
-      background-color: var(--primary-color); /* Now burgundy */
+      background-color: var(--primary-color); 
     }
-
-    /* Contact Section */
     .contact-cards {
       display: flex;
       flex-direction: column;
@@ -174,12 +163,12 @@
     }
 
     .contact-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 3px 10px rgba(121, 9, 15, 0.1); /* Burgundy shadow */
+      transform: translateY(-2px);*
+      box-shadow: 0 3px 10px rgba(121, 9, 15, 0.1); 
     }
 
     .contact-icon {
-      color: var(--primary-color); /* Now burgundy */
+      color: var(--primary-color);
       font-size: 1rem;
       margin-top: 0.1rem;
     }
@@ -195,8 +184,6 @@
       color: var(--text-light);
       font-size: 0.8rem;
     }
-
-    /* Footer Bottom */
     .footer-bottom {
       margin-top: 1.5rem;
       padding-top: 0.75rem;
@@ -222,11 +209,10 @@
     }
 
     .heart {
-      color: var(--primary-color); /* Now burgundy */
+      color: var(--primary-color); 
       font-size: 0.8rem;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
       .footer-grid {
         grid-template-columns: 1fr;
@@ -259,7 +245,8 @@
 <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Logo Section -->
+       
+      <!-- Logo Section -->[u]
         <div class="footer-section">
           <div class="logo-container">
             <div class="logo-image">
