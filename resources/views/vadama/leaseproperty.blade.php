@@ -84,7 +84,7 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="price" class="form-label">Price per Night (Rs)</label>
+                            <label for="price" class="form-label">Price per Night (रु)</label>
                             <input type="number" class="form-control" id="price" name="price" min="1" value="{{ old('price') }}" required>
                         </div>
                         <div class="col-md-6">
@@ -126,7 +126,7 @@
                         <div class="col-md-3">
                             <label class="form-label">Bathrooms</label>
                             <select class="form-select" name="baths">
-                                @foreach([1, 1.5, 2, 2.5, 3, 4] as $bath)
+                                @foreach([1,2,3, 4] as $bath)
                                     <option value="{{ $bath }}" {{ old('baths') == $bath ? 'selected' : '' }}>{{ $bath }}</option>
                                 @endforeach
                             </select>
@@ -137,6 +137,11 @@
                         <label class="form-label">Description</label>
                         <textarea class="form-control" name="description" rows="4" required>{{ old('description') }}</textarea>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Highlights</label>
+                <textarea class="form-control" name="highlights" id="highlights" rows="4" required>{{ old('highlights') }}</textarea>
+                    </div>
+
 
                     <!-- Image Upload -->
                     <h4 class="section-title">Property Images</h4>
@@ -196,7 +201,14 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
+    <!-- Include CKEditor 5 CDN -->
+    ClassicEditor
+        .create(document.querySelector('#highlights'))
+        .catch(error => {
+            console.error(error);
+        });
     function previewImages(event) {
         const preview = document.getElementById('preview');
         preview.innerHTML = ''; // Clear previous previews
