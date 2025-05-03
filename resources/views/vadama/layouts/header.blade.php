@@ -80,9 +80,11 @@
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="{{ route('aboutus') }}">About Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
-                </li>
+                @if (Route::currentRouteName() !== 'login_seller')
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="#">Contacts</a>
                 </li>
@@ -124,7 +126,11 @@
                 </div>
             </div>
             @else
-                <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
+            @if (Route::currentRouteName() !== 'login')
+                    <li class="nav-item">
+                        <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
+                    </li>
+                @endif
             @endauth
         </div>
     </div>
