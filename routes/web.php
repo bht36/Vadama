@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\BannerCntroller;
 use App\Http\Controllers\Admin\HoodieController;
+use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgetPasswordController;
@@ -49,6 +50,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::put('/update/{id}', 'update')->name('update');
             Route::delete('/destroy/{id}', 'destroy')->name('delete');
+        });
+        Route::prefix('site_setting')->as('site_setting.')->controller(SiteSettingController::class)->group(function () {
+            Route::get('/index', 'index')->name('index');
         });
 
         // Routes for Banner Management

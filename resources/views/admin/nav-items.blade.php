@@ -3,7 +3,7 @@
         <i class="far fa-regular fa-image nav-icon"></i>
         <p>{{ __('Dashboard') }}</p>
     </a>
-    </li>
+</li>
 
 <li class="nav-item  <?= @$parent_nav == 'item' ? 'active menu-open' : '' ?>">
     <a href="#" class="nav-link ">
@@ -26,4 +26,10 @@
             </a>
         </li>
         </ul>
+</li>
+<li class="nav-item <?= @$child_nav == 'site_setting' ? 'active bg-gray' : '' ?>">
+    <a href="{{ route('admin.site_setting.index') }}" class="nav-link">
+        <i class="fas fa-cogs nav-icon"></i>
+        <p>{{ __('Site Setting') }}</p>
+    </a>
 </li>
