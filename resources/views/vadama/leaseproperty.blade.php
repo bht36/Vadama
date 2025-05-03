@@ -202,14 +202,8 @@
     </div>
 </div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
 <script>
-    <!-- Include CKEditor 5 CDN -->
-    ClassicEditor
-        .create(document.querySelector('#highlights'))
-        .catch(error => {
-            console.error(error);
-        });
     function previewImages(event) {
         const preview = document.getElementById('preview');
         preview.innerHTML = ''; // Clear previous previews

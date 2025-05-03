@@ -208,6 +208,7 @@ public function property_upload(Request $request)
     $validatedData = $request->validate([
         'title' => 'required|string|max:255|unique:properties,title',
         'location' => 'required|string|max:255',
+        'highlights' => 'nullable|string',
         'description' => 'required|string',
         'price' => 'required|numeric', // Changed from price_per_month to price
         'property_type' => 'required|string|in:room,apartment,house', // Changed from type to property_type
@@ -219,11 +220,12 @@ public function property_upload(Request $request)
         'images' => 'nullable|array',
         'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:5120', // Increased to 5MB as per your form
     ]);
-    // dd($validatedData);
+  
     // Create Property
     $property = Property::create([
         'account_id' => Auth::id(),
         'title' => $validatedData['title'],
+        'highlights' => $validatedData['highlights'],
         'location' => $validatedData['location'],
         'description' => $validatedData['description'],
         'price_per_month' => $validatedData['price'], // Map price to price_per_month
@@ -303,6 +305,7 @@ public function property_update(Request $request, $id)
     $validatedData = $request->validate([
         'title' => 'required|string|max:255',
         'location' => 'required|string|max:255',
+        'highlights' => 'nullable|string',
         'description' => 'required|string',
         'price_per_month' => 'required|numeric',
         'type' => 'nullable|string|max:255',

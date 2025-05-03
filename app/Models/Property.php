@@ -29,6 +29,7 @@ class Property extends Model
         'bath',
         'amenities', 
         'bathroom', 
+        'highlights', 
     ];
     public function account()
     {

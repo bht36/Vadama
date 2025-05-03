@@ -30,6 +30,7 @@ class CreatePropertiesTable extends Migration
             $table->text('bed')->nullable(); // Optional
             $table->text('bathroom')->nullable(); // Optional
             $table->json('amenities')->nullable(); // add this line
+            $table->text('highlights')->nullable(); // add this line
 
             
 

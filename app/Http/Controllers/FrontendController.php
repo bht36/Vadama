@@ -55,8 +55,22 @@ class FrontendController extends Controller
         return view("vadama.aboutus");
     }
     public function housing($id)
-    {
-        $property = Property::with('images')->findOrFail($id);
-        return view('vadama.housing', compact('property'));
-    }
+{
+    $property = Property::with('images')->findOrFail($id);
+
+    $selectedAmenities = json_decode($property->amenities, true); // This is just: ["wifi", "kitchen", "tv"]
+
+    $amenitiesList = [
+        ['id' => 'wifi', 'icon' => 'bi-wifi', 'label' => 'Wifi'],
+        ['id' => 'workspace', 'icon' => 'bi-laptop', 'label' => 'Dedicated workspace'],
+        ['id' => 'parking', 'icon' => 'bi-p-circle', 'label' => 'Free parking'],
+        ['id' => 'ac', 'icon' => 'bi-snow', 'label' => 'Air conditioning'],
+        ['id' => 'kitchen', 'icon' => 'bi-cup-hot', 'label' => 'Kitchen'],
+        ['id' => 'washer', 'icon' => 'bi-water', 'label' => 'Washer'],
+        ['id' => 'tv', 'icon' => 'bi-tv', 'label' => 'TV'],
+        ['id' => 'heating', 'icon' => 'bi-thermometer-half', 'label' => 'Heating'],
+    ];
+
+    return view('vadama.housing', compact('property', 'amenitiesList', 'selectedAmenities'));
+}
 }
