@@ -64,7 +64,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
         <!-- Logo on Left -->
-        <a class="navbar-brand" href="{{ route('index') }}">Logo</a>
+        <a class="navbar-brand" href="{{ route('index') }}">
+            <img src="{{ asset('logo/Login.png') }}" alt="Logo" style="height: 40px; width: auto;">
+        </a>
+        
 
         <!-- Navbar Toggler for Mobile -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
