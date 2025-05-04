@@ -242,7 +242,7 @@
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-center">
-              <p class="card-text mb-0">Price: ${{ $house->price_per_month }}</p>
+              <p class="card-text mb-0">Price: रु{{ $house->price_per_month }}</p>
               <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
             </div>
             <p class="card-text text-muted">{{ $house->location }}</p>
@@ -286,7 +286,7 @@
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-center">
-              <p class="card-text mb-0">Price: ${{ $room->price_per_month }}</p>
+              <p class="card-text mb-0">Price: रु{{ $room->price_per_month }}</p>
               <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
             </div>
             <p class="card-text text-muted">{{ $room->location }}</p>
@@ -331,7 +331,7 @@
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-center">
-              <p class="card-text mb-0">Price: ${{ $apartment->price_per_month }}</p>
+              <p class="card-text mb-0">Price: रु{{ $apartment->price_per_month }}</p>
               <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
             </div>
             <p class="card-text text-muted">{{ $apartment->location }}</p>

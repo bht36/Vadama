@@ -75,7 +75,7 @@
         <div class="col-lg-4">
             <div class="card shadow position-sticky" style="top: 100px;">
                 <div class="card-body">
-                    <div class="fs-4 fw-bold mb-2">$85 <span class="fs-6 fw-normal">night</span></div>
+                    <div class="fs-4 fw-bold mb-2">रु85 <span class="fs-6 fw-normal">night</span></div>
                     <div class="mb-4"><i class="bi bi-star-fill"></i> 5.0 · 111 reviews</div>
                     
                     <div class="border rounded mb-3">
@@ -115,20 +115,20 @@
                     <div class="mb-0">
                         <div class="d-flex justify-content-between mb-2">
                             <div class="text-decoration-underline">$85 x 5 nights</div>
-                            <div>$425</div>
+                            <div>रु425</div>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <div class="text-decoration-underline">Cleaning fee</div>
-                            <div>$20</div>
+                            <div>रु20</div>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <div class="text-decoration-underline">Service fee</div>
-                            <div>$60</div>
+                            <div>रु60</div>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between fw-bold">
                             <div>Total before taxes</div>
-                            <div>$505</div>
+                            <div>रु505</div>
                         </div>
                     </div>
                 </div>
