@@ -24,6 +24,30 @@
             font-weight: 600;
             background-color: white;
         }
+        .custom-select {
+                                border-radius: 25px; /* Rounded corners */
+                                padding: 1px 15px; /* Add some padding for better spacing */
+                                font-size: 16px; /* Larger text */
+                                background-color: #f9f9f9; /* Light background */
+                                border: 1px solid #ddd; /* Subtle border */
+                                transition: all 0.3s ease; /* Smooth transition on focus */
+                            }
+                        
+                            .custom-select:focus {
+                                outline: none; /* Remove default outline */
+                                border-color: #79090f; /* Red border on focus */
+                                box-shadow: 0 0 5px rgba(121, 9, 15, 0.4); /* Subtle shadow effect */
+                            }
+                        
+                            .custom-select option {
+                                padding: 10px; /* Add padding for option text */
+                            }
+                            .form-control {
+        border-radius: 25px; /* Rounded corners for inputs */
+        background-color: #f9f9f9; /* Light background */
+        border: 1px solid #ddd; /* Subtle border */
+    }
+        
     </style>
 </div>
 
@@ -79,7 +103,10 @@
             <div class="border-bottom pb-4 mb-4">
                 <h2 class="h4 fw-bold mb-3">About this place</h2>
                 <p class="text-muted">{{$property->description}}</p>
-                <button class="btn btn-link text-decoration-underline p-0 fw-bold">Show more <i class="bi bi-chevron-down ms-1"></i></button>
+                <button class="btn btn-link text-decoration-underline p-0 fw-bold" style="color: #79090f;">
+                    Show more <i class="bi bi-chevron-down ms-1"></i>
+                </button>
+                
             </div>
 
             <h2 class="h4 fw-bold mb-3">What this place offers</h2>
@@ -113,7 +140,7 @@
                     
                     <div class="border rounded-3 mb-4 overflow-hidden">
                         <!-- Duration Selector -->
-                        <div class="p-3 bg-light">
+                        {{-- <div class="p-3 bg-light">
                             <label for="month-count" class="form-label fw-bold text-uppercase small text-dark mb-2">Select Duration</label>
                             <select id="month-count" class="form-select shadow-none">
                                 <option value="1">1 Month</option>
@@ -123,18 +150,32 @@
                                 <option value="6">6 Months</option>
                                 <option value="12">12 Months</option>
                             </select>
+                        </div> --}}
+
+                        <div class="p-3 bg-light">
+                            <label for="month-count" class="form-label fw-bold text-uppercase small text-dark mb-2">Select Duration</label>
+                            <select id="month-count" class="form-select custom-select shadow-none">
+                                <option value="1">1 Month</option>
+                                <option value="2">2 Months</option>
+                                <option value="3">3 Months</option>
+                                <option value="4">4 Months</option>
+                                <option value="6">6 Months</option>
+                                <option value="12">12 Months</option>
+                            </select>
                         </div>
+                        
+                        
                         
                         <!-- Date Selection -->
                         <div class="card mb-0 border-0 rounded-0">
                             <div class="row g-0">
                                 <div class="col-6 border-end p-3">
                                     <div class="small fw-bold text-muted mb-1">Check-in</div>
-                                    <input type="date" id="check-in" value="{{ date('Y-m-d') }}" class="form-control border-0 shadow-none px-0" />
+                                    <input type="date" id="check-in" value="{{ date('Y-m-d') }}" class="form-control custom-date-input border-0 shadow-none" />
                                 </div>
                                 <div class="col-6 p-3">
-                                    <div class="small fw-bold text-muted mb-1">Check-out</div>
-                                    <input type="date" id="check-out" class="form-control border-0 shadow-none px-0" readonly />
+                                    <div class="small fw-bold text-muted mb-1" style="margin-right: 10px;">Check-out</div>
+                                    <input type="date" id="check-out" class="form-control custom-date-input-right border-0 shadow-none" readonly />
                                 </div>
                             </div>
                         </div>
