@@ -83,10 +83,12 @@
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="{{ route('aboutus') }}">About Us</a>
                 </li>
-                @if (Route::currentRouteName() !== 'login_seller')
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
-                    </li>
+                @if (!Auth::guard('account')->check() || Auth::guard('account')->user()->user_type !== 'seller')
+                    @if (Route::currentRouteName() !== 'login_seller')
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-bold" href="{{ route('login_seller') }}">Become a Seller</a>
+                        </li>
+                    @endif
                 @endif
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="#">Contacts</a>
