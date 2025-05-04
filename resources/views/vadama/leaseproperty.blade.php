@@ -134,14 +134,14 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" name="description" rows="4" required>{{ old('description') }}</textarea>
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label">Highlights</label>
                 <textarea class="form-control" name="highlights" id="highlights" rows="4" required>{{ old('highlights') }}</textarea>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="4" required>{{ old('description') }}</textarea>
+                    </div>
 
                     <!-- Image Upload -->
                     <h4 class="section-title">Property Images</h4>

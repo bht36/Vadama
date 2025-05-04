@@ -137,7 +137,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="6" class="text-center">{{ __('No data available') }}</td>
+                                                <td colspan="7" class="text-center">{{ __('No data available') }}</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
