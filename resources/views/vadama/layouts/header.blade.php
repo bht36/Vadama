@@ -132,9 +132,7 @@
             </div>
             @else
             @if (Route::currentRouteName() !== 'login')
-                    <li class="nav-item">
                         <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-bold ml-3">Login</a>
-                    </li>
                 @endif
             @endauth
         </div>
