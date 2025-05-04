@@ -251,8 +251,7 @@
           <div class="logo-container">
             <div class="logo-image">
               <!-- Replace with your logo image -->
-              <img src="https://via.placeholder.com/40x40" alt="Vadama Logo">
-              <!-- For a real implementation, you would use:
+              <img src="{{ asset('logo/Login.png') }}" alt="Logo" style="height: 40px; width: auto;">              <!-- For a real implementation, you would use:
               <img src="your-logo.png" alt="Vadama Logo"> -->
             </div>
             <span class="logo-text"><span class="highlight">Vadama®</span></span>
