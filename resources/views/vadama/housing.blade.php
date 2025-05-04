@@ -88,8 +88,8 @@
                     @if(in_array($amenity['id'], $selectedAmenities))
                         <div class="col-md-6 mb-3">
                             <div class="d-flex align-items-center">
-                                <i class="bi {{ $amenity['icon'] }} me-3 text-primary"></i> 
-                                <span class="text-muted">{{ $amenity['label'] }}</span>
+                                <i class="bi {{ $amenity['icon'] }}   me-3 mr-3" style="color: #79090f;"></i>
+                                <span class="text-muted ">{{ $amenity['label'] }}</span>
                             </div>
                         </div>
                     @endif
