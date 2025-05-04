@@ -120,27 +120,64 @@
   transform: scale(1.05); /* Optional: slightly enlarge the card */
   transition: all 0.3s ease; /* Smooth transition */
 }
+
+.slider-content {
+                max-width: 100%;
+            }
+    
+            .search-container {
+                margin-top: 1rem;
+                width: 100%;
+                max-width: none;
+            }
+    
+            .search-container .form-control {
+                height: 56px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                border: none;
+            }
+    
+            .search-container .btn-dark {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+    
+            .search-container .btn-close {
+                opacity: 0.5;
+            }
+    
+            .search-container .form-control:focus {
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+                border: none;
+            }
     </style>
 </head>
 <body>
     <!-- Hero Section with Slider -->
     <div class="hero-slider">
-    <!-- Fixed Content Overlay -->
-        <div class="slider-content">
-            <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
-            <div class="input-group mt-3 mx-auto" style="max-width: 800px;">
-                <input type="text" class="form-control" placeholder="Address, School, City, Zip or Neighborhood">
-                <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
-            </div>
+      <!-- Fixed Content Overlay -->
+      <div class="slider-content px-5"> <!-- Add padding for better view on large width -->
+        <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
+        <div class="search-container position-relative" style="width: 55%;">
+            <input type="text" class="form-control rounded-pill py-3 ps-4 pe-5 w-100" 
+                   placeholder="Address, School, City, Zip or Neighborhood" >
+            <button class="btn btn-dark rounded-circle position-absolute end-0 top-50 translate-middle-y me-2" 
+                    type="button" style="width: 46px; height: 46px;">
+                <i class="fas fa-search"></i>
+            </button>
+            {{-- <button class="btn-close position-absolute top-50 translate-middle-y end-0 me-5" type="button" aria-label="Clear search"></button> --}}
         </div>
-        
-        <!-- Image Slider with dynamic images from database -->
-        <div class="slider-container" id="sliderContainer">
-            @foreach($banner as $bannerimage)
-                <div class="slider-item" style="background-image: url({{ asset('storage/uploads/banner/main_image/'. $bannerimage->main_image) }});"></div>
-            @endforeach
-        </div>
+      </div>
+    
+      <!-- Image Slider with dynamic images from database -->
+      <div class="slider-container" id="sliderContainer">
+        @foreach($banner as $bannerimage)
+          <div class="slider-item" style="background-image: url({{ asset('storage/uploads/banner/main_image/'. $bannerimage->main_image) }});"></div>
+        @endforeach
+      </div>
     </div>
+    
 
     <!-- advertising secton -->
     <div class="hero-container mt-8">
