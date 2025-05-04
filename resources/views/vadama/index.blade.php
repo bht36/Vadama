@@ -10,6 +10,56 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+         .search-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .search-bar {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        background-color: #222;
+        color: #fff;
+        outline: none;
+        box-sizing: border-box;
+        padding-right: 60px;
+    }
+
+    .search-bar::placeholder {
+        color: #aaa;
+    }
+
+    .search-button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #333;
+        border: 2px solid white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s;
+    }
+
+    .search-button:hover {
+        background-color: #444;
+    }
+
+    .search-icon {
+        width: 20px;
+        height: 20px;
+        fill: #fff;
+    }
+    
               .hero-container {
               background-image: url('https://images.wsj.net/im-553730?width=1280&size=1.770');
               background-size: cover;
@@ -23,6 +73,7 @@
               align-items: center;
               justify-content: center;
               margin-bottom: 50px;
+              margin-top: 50px;
               overflow: hidden; /* Ensures ::before doesn't overflow */
           }
 
@@ -126,14 +177,14 @@
     <!-- Hero Section with Slider -->
     <div class="hero-slider">
     <!-- Fixed Content Overlay -->
-        <div class="slider-content">
-            <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
-            <div class="input-group mt-3 mx-auto" style="max-width: 800px;">
-                <input type="text" class="form-control" placeholder="Address, School, City, Zip or Neighborhood">
-                <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
-            </div>
+    <div class="slider-content">
+        <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
+        <div class="input-group mt-3 mx-auto" style="max-width: 800px; border-radius: 50px; overflow: hidden;">
+            <input type="text" class="form-control" style="border-radius: 0;" placeholder="Address, School, City, Zip or Neighborhood">
+            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
         </div>
-        
+    </div>
+</div>     
         <!-- Image Slider with dynamic images from database -->
         <div class="slider-container" id="sliderContainer">
             @foreach($banner as $bannerimage)
@@ -141,24 +192,11 @@
             @endforeach
         </div>
     </div>
-
-    <!-- advertising secton -->
-    <div class="hero-container mt-8">
-        <div class="hero-content">
-            <div class="category-text">Unique Homes</div>
-            <div class="headline-text">$79 Million Aspen Megamansion With Wild Array of Amenities Including Indoor Pool and 4 Bars Is the Week's Most Expensive Home</div>
-            <div>
-                <button class="btn read-button">Read Article</button>
-            </div>
-        </div>
-    </div>
-
 <!-- Rent House Section -->
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
+  <div class="d-flex justify-content-between align-items-center mt-5 mb-4">
+    <h2 class="fw-bold" style="font-size: 20px; mt-8">Rent House</h2>
   </div>
-
   <div class="row justify-content-center g-4">
     <!-- Card 1 with red shadow hover effect -->
     <div class="col-md-3 col-sm-6">
@@ -422,6 +460,16 @@
     </div>
   </div>
 </div>
+<!-- advertising secton -->
+<div class="hero-container mt-8">
+        <div class="hero-content">
+            <div class="category-text">Unique Homes</div>
+            <div class="headline-text">$79 Million Aspen Megamansion With Wild Array of Amenities Including Indoor Pool and 4 Bars Is the Week's Most Expensive Home</div>
+            <div>
+                <button class="btn read-button">Read Article</button>
+            </div>
+        </div>
+    </div>
 @include('vadama.layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
