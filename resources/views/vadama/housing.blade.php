@@ -303,32 +303,76 @@
       </div>
     </div>
   </div>
-  
 
-  
-  <!-- Script -->
-  <script>
-    document.getElementById("reserve-btn").addEventListener("click", function () {
-      var myModal = new bootstrap.Modal(document.getElementById('successModal'), {
-        keyboard: false,
-        backdrop: 'static'
-      });
-  
-      // Disable close buttons initially
-      document.getElementById("closeModalBtn").disabled = true;
-      document.getElementById("headerCloseBtn").disabled = true;
-  
-      // Show the modal
-      myModal.show();
-  
-      // Enable close buttons and hide modal after 7 seconds
-      setTimeout(function () {
-        document.getElementById("closeModalBtn").disabled = false;
-        document.getElementById("headerCloseBtn").disabled = false;
-        myModal.hide(); // Optional: Remove this if you want user to close it manually
-      }, 7000); // 7000ms = 7 seconds
+  @if(session('error'))
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {
+      keyboard: false,
+      backdrop: 'static'
     });
-  </script>
+
+    document.getElementById("errorCloseModalBtn").disabled = true;
+    document.getElementById("errorHeaderCloseBtn").disabled = true;
+
+    errorModal.show();
+
+    setTimeout(function () {
+      document.getElementById("errorCloseModalBtn").disabled = false;
+      document.getElementById("errorHeaderCloseBtn").disabled = false;
+      errorModal.hide(); // Optional: remove this if you want manual close only
+    }, 3000);
+  });
+</script>
+@endif
+
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="errorModalLabel">Reservation Error</h5>
+        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close" disabled id="errorHeaderCloseBtn"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="bi bi-x-circle-fill display-4 text-danger mb-3"></i>
+        <p class="fw-bold">{{ session('error') }}</p>
+      </div>
+      <div class="modal-footer">
+        <button id="errorCloseModalBtn" type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" disabled>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Script -->
+  @if(session('success'))
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var myModal = new bootstrap.Modal(document.getElementById('successModal'), {
+            keyboard: false,
+            backdrop: 'static'
+        });
+
+        // Disable close buttons initially
+        document.getElementById("closeModalBtn").disabled = true;
+        document.getElementById("headerCloseBtn").disabled = true;
+
+        // Show modal
+        myModal.show();
+
+        // Enable buttons and optionally hide modal after 7 seconds
+        setTimeout(function () {
+            document.getElementById("closeModalBtn").disabled = false;
+            document.getElementById("headerCloseBtn").disabled = false;
+            myModal.hide(); // Optional
+        }, 3000);
+    });
+</script>
+@endif
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
