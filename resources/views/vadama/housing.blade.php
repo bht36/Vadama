@@ -122,6 +122,18 @@
                     @endif
                 @endforeach
             </div>
+            <h5 class="mt-4 mb-3 fw-bold">Location</h5>
+            {!! $property->location !!}
+            <h5 class="mt-4 mb-3 fw-bold">Location</h5>
+            <iframe 
+                src="https://www.google.com/maps?q={{ urlencode($property->location) }}&output=embed"
+                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+            <h5 class="mt-4 mb-3 fw-bold">Location</h5>
+            <div class="google-map-container">
+                {!! $property->location !!}
+            </div>
+
         </div>
 
         <!-- Right column -->
@@ -130,113 +142,113 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-end mb-3">
                         <div>
-                            <div class="h3 fw-bold">रु{{number_format($property->price_per_month)}}</div>
+                            <div class="h3 fw-bold">रु{{ number_format($property->price_per_month) }}</div>
                             <div class="text-muted">Per month</div>
                         </div>
                         <div class="badge bg-warning text-dark">
                             <i class="bi bi-star-fill me-1"></i> 5.0 · 111 reviews
                         </div>
                     </div>
-                    
-                    <div class="border rounded-3 mb-4 overflow-hidden">
-                        <!-- Duration Selector -->
-                        {{-- <div class="p-3 bg-light">
-                            <label for="month-count" class="form-label fw-bold text-uppercase small text-dark mb-2">Select Duration</label>
-                            <select id="month-count" class="form-select shadow-none">
-                                <option value="1">1 Month</option>
-                                <option value="2">2 Months</option>
-                                <option value="3">3 Months</option>
-                                <option value="4">4 Months</option>
-                                <option value="6">6 Months</option>
-                                <option value="12">12 Months</option>
-                            </select>
-                        </div> --}}
-
-                        <div class="p-3 bg-light">
-                            <label for="month-count" class="form-label fw-bold text-uppercase small text-dark mb-2">Select Duration</label>
-                            <select id="month-count" class="form-select custom-select shadow-none">
-                                <option value="1">1 Month</option>
-                                <option value="2">2 Months</option>
-                                <option value="3">3 Months</option>
-                                <option value="4">4 Months</option>
-                                <option value="6">6 Months</option>
-                                <option value="12">12 Months</option>
-                            </select>
-                        </div>
+                    <!-- Always show the form (for both logged-in and guest users) -->
+                    <form id="rental-request-form" method="POST" action="{{ route('rental-requests.store') }}">
+                        @csrf
+                        <input type="hidden" name="property_id" value="{{ $property->id }}">
                         
-                        
-                        
-                        <!-- Date Selection -->
-                        <div class="card mb-0 border-0 rounded-0">
-                            <div class="row g-0">
-                                <div class="col-6 border-end p-3">
-                                    <div class="small fw-bold text-muted mb-1">Check-in</div>
-                                    <input type="date" id="check-in" value="{{ date('Y-m-d') }}" class="form-control custom-date-input border-0 shadow-none" />
+                        <!-- Form fields (same as before) -->
+                        <div class="border rounded-3 mb-4 overflow-hidden">
+                            <!-- Duration Selector -->
+                            <div class="p-3 bg-light">
+                                <label for="month-count" class="form-label fw-bold text-uppercase small text-dark mb-2">Select Duration</label>
+                                <select id="month-count" name="duration" class="form-select custom-select shadow-none">
+                                    <option value="1">1 Month</option>
+                                    <option value="2">2 Months</option>
+                                    <option value="3">3 Months</option>
+                                    <option value="4">4 Months</option>
+                                    <option value="6">6 Months</option>
+                                    <option value="12">12 Months</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Date Selection -->
+                            <div class="card mb-0 border-0 rounded-0">
+                                <div class="row g-0">
+                                    <div class="col-6 border-end p-3">
+                                        <div class="small fw-bold text-muted mb-1">Check-in</div>
+                                        <input type="date" id="check-in" name="check_in" value="{{ date('Y-m-d') }}" 
+                                            class="form-control custom-date-input border-0 shadow-none" required />
+                                    </div>
+                                    <div class="col-6 p-3">
+                                        <div class="small fw-bold text-muted mb-1" style="margin-right: 10px;">Check-out</div>
+                                        <input type="date" id="check-out" name="check_out" 
+                                            class="form-control custom-date-input-right border-0 shadow-none" readonly required />
+                                    </div>
                                 </div>
-                                <div class="col-6 p-3">
-                                    <div class="small fw-bold text-muted mb-1" style="margin-right: 10px;">Check-out</div>
-                                    <input type="date" id="check-out" class="form-control custom-date-input-right border-0 shadow-none" readonly />
+                            </div>
+                            
+                            <!-- Guest Selector -->
+                            <div class="border-top p-3" id="guest-selector">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="small fw-bold text-muted">Guests</div>
+                                        <div class="text-dark"><span id="guest-count">1</span> <span id="guest-text">guest</span></div>
+                                        <input type="hidden" id="guest-input" name="guests" value="1">
+                                    </div>
+                                    <i class="bi bi-chevron-down" id="toggle-dropdown"></i>
+                                </div>
+                            </div>
+                            <div class="border-top p-3" id="guest-dropdown" style="display: none;">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="fw-bold">Guests</div>
+                                    <div class="d-flex align-items-center">
+                                        <button type="button" class="btn btn-outline-secondary me-2" id="decrease-guests" disabled>
+                                            <i class="bi bi-dash"></i>
+                                        </button>
+                                        <span id="guest-display" class="fw-bold mx-2">1</span>
+                                        <button type="button" class="btn btn-outline-secondary ms-2" id="increase-guests">
+                                            <i class="bi bi-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Guest Selector -->
-                        <div class="border-top p-3" id="guest-selector">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <div class="small fw-bold text-muted">Guests</div>
-                                    <div class="text-dark"><span id="guest-count">1</span> <span id="guest-text">guest</span></div>
-                                </div>
-                                <i class="bi bi-chevron-down" id="toggle-dropdown"></i>
+
+                        <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}">
+
+                        <!-- Modified Reserve Button with click handler -->
+                        <button type="button" class="btn btn-danger w-100 mb-3 py-2 fw-bold" id="reserve-btn">
+                            Reserve Now
+                        </button>
+                        <p class="text-center text-muted small mb-4">You won't be charged yet</p>
+
+                        <div class="bg-light p-3 rounded">
+                            <!-- Pricing summary (same as before) -->
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="text-muted">रु{{ number_format($property->price_per_month) }} x <span id="duration-text">1</span> month</div>
+                                <div>रु<span id="base-price">{{ number_format($property->price_per_month) }}</span></div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="text-muted">Cleaning fee</div>
+                                <div>रु200</div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="text-muted">Service fee</div>
+                                <div>रु300</div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="text-muted">Guests</div>
+                                <div><span id="guest-summary">1</span></div>
+                            </div>
+                            <hr class="my-3">
+                            <div class="d-flex justify-content-between fw-bold">
+                                <div>Total before taxes</div>
+                                <div class="text-danger">रु<span id="total-price">{{ number_format($property->price_per_month + 500) }}</span></div>
                             </div>
                         </div>
-                        <div class="border-top p-3" id="guest-dropdown" style="display: none;">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="fw-bold">Guests</div>
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-outline-secondary me-2" id="decrease-guests" disabled>
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                    <span id="guest-display" class="fw-bold mx-2">1</span>
-                                    <button class="btn btn-outline-secondary ms-2" id="increase-guests">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-danger w-100 mb-3 py-2 fw-bold">
-                        Reserve Now
-                    </button>
-                    <p class="text-center text-muted small mb-4">You won't be charged yet</p>
-
-                    <div class="bg-light p-3 rounded">
-                        <div class="d-flex justify-content-between mb-2">
-                            <div class="text-muted">रु{{number_format($property->price_per_month)}} x <span id="duration-text">1</span> month</div>
-                            <div>रु<span id="base-price">{{number_format($property->price_per_month)}}</span></div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <div class="text-muted">Cleaning fee</div>
-                            <div>रु200</div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <div class="text-muted">Service fee</div>
-                            <div>रु300</div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <div class="text-muted">Guests</div>
-                            <div><span id="guest-summary">1</span></div>
-                        </div>
-                        <hr class="my-3">
-                        <div class="d-flex justify-content-between fw-bold">
-                            <div>Total before taxes</div>
-                            <div class="text-danger">रु<span id="total-price">{{number_format($property->price_per_month + 500)}}</span></div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 
@@ -272,6 +284,51 @@
         Show all reviews <i class="bi bi-arrow-right ms-2"></i>
     </button>
 </div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="successModalLabel">Reservation Successful</h5>
+          <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close" disabled id="headerCloseBtn"></button>
+        </div>
+        <div class="modal-body text-center">
+          <i class="bi bi-check-circle-fill display-4 text-success mb-3"></i>
+          <p class="fw-bold">Your reservation has been placed successfully!</p>
+        </div>
+        <div class="modal-footer">
+          <button id="closeModalBtn" type="button" class="btn btn-outline-success" data-bs-dismiss="modal" disabled>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <!-- Script -->
+  <script>
+    document.getElementById("reserve-btn").addEventListener("click", function () {
+      var myModal = new bootstrap.Modal(document.getElementById('successModal'), {
+        keyboard: false,
+        backdrop: 'static'
+      });
+  
+      // Disable close buttons initially
+      document.getElementById("closeModalBtn").disabled = true;
+      document.getElementById("headerCloseBtn").disabled = true;
+  
+      // Show the modal
+      myModal.show();
+  
+      // Enable close buttons and hide modal after 7 seconds
+      setTimeout(function () {
+        document.getElementById("closeModalBtn").disabled = false;
+        document.getElementById("headerCloseBtn").disabled = false;
+        myModal.hide(); // Optional: Remove this if you want user to close it manually
+      }, 7000); // 7000ms = 7 seconds
+    });
+  </script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -315,9 +372,6 @@
             }
         }
         
-
-
-
         function updatePricing(months, guestsCount) {
             const base = pricePerMonth * months * guestsCount;
             const total = base + cleaningFee + serviceFee;
@@ -360,13 +414,15 @@
             }
         });
     
-        // function updateGuestDisplay() {
-        //     document.getElementById('guest-summary').textContent = guests;
-        //     guestDisplay.textContent = guests;
-        //     guestCount.textContent = guests;
-        //     guestText.textContent = guests === 1 ? 'guest' : 'guests';
-        //     decreaseBtn.disabled = guests <= 1;
-        // }
+        document.getElementById('reserve-btn').addEventListener('click', function() {
+        @if(Auth::guard('account')->check())
+            // If logged in, submit the form
+            document.getElementById('rental-request-form').submit();
+        @else
+            // If not logged in, redirect to login with return URL
+            window.location.href = "{{ route('login') }}?redirect={{ urlencode(url()->current()) }}";
+        @endif
+    });
 
         function updateGuestDisplay() {
             document.getElementById('guest-summary').textContent = guests;
@@ -406,9 +462,6 @@
                 guests: guests,
                 total_price: total
             };
-    
-            console.log('Booking data:', bookingData);
-            alert('Reservation request sent!');
         });
     
         if (showPhotosBtn) {

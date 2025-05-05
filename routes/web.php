@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyRentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -115,4 +116,21 @@ Route::controller(AccountController::class)->group(function () {
         Route::put('/property_update/{id}', 'property_update')->name('property_update');
         Route::delete('/property_destroy/{id}', 'property_destroy')->name('property_destroy');
     });
-});
+    });
+    
+    Route::middleware('auth:account')->controller(PropertyRentController::class)->group(function () {
+        // Rental Requests
+        Route::prefix('rental-requests')->name('rental-requests.')->group(function () {
+            Route::post('/', 'storeRentalRequest')->name('store');
+            Route::get('/', 'indexRentalRequests')->name('index');
+            Route::put('/{id}', 'updateRentalRequest')->name('update');
+            Route::delete('/{id}', 'destroyRentalRequest')->name('destroy');
+        });
+    
+        // My rental requests (for both buyers and sellers)
+        Route::get('/my-rental-requests', 'myRentalRequests')->name('my-rental-requests');
+    
+        // Payment processing
+        Route::post('/process-payment', 'processPayment')->name('process-payment');
+    });
+    
