@@ -15,7 +15,6 @@ class PropertyRentController extends Controller
      */
     public function storeRentalRequest(Request $request)
     {
-        // dd($request);
         $validated = $request->validate([
             'property_id' => 'required|exists:properties,id',
             'check_in' => 'required|date',
@@ -24,6 +23,12 @@ class PropertyRentController extends Controller
             'guests' => 'required|integer|min:1',
             'total_price' => 'required|numeric|min:0',
         ]);
+
+        // Check if logged-in account is a buyer
+        $user = Auth::user(); // assuming you're using the `accounts` table for authentication
+        if ($user->user_type !== 'buyer') {
+            return back()->with('error', 'Only buyers can place rental requests.');
+        }
 
         // Check if property is available
         $property = Property::findOrFail($validated['property_id']);

@@ -185,34 +185,39 @@
                                 </div>
                             </div>
                             
-                            <!-- Guest Selector -->
-                            <div class="border-top p-3" id="guest-selector">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <div class="small fw-bold text-muted">Guests</div>
-                                        <div class="text-dark"><span id="guest-count">1</span> <span id="guest-text">guest</span></div>
-                                        <input type="hidden" id="guest-input" name="guests" value="1">
-                                    </div>
-                                    <i class="bi bi-chevron-down" id="toggle-dropdown"></i>
-                                </div>
+                                        <!-- Guest Selector -->
+                <div class="border-top p-3 guest-selector" id="guest-selector" style="cursor: pointer;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small fw-bold text-muted">Guests</div>
+                            <div class="text-dark">
+                                <span id="guest-display-main">1</span>
+                                <span id="guest-text">guest</span>
                             </div>
-                            <div class="border-top p-3" id="guest-dropdown" style="display: none;">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="fw-bold">Guests</div>
-                                    <div class="d-flex align-items-center">
-                                        <button type="button" class="btn btn-outline-secondary me-2" id="decrease-guests" disabled>
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <span id="guest-display" class="fw-bold mx-2">1</span>
-                                        <button type="button" class="btn btn-outline-secondary ms-2" id="increase-guests">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <input type="hidden" id="guest-input" name="guests" value="1">
                         </div>
+                        <i class="bi bi-chevron-down" id="toggle-dropdown"></i>
+                    </div>
+                </div>
 
-                        <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}">
+                <!-- Guest Dropdown -->
+                <div class="border-top p-3" id="guest-dropdown" style="display: none;">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="fw-bold">Guests</div>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-outline-secondary me-2" id="decrease-guests" disabled>
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <span id="guest-count" class="fw-bold mx-2">1</span>
+                            <button type="button" class="btn btn-outline-secondary ms-2" id="increase-guests">
+                                <i class="bi bi-plus"></i>
+                            </button>
+        </div>
+    </div>
+</div>
+
+
+                        <!-- <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}"> -->
 
                         <!-- Modified Reserve Button with click handler -->
                         <button type="button" class="btn btn-danger w-100 mb-3 py-2 fw-bold" id="reserve-btn">
@@ -303,183 +308,196 @@
       </div>
     </div>
   </div>
-  
 
-  
-  <!-- Script -->
-  <script>
-    document.getElementById("reserve-btn").addEventListener("click", function () {
-      var myModal = new bootstrap.Modal(document.getElementById('successModal'), {
-        keyboard: false,
-        backdrop: 'static'
-      });
-  
-      // Disable close buttons initially
-      document.getElementById("closeModalBtn").disabled = true;
-      document.getElementById("headerCloseBtn").disabled = true;
-  
-      // Show the modal
-      myModal.show();
-  
-      // Enable close buttons and hide modal after 7 seconds
-      setTimeout(function () {
-        document.getElementById("closeModalBtn").disabled = false;
-        document.getElementById("headerCloseBtn").disabled = false;
-        myModal.hide(); // Optional: Remove this if you want user to close it manually
-      }, 7000); // 7000ms = 7 seconds
+  @if(session('error'))
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {
+      keyboard: false,
+      backdrop: 'static'
     });
-  </script>
+
+    document.getElementById("errorCloseModalBtn").disabled = true;
+    document.getElementById("errorHeaderCloseBtn").disabled = true;
+
+    errorModal.show();
+
+    setTimeout(function () {
+      document.getElementById("errorCloseModalBtn").disabled = false;
+      document.getElementById("errorHeaderCloseBtn").disabled = false;
+      errorModal.hide(); // Optional: remove this if you want manual close only
+    }, 3000);
+  });
+</script>
+@endif
+
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="errorModalLabel">Reservation Error</h5>
+        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close" disabled id="errorHeaderCloseBtn"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="bi bi-x-circle-fill display-4 text-danger mb-3"></i>
+        <p class="fw-bold">{{ session('error') }}</p>
+      </div>
+      <div class="modal-footer">
+        <button id="errorCloseModalBtn" type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" disabled>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Script -->
+  @if(session('success'))
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var myModal = new bootstrap.Modal(document.getElementById('successModal'), {
+            keyboard: false,
+            backdrop: 'static'
+        });
+
+        // Disable close buttons initially
+        document.getElementById("closeModalBtn").disabled = true;
+        document.getElementById("headerCloseBtn").disabled = true;
+
+        // Show modal
+        myModal.show();
+
+        // Enable buttons and optionally hide modal after 7 seconds
+        setTimeout(function () {
+            document.getElementById("closeModalBtn").disabled = false;
+            document.getElementById("headerCloseBtn").disabled = false;
+            myModal.hide(); // Optional
+        }, 3000);
+    });
+</script>
+@endif
+
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Elements
-        const checkInInput = document.getElementById('check-in');
-        const checkOutInput = document.getElementById('check-out');
-        const monthCountSelect = document.getElementById('month-count');
-        const guestSelector = document.getElementById('guest-selector');
-        const guestDropdown = document.getElementById('guest-dropdown');
-        const toggleDropdown = document.getElementById('toggle-dropdown');
-        const decreaseBtn = document.getElementById('decrease-guests');
-        const increaseBtn = document.getElementById('increase-guests');
-        const guestDisplay = document.getElementById('guest-display');
-        const guestCount = document.getElementById('guest-count');
-        const guestText = document.getElementById('guest-text');
-        const durationText = document.getElementById('duration-text');
-        const basePrice = document.getElementById('base-price');
-        const totalPrice = document.getElementById('total-price');
-        const reserveBtn = document.querySelector('.btn-danger');
-        const showPhotosBtn = document.querySelector('.show-photos-btn');
-        const maxGuests = {{$property->guest}};
+document.addEventListener("DOMContentLoaded", function () {
+    let guestCount = 1;
+    const maxGuests = {{ $property->guest }}; // Get max number of guests from the database
+    let duration = 1; // Default duration is 1 month
 
-        
+    const basePrice = {{ $property->price_per_month }}; // The price per month from your property data
+    const cleaningFee = 200; // Fixed cleaning fee
+    const serviceFee = 300;  // Fixed service fee
 
-        
-        // Initial values
-        let guests = 1;
-        const pricePerMonth = {{$property->price_per_month}};
-        const cleaningFee = 200;
-        const serviceFee = 300;
-        
-        function updateCheckoutDate() {
-            const checkInDate = new Date(checkInInput.value);
-            const monthsToAdd = parseInt(monthCountSelect.value);
-            
-            if (!isNaN(checkInDate.getTime())) {
-                const checkOutDate = new Date(checkInDate);
-                checkOutDate.setMonth(checkOutDate.getMonth() + monthsToAdd);
-                checkOutInput.value = checkOutDate.toISOString().split('T')[0];
-                updatePricing(monthsToAdd, guests);
-            }
-        }
-        
-        function updatePricing(months, guestsCount) {
-            const base = pricePerMonth * months * guestsCount;
-            const total = base + cleaningFee + serviceFee;
-            
-            durationText.textContent = months;
-            basePrice.textContent = base.toLocaleString();
-            totalPrice.textContent = total.toLocaleString();
-        }
-    
-        // Dropdown toggle
-        guestSelector.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isVisible = guestDropdown.style.display === 'block';
-            guestDropdown.style.display = isVisible ? 'none' : 'block';
-            toggleDropdown.classList.toggle('bi-chevron-down', isVisible);
-            toggleDropdown.classList.toggle('bi-chevron-up', !isVisible);
-        });
-    
-        document.addEventListener('click', function() {
-            guestDropdown.style.display = 'none';
-            toggleDropdown.classList.add('bi-chevron-down');
-            toggleDropdown.classList.remove('bi-chevron-up');
-        });
-    
-        guestDropdown.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    
-        increaseBtn.addEventListener('click', function() {
-            guests = guests + 1;
+    const guestCountSpan = document.getElementById("guest-count");
+    const guestDisplayMain = document.getElementById("guest-display-main");
+    const guestText = document.getElementById("guest-text");
+    const guestInput = document.getElementById("guest-input");
+    const decreaseBtn = document.getElementById("decrease-guests");
+    const increaseBtn = document.getElementById("increase-guests");
+    const totalPrice = document.getElementById("total-price");
+    const guestSummary = document.getElementById("guest-summary");
+    const monthCountSelect = document.getElementById("month-count");
+    const durationText = document.getElementById("duration-text");
+    const basePriceElement = document.getElementById("base-price");
+    const checkInInput = document.getElementById("check-in");
+    const checkOutInput = document.getElementById("check-out");
+
+    // Event listeners for guest count
+    increaseBtn.addEventListener("click", function () {
+        if (guestCount < maxGuests) {
+            guestCount++;
             updateGuestDisplay();
-            updateCheckoutDate();
-        });
-    
-        decreaseBtn.addEventListener('click', function() {
-            if (guests > 1) {
-                guests = guests - 1;
-                updateGuestDisplay();
-                updateCheckoutDate();
-            }
-        });
-    
-        document.getElementById('reserve-btn').addEventListener('click', function() {
-        @if(Auth::guard('account')->check())
-            // If logged in, submit the form
-            document.getElementById('rental-request-form').submit();
-        @else
-            // If not logged in, redirect to login with return URL
-            window.location.href = "{{ route('login') }}?redirect={{ urlencode(url()->current()) }}";
-        @endif
+            updateTotalPrice();
+        }
     });
 
-        function updateGuestDisplay() {
-            document.getElementById('guest-summary').textContent = guests;
-            guestDisplay.textContent = guests;
-            guestCount.textContent = guests;
-            guestText.textContent = guests === 1 ? 'guest' : 'guests';
-            
-            decreaseBtn.disabled = guests <= 1;
-            increaseBtn.disabled = guests >= maxGuests;
+    decreaseBtn.addEventListener("click", function () {
+        if (guestCount > 1) {
+            guestCount--;
+            updateGuestDisplay();
+            updateTotalPrice();
         }
+    });
 
-        increaseBtn.addEventListener('click', function() {
-            if (guests < maxGuests) {
-                guests = guests + 1;
-                updateGuestDisplay();
-                updateCheckoutDate();
-            }
-        });
-
-        reserveBtn.addEventListener('click', function() {
-            const checkInDate = checkInInput.value;
-            const checkOutDate = checkOutInput.value;
-            const duration = parseInt(monthCountSelect.value);
-    
-            if (!checkInDate || !checkOutDate) {
-                alert('Please select check-in and check-out dates');
-                return;
-            }
-    
-            const total = (pricePerMonth * duration * guests) + cleaningFee + serviceFee;
-    
-            const bookingData = {
-                property_id: {{$property->id}},
-                check_in: checkInDate,
-                check_out: checkOutDate,
-                duration: duration,
-                guests: guests,
-                total_price: total
-            };
-        });
-    
-        if (showPhotosBtn) {
-            showPhotosBtn.addEventListener('click', function() {
-                console.log('Show all photos clicked');
-            });
-        }
-    
-        // Initialize on load
-        updateGuestDisplay();
-        updatePricing(1, guests);
+    // Event listener for duration (month count) change
+    monthCountSelect.addEventListener("change", function () {
+        duration = parseInt(monthCountSelect.value);
+        updatePricingSummary();
+        updateTotalPrice();
         updateCheckoutDate();
-        checkInInput.addEventListener('change', updateCheckoutDate);
-        monthCountSelect.addEventListener('change', function() {
-            updateCheckoutDate();
-        });
     });
-    </script>
+
+    // Event listener for check-in date change
+    checkInInput.addEventListener("change", function () {
+        updateCheckoutDate();
+    });
+
+    // Function to update guest display
+    function updateGuestDisplay() {
+        guestCountSpan.textContent = guestCount;
+        guestDisplayMain.textContent = guestCount;
+        guestInput.value = guestCount;
+        guestText.textContent = guestCount === 1 ? "guest" : "guests";
+        decreaseBtn.disabled = guestCount === 1;
+    }
+
+    // Function to update pricing summary
+    function updatePricingSummary() {
+        // Update duration text and base price
+        durationText.textContent = duration;
+        basePriceElement.textContent = basePrice * duration; // Show price per month * duration as base price
+    }
+
+    // Function to update the total price
+    function updateTotalPrice() {
+        // Calculate the total price based on guest count and selected duration
+        const total = (basePrice * guestCount * duration) + cleaningFee + serviceFee;
+        
+        // Update the total price display
+        totalPrice.textContent = total;
+
+        // Update the guest summary in the pricing section
+        guestSummary.textContent = guestCount;
+
+        // Update the base price display for each month
+        basePriceElement.textContent = basePrice * duration;
+    }
+
+    // Function to update the checkout date based on check-in date and duration
+    function updateCheckoutDate() {
+        const checkInDate = new Date(checkInInput.value);
+        const duration = parseInt(monthCountSelect.value); // Get the selected duration in months
+
+        if (!isNaN(checkInDate.getTime()) && duration > 0) {
+            // Add months to the check-in date
+            checkInDate.setMonth(checkInDate.getMonth() + duration);
+
+            // Format the new checkout date
+            const year = checkInDate.getFullYear();
+            const month = String(checkInDate.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+            const day = String(checkInDate.getDate()).padStart(2, '0');
+
+            // Set the checkout date input value
+            checkOutInput.value = `${year}-${month}-${day}`;
+        }
+    }
+
+    // Toggle dropdown for guest selection
+    document.getElementById("guest-selector").addEventListener("click", function () {
+        const dropdown = document.getElementById("guest-dropdown");
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    });
+
+    // Initial price update
+    updatePricingSummary();
+    updateTotalPrice();
+    updateCheckoutDate();
+});
+</script>
+
+
+
     
 
 @include('vadama.layouts.footer')
