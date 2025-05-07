@@ -181,18 +181,6 @@
       </div>
     </div>
     
-
-    <!-- advertising secton -->
-    <div class="hero-container mt-8">
-        <div class="hero-content">
-            <div class="category-text">Unique Homes</div>
-            <div class="headline-text">$79 Million Aspen Megamansion With Wild Array of Amenities Including Indoor Pool and 4 Bars Is the Week's Most Expensive Home</div>
-            <div>
-                <button class="btn read-button">Read Article</button>
-            </div>
-        </div>
-    </div>
-
 <!-- Rent House Section -->
 <div class="container mt-4">
   <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
@@ -323,7 +311,17 @@
     @endforelse
   </div>
 </div>
-
+<!-- advertising secton -->
+<div class="hero-container mt-8">
+        <div class="hero-content">
+            <div class="category-text">Unique Homes</div>
+            <div class="headline-text">$79 Million Aspen Megamansion With Wild Array of Amenities Including Indoor Pool and 4 Bars Is the Week's Most Expensive Home</div>
+            <div>
+                <button class="btn read-button">Read Article</button>
+            </div>
+        </div>
+    </div>
+    
 @include('vadama.layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
