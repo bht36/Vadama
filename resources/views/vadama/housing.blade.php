@@ -217,7 +217,7 @@
 </div>
 
 
-                        <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}">
+                        <!-- <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}"> -->
 
                         <!-- Modified Reserve Button with click handler -->
                         <button type="button" class="btn btn-danger w-100 mb-3 py-2 fw-bold" id="reserve-btn">
@@ -380,7 +380,7 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
     let guestCount = 1;
     const maxGuests = 20; // Optional: set a maximum number of guests
     let duration = 1; // Default duration is 1 month
@@ -398,6 +398,8 @@
     const totalPrice = document.getElementById("total-price");
     const guestSummary = document.getElementById("guest-summary");
     const monthCountSelect = document.getElementById("month-count");
+    const durationText = document.getElementById("duration-text");
+    const basePriceElement = document.getElementById("base-price");
 
     // Event listeners for guest count
     increaseBtn.addEventListener("click", function () {
@@ -419,6 +421,7 @@
     // Event listener for duration (month count) change
     monthCountSelect.addEventListener("change", function () {
         duration = parseInt(monthCountSelect.value);
+        updatePricingSummary();
         updateTotalPrice();
     });
 
@@ -430,6 +433,12 @@
         decreaseBtn.disabled = guestCount === 1;
     }
 
+    function updatePricingSummary() {
+        // Update duration text and base price
+        durationText.textContent = duration;
+        basePriceElement.textContent = basePrice * duration; // Show price per month * duration as base price
+    }
+
     function updateTotalPrice() {
         // Calculate the total price based on guest count and selected duration
         const total = (basePrice * guestCount * duration) + cleaningFee + serviceFee;
@@ -439,6 +448,9 @@
 
         // Update the guest summary in the pricing section
         guestSummary.textContent = guestCount;
+
+        // Update the base price display for each month
+        basePriceElement.textContent = basePrice * duration;
     }
 
     // Toggle dropdown
@@ -448,6 +460,7 @@
     });
 
     // Initial price update
+    updatePricingSummary();
     updateTotalPrice();
 });
 
