@@ -73,4 +73,8 @@ class FrontendController extends Controller
 
     return view('vadama.housing', compact('property', 'amenitiesList', 'selectedAmenities'));
 }
+public function searchlist(Request $request)
+    {
+        return view("vadama.searchlist");
+    }
 }
