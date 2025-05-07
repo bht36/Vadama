@@ -152,6 +152,8 @@
                     <!-- Always show the form (for both logged-in and guest users) -->
                     <form id="rental-request-form" method="POST" action="{{ route('rental-requests.store') }}">
                         @csrf
+                        <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}">
+                        <!-- <input type="hidden" name="user_id" value="{{ Auth::id() }}">                                                                             -->
                         <input type="hidden" name="property_id" value="{{ $property->id }}">
                         
                         <!-- Form fields (same as before) -->
@@ -220,7 +222,7 @@
                         <!-- <input type="hidden" id="total-price-input" name="total_price" value="{{ $property->price_per_month + 500 }}"> -->
 
                         <!-- Modified Reserve Button with click handler -->
-                        <button type="button" class="btn btn-danger w-100 mb-3 py-2 fw-bold" id="reserve-btn">
+                        <button type="submit" class="btn btn-danger w-100 mb-3 py-2 fw-bold" id="reserve-btn">
                             Reserve Now
                         </button>
                         <p class="text-center text-muted small mb-4">You won't be charged yet</p>
@@ -462,6 +464,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Update the base price display for each month
         basePriceElement.textContent = basePrice * duration;
+ 
+        // Update the hidden input value sent to the controller
+        document.getElementById("total-price-input").value = total;
     }
 
     // Function to update the checkout date based on check-in date and duration

@@ -17,7 +17,12 @@ class RentalRequest extends Model
         'tenant_id',
         'property_id',
         'status',
-    ];
+        'total_price',
+        'check_in',
+        'check_out',
+        'duration',
+        'guests',
+        ];
 
     // Define the relationship with the Tenant (Account) model
     public function tenant()

@@ -37,7 +37,7 @@ class PropertyRentController extends Controller
         }
 
         // Create the rental request
-        $rentalRequest = RentalRequest::create([
+        RentalRequest::create([
             'tenant_id' => Auth::id(),
             'property_id' => $validated['property_id'],
             'check_in' => $validated['check_in'],
