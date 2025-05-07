@@ -82,4 +82,22 @@ public function searchlist(Request $request)
     return view("vadama.searchlist", compact('search', 'properties'));
 }
 
+public function housingList(Request $request)
+{
+    $sort = $request->query('sort');
+
+    $query = Property::query();
+
+    if ($sort == 'high') {
+        $query->orderBy('price_per_month', 'desc');
+    } elseif ($sort == 'low') {
+        $query->orderBy('price_per_month', 'asc');
+    }
+
+    $properties = $query->get();
+
+    return view('vadama.searchlist', compact('properties', 'sort'));
+}
+
+
 }
