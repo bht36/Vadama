@@ -380,9 +380,9 @@
 
 
 <script>
- document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     let guestCount = 1;
-    const maxGuests = 20; // Optional: set a maximum number of guests
+    const maxGuests = {{ $property->guest }}; // Get max number of guests from the database
     let duration = 1; // Default duration is 1 month
 
     const basePrice = {{ $property->price_per_month }}; // The price per month from your property data
