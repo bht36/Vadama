@@ -74,7 +74,12 @@ class FrontendController extends Controller
     return view('vadama.housing', compact('property', 'amenitiesList', 'selectedAmenities'));
 }
 public function searchlist(Request $request)
-    {
-        return view("vadama.searchlist");
-    }
+{
+    $search = $request->input('search');
+
+    $properties = Property::where('title', 'like', '%' . $search . '%')->get();
+
+    return view("vadama.searchlist", compact('search', 'properties'));
+}
+
 }
