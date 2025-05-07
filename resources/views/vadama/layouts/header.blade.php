@@ -121,6 +121,11 @@
                             <i class="fas fa-home mr-2"></i> Rental Listings
                         </a>
                     @endif
+                    @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'seller')
+                    <a class="dropdown-item" href="{{ route('view_requestproperty') }}">
+                        <i class="fas fa-hand-paper mr-2"></i> Request Property
+                    </a>
+                    @endif
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout_acc') }}">
                         @csrf
