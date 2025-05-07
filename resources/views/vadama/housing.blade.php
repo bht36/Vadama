@@ -400,6 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const monthCountSelect = document.getElementById("month-count");
     const durationText = document.getElementById("duration-text");
     const basePriceElement = document.getElementById("base-price");
+    const checkInInput = document.getElementById("check-in");
+    const checkOutInput = document.getElementById("check-out");
 
     // Event listeners for guest count
     increaseBtn.addEventListener("click", function () {
@@ -423,8 +425,15 @@ document.addEventListener("DOMContentLoaded", function () {
         duration = parseInt(monthCountSelect.value);
         updatePricingSummary();
         updateTotalPrice();
+        updateCheckoutDate();
     });
 
+    // Event listener for check-in date change
+    checkInInput.addEventListener("change", function () {
+        updateCheckoutDate();
+    });
+
+    // Function to update guest display
     function updateGuestDisplay() {
         guestCountSpan.textContent = guestCount;
         guestDisplayMain.textContent = guestCount;
@@ -433,12 +442,14 @@ document.addEventListener("DOMContentLoaded", function () {
         decreaseBtn.disabled = guestCount === 1;
     }
 
+    // Function to update pricing summary
     function updatePricingSummary() {
         // Update duration text and base price
         durationText.textContent = duration;
         basePriceElement.textContent = basePrice * duration; // Show price per month * duration as base price
     }
 
+    // Function to update the total price
     function updateTotalPrice() {
         // Calculate the total price based on guest count and selected duration
         const total = (basePrice * guestCount * duration) + cleaningFee + serviceFee;
@@ -453,7 +464,26 @@ document.addEventListener("DOMContentLoaded", function () {
         basePriceElement.textContent = basePrice * duration;
     }
 
-    // Toggle dropdown
+    // Function to update the checkout date based on check-in date and duration
+    function updateCheckoutDate() {
+        const checkInDate = new Date(checkInInput.value);
+        const duration = parseInt(monthCountSelect.value); // Get the selected duration in months
+
+        if (!isNaN(checkInDate.getTime()) && duration > 0) {
+            // Add months to the check-in date
+            checkInDate.setMonth(checkInDate.getMonth() + duration);
+
+            // Format the new checkout date
+            const year = checkInDate.getFullYear();
+            const month = String(checkInDate.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+            const day = String(checkInDate.getDate()).padStart(2, '0');
+
+            // Set the checkout date input value
+            checkOutInput.value = `${year}-${month}-${day}`;
+        }
+    }
+
+    // Toggle dropdown for guest selection
     document.getElementById("guest-selector").addEventListener("click", function () {
         const dropdown = document.getElementById("guest-dropdown");
         dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
@@ -462,9 +492,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial price update
     updatePricingSummary();
     updateTotalPrice();
+    updateCheckoutDate();
 });
-
 </script>
+
 
 
     
