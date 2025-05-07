@@ -159,7 +159,7 @@
       <!-- Fixed Content Overlay -->
       <div class="slider-content px-5"> <!-- Add padding for better view on large width -->
         <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
-       <!-- 🔍 Home Page Search Bar (functional) -->
+       <!--  Home Page Search Bar (functional) -->
       <form method="GET" action="{{ route('searchlist') }}">
           <div class="search-container position-relative" style="width: 300%;">
               <input type="text" name="search" class="form-control rounded-pill py-3 ps-4 pe-5 w-100"

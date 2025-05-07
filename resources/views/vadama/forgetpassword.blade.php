@@ -40,7 +40,7 @@
       margin-left: 100px;
       transform: translate(-50%, -50%);
       width: 500px;
-      height: 400px;
+      height: 350px;
       background: #ccc;
       border-radius: 10px;
     }
@@ -86,8 +86,6 @@
     .text-center p {
       font-size: 1rem;
     }
-
-    /* Padding and margin adjustments for text */
     .text-center p a {
       text-decoration: none;
       font-weight: bold;
