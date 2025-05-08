@@ -92,11 +92,12 @@
                                             <th>Price</th>
                                             <th>Type</th>
                                             <th>Owner</th>
+                                            <th>Payment</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-@forelse($approvedRequests as $key => $property)
+                                    @forelse($approvedRequests as $key => $property)
 <tr>
     <td>{{ $key + 1 }}</td>
     <td>
@@ -116,25 +117,44 @@
     <td>{{ $property->total_price ?? 'N/A' }}</td>
     <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
     <td>{{ $property->created_at->format('d M Y') }}</td>
+    <td>{{ $property->payment ?? 'N/A' }}</td>
     <td>
-        <form method="POST" action="">
-            @csrf
-            <button type="submit" class="btn btn-success btn-sm">
-                Pay with eSewa
-            </button>
-        </form>
+    <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
+    <input type="hidden" name="amount" value="{{ $property->total_price }}">
+    <input type="hidden" name="tax_amount" value="0">
+    <input type="hidden" name="total_amount" value="{{ $property->total_price }}">
+    <input type="hidden" name="transaction_uuid" value="{{ $property->uuid }}">
+    <input type="hidden" name="product_code" value="EPAYTEST">
+    <input type="hidden" name="product_service_charge" value="0">
+    <input type="hidden" name="product_delivery_charge" value="0">
+    <input type="hidden" name="success_url" value="{{ route('payment-success', ['request_id' => $property->id]) }}">
+    <input type="hidden" name="failure_url" value="{{ route('payment-fail') }}">
+    <input type="hidden" name="signed_field_names" value="{{ $property->signed_field_names }}">
+    <input type="hidden" name="signature" value="{{ $property->signature }}">
+    <button type="submit" class="btn btn-success btn-sm">Pay with eSewa</button>
+</form>
+
+
     </td>
 </tr>
 @empty
-<tr>
-    <td colspan="7" class="text-center">{{ __('No approved requests available') }}</td>
-</tr>
-@endforelse
-</tbody>
 
+    <tr>
+        <td colspan="7" class="text-center">{{ __('No approved requests available') }}</td>
+    </tr>
+    @endforelse
+    </tbody>
 
                                 </table>
                             </div>
+                            @if(session('success'))
+    <script>alert("{{ session('success') }}");</script>
+@endif
+
+@if(session('error'))
+    <script>alert("{{ session('error') }}");</script>
+@endif
+
                             <div class="justify-content-center">
                                 <ul class="pagination pagination-sm">
                                     {{-- {!! $properties->links() !!} --}}

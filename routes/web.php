@@ -134,7 +134,8 @@ Route::controller(AccountController::class)->group(function () {
         // My rental requests (both buyer and seller views)
         Route::get('/my-rental-requests', 'myRentalRequests')->name('my-rental-requests');
         Route::get('/my-confirm-requests', 'myConfirmRequests')->name('my-confirm-requests');
-    
+        Route::get('/payment-success',  'paymentsuccess')->name('payment-success');
+        Route::get('/payment-fail',  'paymentfail')->name('payment-fail');
         // Approve/Reject buttons (note: controller name is corrected here)
         Route::post('/requestapproved/{id}', 'requestapproved')->name('requestapproved');
         Route::post('/requestcancel/{id}', 'requestcancel')->name('requestcancel');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Models\RentalRequest;
 use App\Models\Property;
-use App\Models\Payment;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,41 +55,44 @@ class PropertyRentController extends Controller
     /**
      * Show all rental requests for the authenticated user
      */
-    public function myRentalRequests()
-    {
-        $user = Auth::user();
+    // public function myRentalRequests()
+    // {
+    //     $user = Auth::user();
         
-        // For tenants (buyers) – only pending requests
-        $requestsAsTenant = RentalRequest::with('property.images')
-            ->where('tenant_id', $user->id)
-            ->where('status', 'pending')
-            ->latest()
-            ->get();
+    //     // For tenants (buyers) – only pending requests
+    //     $requestsAsTenant = RentalRequest::with('property.images')
+    //         ->where('tenant_id', $user->id)
+    //         ->where('status', 'pending')
+    //         ->latest()
+    //         ->get();
         
-        // Fetch tenant names for each request
-        foreach ($requestsAsTenant as $request) {
-            $tenant = Account::find($request->tenant_id); // Fetch tenant by ID
-            $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
-        }
+    //     // Fetch tenant names for each request
+    //     foreach ($requestsAsTenant as $request) {
+    //         $tenant = Account::find($request->tenant_id); // Fetch tenant by ID
+    //         $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+    //     }
         
-        // For landlords (sellers) – only pending requests
-        $requestsAsLandlord = RentalRequest::with('tenant')
-            ->where('status', 'pending')
-            ->whereHas('property', function($query) use ($user) {
-                $query->where('account_id', $user->id);
-            })
-            ->latest()
-            ->get();
+    //     // For landlords (sellers) – only pending requests
+    //     $requestsAsLandlord = RentalRequest::with('tenant')
+    //         ->where('status', 'pending')
+    //         ->whereHas('property', function($query) use ($user) {
+    //             $query->where('account_id', $user->id);
+    //         })
+    //         ->latest()
+    //         ->get();
 
-        // Fetch tenant names for landlord requests
-        foreach ($requestsAsLandlord as $request) {
-            $tenant = Account::find($request->tenant_id); // Fetch tenant by ID
-            $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
-        }
+    //     // Fetch tenant names for landlord requests
+    //     foreach ($requestsAsLandlord as $request) {
+    //         $tenant = Account::find($request->tenant_id); // Fetch tenant by ID
+    //         $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+    //     }
         
-        // Return the view with the additional tenant name data
-        return view('vadama.requestproperty', compact('requestsAsTenant', 'requestsAsLandlord'));
-    }
+        
+    //     // Return the view with the additional tenant name data
+    //     return view('vadama.requestproperty', compact('requestsAsTenant', 'requestsAsLandlord'));
+    // }
+
+    
 
     public function requestapproved($id)
     {
@@ -118,82 +121,128 @@ class PropertyRentController extends Controller
         return redirect()->back()->with('success', 'Rental request status updated to rejected.');
     }
 
-    public function myConfirmRequests()
+
+//     public function myRentalRequests()
+// {
+//     $user = Auth::user();
+
+//     // Tenant side
+//     $requestsAsTenant = RentalRequest::with('property.images')
+//         ->where('tenant_id', $user->id)
+//         ->where('status', 'pending')
+//         ->latest()
+//         ->get();
+
+//     foreach ($requestsAsTenant as $request) {
+//         $tenant = Account::find($request->tenant_id);
+//         $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+
+//         $paymentFields = $this->generateEsewaPaymentFields($request);
+//         $request->uuid = $paymentFields['uuid'];
+//         $request->signed_field_names = $paymentFields['signed_field_names'];
+//         $request->signature = $paymentFields['signature'];
+//     }
+
+//     // Landlord side
+//     $requestsAsLandlord = RentalRequest::with('tenant')
+//         ->where('status', 'pending')
+//         ->whereHas('property', function($query) use ($user) {
+//             $query->where('account_id', $user->id);
+//         })
+//         ->latest()
+//         ->get();
+
+//     foreach ($requestsAsLandlord as $request) {
+//         $tenant = Account::find($request->tenant_id);
+//         $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+
+//         $paymentFields = $this->generateEsewaPaymentFields($request);
+//         $request->uuid = $paymentFields['uuid'];
+//         $request->signed_field_names = $paymentFields['signed_field_names'];
+//         $request->signature = $paymentFields['signature'];
+//     }
+//     return view('vadama.confirmrequestpayment', compact('requestsAsTenant', 'requestsAsLandlord'));
+// }
+   
+    public function paymentsuccess(Request $request)
     {
-        $user = Auth::user();
+        // You need a way to identify which rental request to update
+        $rentalRequestId = $request->query('request_id'); // or use session/auth if you pass it differently
 
-        // Show only approved rental requests where the tenant is the current user
-        $approvedRequests = RentalRequest::with(['property.images'])
-            ->where('tenant_id', $user->id)
-            ->where('status', 'approved')
-            ->latest()
-            ->get();
+        $rentalRequest = RentalRequest::find($rentalRequestId);
+        if ($rentalRequest) {
+            $rentalRequest->payment = 'Paid';
+            $rentalRequest->save();
+            return redirect()->back()->with('success', 'Congratulations! Payment successful.');
+        }
 
-        return view('vadama.confirmrequestpayment', compact('approvedRequests'));
+        return redirect()->back()->with('error', 'Rental request not found.');
     }
-    // /**
-    //  * Update rental request status (approve/reject/cancel)
-    //  */
-    // public function updateRentalRequest(Request $request, $id)
-    // {
-    //     $validated = $request->validate([
-    //         'status' => 'required|in:approved,rejected,canceled',
-    //     ]);
-        
-    //     $rentalRequest = RentalRequest::findOrFail($id);
-        
-    //     // Authorization - only owner of property or requester can update
-    //     if ($rentalRequest->tenant_id !== Auth::id() && 
-    //         $rentalRequest->property->account_id !== Auth::id()) {
-    //         abort(403);
-    //     }
-        
-    //     // Update status
-    //     $rentalRequest->update(['status' => $validated['status']]);
-        
-    //     // If approved, update property status
-    //     if ($validated['status'] === 'approved') {
-    //         $rentalRequest->property->update(['status' => 'pending']);
-    //     }
-        
-    //     return back()->with('success', 'Rental request updated successfully!');
-    // }
 
-    // /**
-    //  * Process payment for a rental request
-    //  */
-    // public function processPayment(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'rental_request_id' => 'required|exists:rental_requests,id',
-    //         'payment_method' => 'required|in:esewa,phone_pay,khalti',
-    //         'amount' => 'required|numeric|min:0',
-    //     ]);
-        
-    //     $rentalRequest = RentalRequest::findOrFail($validated['rental_request_id']);
-        
-    //     // Verify user owns this rental request
-    //     if ($rentalRequest->tenant_id !== Auth::id()) {
-    //         abort(403);
-    //     }
-        
-    //     // Create payment record
-    //     $payment = Payment::create([
-    //         'account_id' => Auth::id(),
-    //         'rental_request_id' => $rentalRequest->id,
-    //         'amount' => $validated['amount'],
-    //         'payment_method' => $validated['payment_method'],
-    //         'payment_status' => 'pending',
-    //         'payment_id' => uniqid(), // This would come from payment gateway in real implementation
-    //     ]);
-        
-    //     // Here you would typically integrate with the payment gateway
-    //     // For now, we'll simulate a successful payment
-    //     $payment->update(['payment_status' => 'completed']);
-    //     $rentalRequest->update(['status' => 'approved']);
-    //     $rentalRequest->property->update(['status' => 'rented']);
-        
-    //     return redirect()->route('my-rental-requests')
-    //         ->with('success', 'Payment processed successfully! Rental confirmed.');
-    // }
+    public function paymentfail(Request $request)
+    {
+        return redirect()->back()->with('error', 'Payment failed. Please try again.');
+    }
+
+    public function myConfirmRequests()
+{
+    $user = Auth::user();
+
+    // Fetch approved requests for the tenant
+    $approvedRequests = RentalRequest::with(['property.images'])
+        ->where('tenant_id', $user->id)
+        ->where('status', 'approved')
+        ->latest()
+        ->get();
+
+    foreach ($approvedRequests as $request) {
+        $tenant = Account::find($request->tenant_id);
+        $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+        // Generate eSewa payment fields
+        $paymentFields = $this->generateEsewaPaymentFields($request);
+        $request->uuid = $paymentFields['uuid'];
+        $request->signed_field_names = $paymentFields['signed_field_names'];
+        $request->signature = $paymentFields['signature'];
+    }
+   
+
+    return view('vadama.confirmrequestpayment', compact('approvedRequests'));
+}
+
+private function generateEsewaPaymentFields($rentalRequest)
+{
+    $secretKey = "8gBm/:&EnhH.1/q";
+    $uuid = $this->generateShortUuid(12); // Generate UUID
+    $totalAmount = $rentalRequest->total_price ;
+    $productCode = "EPAYTEST";
+
+    $signedFields = "total_amount,transaction_uuid,product_code";
+
+    $data = "total_amount=$totalAmount,transaction_uuid=$uuid,product_code=$productCode";
+
+    $signature = base64_encode(hash_hmac('sha256', $data, $secretKey, true));
+
+    return [
+        'uuid' => $uuid,
+        'signed_field_names' => $signedFields,
+        'signature' => $signature
+    ];
+    
+}
+
+
+private function generateShortUuid($length = 12)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    return $randomString;
+}
+
+
 }
