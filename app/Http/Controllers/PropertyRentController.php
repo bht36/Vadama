@@ -83,14 +83,13 @@ class PropertyRentController extends Controller
 
         // Fetch tenant names for landlord requests
         foreach ($requestsAsLandlord as $request) {
-            $tenant = \App\Models\Account::find($request->tenant_id); // Fetch tenant by ID
+            $tenant = Account::find($request->tenant_id); // Fetch tenant by ID
             $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
         }
         
         // Return the view with the additional tenant name data
         return view('vadama.requestproperty', compact('requestsAsTenant', 'requestsAsLandlord'));
     }
-
 
     public function requestapproved($id)
     {
@@ -119,69 +118,82 @@ class PropertyRentController extends Controller
         return redirect()->back()->with('success', 'Rental request status updated to rejected.');
     }
 
-    /**
-     * Update rental request status (approve/reject/cancel)
-     */
-    public function updateRentalRequest(Request $request, $id)
+    public function myConfirmRequests()
     {
-        $validated = $request->validate([
-            'status' => 'required|in:approved,rejected,canceled',
-        ]);
-        
-        $rentalRequest = RentalRequest::findOrFail($id);
-        
-        // Authorization - only owner of property or requester can update
-        if ($rentalRequest->tenant_id !== Auth::id() && 
-            $rentalRequest->property->account_id !== Auth::id()) {
-            abort(403);
-        }
-        
-        // Update status
-        $rentalRequest->update(['status' => $validated['status']]);
-        
-        // If approved, update property status
-        if ($validated['status'] === 'approved') {
-            $rentalRequest->property->update(['status' => 'pending']);
-        }
-        
-        return back()->with('success', 'Rental request updated successfully!');
-    }
+        $user = Auth::user();
 
-    /**
-     * Process payment for a rental request
-     */
-    public function processPayment(Request $request)
-    {
-        $validated = $request->validate([
-            'rental_request_id' => 'required|exists:rental_requests,id',
-            'payment_method' => 'required|in:esewa,phone_pay,khalti',
-            'amount' => 'required|numeric|min:0',
-        ]);
-        
-        $rentalRequest = RentalRequest::findOrFail($validated['rental_request_id']);
-        
-        // Verify user owns this rental request
-        if ($rentalRequest->tenant_id !== Auth::id()) {
-            abort(403);
-        }
-        
-        // Create payment record
-        $payment = Payment::create([
-            'account_id' => Auth::id(),
-            'rental_request_id' => $rentalRequest->id,
-            'amount' => $validated['amount'],
-            'payment_method' => $validated['payment_method'],
-            'payment_status' => 'pending',
-            'payment_id' => uniqid(), // This would come from payment gateway in real implementation
-        ]);
-        
-        // Here you would typically integrate with the payment gateway
-        // For now, we'll simulate a successful payment
-        $payment->update(['payment_status' => 'completed']);
-        $rentalRequest->update(['status' => 'approved']);
-        $rentalRequest->property->update(['status' => 'rented']);
-        
-        return redirect()->route('my-rental-requests')
-            ->with('success', 'Payment processed successfully! Rental confirmed.');
+        // Show only approved rental requests where the tenant is the current user
+        $approvedRequests = RentalRequest::with(['property.images'])
+            ->where('tenant_id', $user->id)
+            ->where('status', 'approved')
+            ->latest()
+            ->get();
+
+        return view('vadama.confirmrequestpayment', compact('approvedRequests'));
     }
+    // /**
+    //  * Update rental request status (approve/reject/cancel)
+    //  */
+    // public function updateRentalRequest(Request $request, $id)
+    // {
+    //     $validated = $request->validate([
+    //         'status' => 'required|in:approved,rejected,canceled',
+    //     ]);
+        
+    //     $rentalRequest = RentalRequest::findOrFail($id);
+        
+    //     // Authorization - only owner of property or requester can update
+    //     if ($rentalRequest->tenant_id !== Auth::id() && 
+    //         $rentalRequest->property->account_id !== Auth::id()) {
+    //         abort(403);
+    //     }
+        
+    //     // Update status
+    //     $rentalRequest->update(['status' => $validated['status']]);
+        
+    //     // If approved, update property status
+    //     if ($validated['status'] === 'approved') {
+    //         $rentalRequest->property->update(['status' => 'pending']);
+    //     }
+        
+    //     return back()->with('success', 'Rental request updated successfully!');
+    // }
+
+    // /**
+    //  * Process payment for a rental request
+    //  */
+    // public function processPayment(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         'rental_request_id' => 'required|exists:rental_requests,id',
+    //         'payment_method' => 'required|in:esewa,phone_pay,khalti',
+    //         'amount' => 'required|numeric|min:0',
+    //     ]);
+        
+    //     $rentalRequest = RentalRequest::findOrFail($validated['rental_request_id']);
+        
+    //     // Verify user owns this rental request
+    //     if ($rentalRequest->tenant_id !== Auth::id()) {
+    //         abort(403);
+    //     }
+        
+    //     // Create payment record
+    //     $payment = Payment::create([
+    //         'account_id' => Auth::id(),
+    //         'rental_request_id' => $rentalRequest->id,
+    //         'amount' => $validated['amount'],
+    //         'payment_method' => $validated['payment_method'],
+    //         'payment_status' => 'pending',
+    //         'payment_id' => uniqid(), // This would come from payment gateway in real implementation
+    //     ]);
+        
+    //     // Here you would typically integrate with the payment gateway
+    //     // For now, we'll simulate a successful payment
+    //     $payment->update(['payment_status' => 'completed']);
+    //     $rentalRequest->update(['status' => 'approved']);
+    //     $rentalRequest->property->update(['status' => 'rented']);
+        
+    //     return redirect()->route('my-rental-requests')
+    //         ->with('success', 'Payment processed successfully! Rental confirmed.');
+    // }
 }

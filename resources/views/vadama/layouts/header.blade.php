@@ -126,6 +126,11 @@
                         <i class="fas fa-hand-paper mr-2"></i> Request Property
                     </a>
                     @endif
+                    @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'buyer')
+                    <a class="dropdown-item" href="{{ route('my-confirm-requests') }}">
+                        <i class="fas fa-hand-paper mr-2"></i> Confirm Property
+                    </a>
+                    @endif
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout_acc') }}">
                         @csrf
