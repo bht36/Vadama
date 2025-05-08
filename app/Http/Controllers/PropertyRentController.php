@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\RentalRequest;
 use App\Models\Property;
 use App\Models\Payment;
@@ -55,42 +56,68 @@ class PropertyRentController extends Controller
      * Show all rental requests for the authenticated user
      */
     public function myRentalRequests()
-{
-    $user = Auth::user();
-    
-    // For tenants (buyers) – only pending requests
-    $requestsAsTenant = RentalRequest::with('property.images')
-        ->where('tenant_id', $user->id)
-        ->where('status', 'pending')
-        ->latest()
-        ->get();
-    
-    // Fetch tenant names for each request
-    foreach ($requestsAsTenant as $request) {
-        $tenant = \App\Models\Account::find($request->tenant_id); // Fetch tenant by ID
-        $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+    {
+        $user = Auth::user();
+        
+        // For tenants (buyers) – only pending requests
+        $requestsAsTenant = RentalRequest::with('property.images')
+            ->where('tenant_id', $user->id)
+            ->where('status', 'pending')
+            ->latest()
+            ->get();
+        
+        // Fetch tenant names for each request
+        foreach ($requestsAsTenant as $request) {
+            $tenant = Account::find($request->tenant_id); // Fetch tenant by ID
+            $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+        }
+        
+        // For landlords (sellers) – only pending requests
+        $requestsAsLandlord = RentalRequest::with('tenant')
+            ->where('status', 'pending')
+            ->whereHas('property', function($query) use ($user) {
+                $query->where('account_id', $user->id);
+            })
+            ->latest()
+            ->get();
+
+        // Fetch tenant names for landlord requests
+        foreach ($requestsAsLandlord as $request) {
+            $tenant = \App\Models\Account::find($request->tenant_id); // Fetch tenant by ID
+            $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+        }
+        
+        // Return the view with the additional tenant name data
+        return view('vadama.requestproperty', compact('requestsAsTenant', 'requestsAsLandlord'));
     }
-    
-    // For landlords (sellers) – only pending requests
-    $requestsAsLandlord = RentalRequest::with('tenant')
-        ->where('status', 'pending')
-        ->whereHas('property', function($query) use ($user) {
-            $query->where('account_id', $user->id);
-        })
-        ->latest()
-        ->get();
 
-    // Fetch tenant names for landlord requests
-    foreach ($requestsAsLandlord as $request) {
-        $tenant = \App\Models\Account::find($request->tenant_id); // Fetch tenant by ID
-        $request->tenant_name = $tenant ? $tenant->first_name . ' ' . $tenant->last_name : 'N/A';
+
+    public function requestapproved($id)
+    {
+        $account = Property::find($id);
+        if ($account) {
+            $account->status = 'pending';
+            $account->save();
+        }
+        $rentalRequest = RentalRequest::where('property_id', $id)->first();
+        if ($rentalRequest) {
+            $rentalRequest->status = 'approved';
+            $rentalRequest->save();
+        }
+
+        return redirect()->back()->with('success', 'Account status updated to pending.');
     }
-    
-    // Return the view with the additional tenant name data
-    return view('vadama.requestproperty', compact('requestsAsTenant', 'requestsAsLandlord'));
-}
 
+    public function requestcancel($id)
+    {
+        $rentalRequest = RentalRequest::where('property_id', $id)->first();
+        if ($rentalRequest) {
+            $rentalRequest->status = 'rejected';
+            $rentalRequest->save();
+        }
 
+        return redirect()->back()->with('success', 'Rental request status updated to rejected.');
+    }
 
     /**
      * Update rental request status (approve/reject/cancel)

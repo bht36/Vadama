@@ -121,20 +121,24 @@ Route::controller(AccountController::class)->group(function () {
     });
     
     Route::middleware('auth:account')->controller(PropertyRentController::class)->group(function () {
+    
         // Rental Requests
         Route::prefix('rental-requests')->name('rental-requests.')->group(function () {
             Route::post('/', 'storeRentalRequest')->name('store');
-            // Route::get('/view_requestproperty', 'view_requestproperty')->name('view_requestproperty');
+            // You can uncomment others as needed
             // Route::get('/', 'indexRentalRequests')->name('index');
             // Route::put('/{id}', 'updateRentalRequest')->name('update');
             // Route::delete('/{id}', 'destroyRentalRequest')->name('destroy');
-
         });
     
-        // My rental requests (for both buyers and sellers)
+        // My rental requests (both buyer and seller views)
         Route::get('/my-rental-requests', 'myRentalRequests')->name('my-rental-requests');
     
-        // Payment processing
+        // Approve/Reject buttons (note: controller name is corrected here)
+        Route::post('/requestapproved/{id}', 'requestapproved')->name('requestapproved');
+        Route::post('/requestcancel/{id}', 'requestcancel')->name('requestcancel');
+    
+        // Payments
         Route::post('/process-payment', 'processPayment')->name('process-payment');
     });
     

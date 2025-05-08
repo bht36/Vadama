@@ -123,23 +123,21 @@
         <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
         <td>{{ $property->created_at->format('d M Y') }}</td>
         <td>
-            <div class="d-flex">
-                <form method="POST" action="{{ route('property_destroy', $property->property->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;" data-toggle="tooltip" title="Confirm">
-                        <i class="fas fa-check text-success" style="font-size: 16px; line-height: 32px;"></i>
-                    </button>
-                </form>
+        <div class="d-flex">
+                    <form method="POST" action="{{ route('requestapproved', $property->property->id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px;" data-toggle="tooltip" title="Approve">
+                            <i class="fas fa-check text-success" style="font-size: 16px; line-height: 32px;"></i>
+                        </button>
+                    </form>
 
-                <form method="POST" action="{{ route('property_destroy', $property->property->id) }}" class="ml-2">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </form>
-            </div>
+                    <form method="POST" action="{{ route('requestcancel', $property->property->id) }}" class="ml-2">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Reject">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
         </td>
     </tr>
     @empty
