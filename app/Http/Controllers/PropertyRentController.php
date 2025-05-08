@@ -58,22 +58,25 @@ class PropertyRentController extends Controller
     {
         $user = Auth::user();
         
-        // For tenants (buyers)
+        // For tenants (buyers) – only pending requests
         $requestsAsTenant = RentalRequest::with('property.images')
             ->where('tenant_id', $user->id)
+            ->where('status', 'pending')
             ->latest()
             ->get();
             
-        // For landlords (sellers)
+        // For landlords (sellers) – only pending requests
         $requestsAsLandlord = RentalRequest::with('tenant')
+            ->where('status', 'pending')
             ->whereHas('property', function($query) use ($user) {
                 $query->where('account_id', $user->id);
             })
             ->latest()
             ->get();
             
-        return view('vadama.rental-requests', compact('requestsAsTenant', 'requestsAsLandlord'));
+        return view('vadama.requestproperty', compact('requestsAsTenant', 'requestsAsLandlord'));
     }
+
 
     /**
      * Update rental request status (approve/reject/cancel)

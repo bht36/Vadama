@@ -122,7 +122,7 @@
                         </a>
                     @endif
                     @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'seller')
-                    <a class="dropdown-item" href="{{ route('view_requestproperty') }}">
+                    <a class="dropdown-item" href="{{ route('my-rental-requests') }}">
                         <i class="fas fa-hand-paper mr-2"></i> Request Property
                     </a>
                     @endif

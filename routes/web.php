@@ -114,7 +114,6 @@ Route::controller(AccountController::class)->group(function () {
 
         Route::post('/property_upload', 'property_upload')->name('property_upload');
         Route::get('/view_leaseproperty', 'view_leaseproperty')->name('view_leaseproperty');
-        Route::get('/view_requestproperty', 'view_requestproperty')->name('view_requestproperty');
         Route::get('/property_edit/{id}', 'property_edit')->name('property_edit');
         Route::put('/property_update/{id}', 'property_update')->name('property_update');
         Route::delete('/property_destroy/{id}', 'property_destroy')->name('property_destroy');
@@ -125,9 +124,11 @@ Route::controller(AccountController::class)->group(function () {
         // Rental Requests
         Route::prefix('rental-requests')->name('rental-requests.')->group(function () {
             Route::post('/', 'storeRentalRequest')->name('store');
-            Route::get('/', 'indexRentalRequests')->name('index');
-            Route::put('/{id}', 'updateRentalRequest')->name('update');
-            Route::delete('/{id}', 'destroyRentalRequest')->name('destroy');
+            // Route::get('/view_requestproperty', 'view_requestproperty')->name('view_requestproperty');
+            // Route::get('/', 'indexRentalRequests')->name('index');
+            // Route::put('/{id}', 'updateRentalRequest')->name('update');
+            // Route::delete('/{id}', 'destroyRentalRequest')->name('destroy');
+
         });
     
         // My rental requests (for both buyers and sellers)
