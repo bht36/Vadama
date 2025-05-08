@@ -305,9 +305,9 @@
           © 2025 Vadama® and Move, Inc. All rights reserved.
         </p>
         <div class="made-with">
-          <span>@copyrigth</span>
+          <span>Vadama</span>
+          <span>Since </span>
           <span>2025</span>
-          <span>vadama</span>
         </div>
       </div>
     </div>

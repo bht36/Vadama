@@ -10,7 +10,8 @@
     <img src="{{ asset('logo/Login.png') }}" alt="Logo">
       </a>
        <div class="welcome-message mb-2">
-        <h1>Search better with an account</h1>
+        <h1>Find your perfect space</h1>
+        <h2>sign up and start your rental journey today</h2>
     </div>
     </div>
       <div class="image-holder mt-4">
@@ -22,7 +23,7 @@
     <div class="col-md-6 d-flex align-items-center justify-content-center">
       <div class="card p-4 shadow-lg login-form" style="width: 100%; max-width: 450px;">
         <div class="text-center">
-          <h4 class="mt-2 fw-semibold text-dark fs-3">Sign up</h4>
+          <h4 class="mt-2 fw-semibold text-dark fs-3">Create Account</h4>
         </div>
         <form action="{{ route('register_acc') }}" method="POST">
           @csrf

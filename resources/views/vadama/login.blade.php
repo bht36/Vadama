@@ -5,16 +5,10 @@
         <!-- Left Side: Logo + Welcome Message + Image -->
         <div class="col-md-6 d-none d-md-block image-section">
             <div class="text-center">
-                <!-- Logo -->
-                <div class="logo-container mb-2">
-                <a href="{{ route('index') }}">
-                <img src="{{ asset('logo/Login.png') }}" alt="Logo">
-                </a>
-                </div>
                 <!-- Welcome Message (centered below the logo) -->
                 <div class="welcome-message mb-2">
                     <h1>Welcome back</h1>
-                    <p>Login to see the latest Vada Ma</p>
+                    <p>Login to see the latest Update</p>
                 </div>
             </div>
             <!-- Image Section -->
