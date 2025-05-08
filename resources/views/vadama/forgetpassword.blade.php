@@ -1,3 +1,5 @@
+@extends('vadama.layouts.header')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,7 @@
       background-color: #ffffff;
     }
     .login-container {
-      height: 100vh;
+      height: 95vh;
     }
     .image-section {
       background: url('https://source.unsplash.com/800x800/?office') no-repeat center center;
@@ -145,3 +147,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+@endsection

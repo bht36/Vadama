@@ -85,7 +85,7 @@
     }
 
     .login-container {
-        height: 100vh;
+        height: 90vh;
         display: flex;
         justify-content: space-between;
     }
@@ -94,7 +94,7 @@
         background-size: cover;
         position: relative;
         text-align: center;
-        flex: 0 0 50%; /* Ensures it takes up 50% of the width */
+        flex: 0 0 50%; 
     }
 
     .logo-container {
