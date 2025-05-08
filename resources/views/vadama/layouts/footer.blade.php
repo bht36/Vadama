@@ -276,8 +276,7 @@
 
         <!-- Contact Section -->
         <div class="footer-section">
-          <h3 class="section-title">Contact Us</h3>
-          <div class="contact-cards">
+          <h3 class="section-title">Contact Us</h3>          <div class="contact-cards">
             <div class="contact-card">
               <div class="contact-icon">
                 <i class="fas fa-map-marker-alt"></i>
@@ -306,9 +305,9 @@
           © 2025 Vadama® and Move, Inc. All rights reserved.
         </p>
         <div class="made-with">
-          <span>Made with</span>
-          <span class="heart">❤</span>
-          <span>in Nepal</span>
+          <span>@copyrigth</span>
+          <span>2025</span>
+          <span>vadama</span>
         </div>
       </div>
     </div>
