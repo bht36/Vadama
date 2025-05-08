@@ -95,57 +95,60 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($requestsAsLandlord as $key => $property)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>
-                                                {{ $property->property->title ?? 'N/A' }}<br>
-                                                Tenant Name: {{ $property->tenant->name ?? 'N/A' }}<br>
-                                                Total Price: {{ $property->total_price ?? 'N/A' }}<br>
-                                                Check-In: {{ $property->check_in ?? 'N/A' }}<br>
-                                                Check-Out: {{ $property->check_out ?? 'N/A' }}<br>
-                                                Mounths: {{ $property->duration ?? 'N/A' }}<br>
-                                                Guests: {{ $property->guests ?? 'N/A' }}<br>
-                                            </td>
-                                            <td>
-                                                @if($property->property && $property->property->images->count())
-                                                    <img src="{{ asset('storage/uploads/properties/images/' . $property->property->images->first()->image_path) }}" 
-                                                        alt="Property Image" width="400" >
-                                                @else
-                                                    No Images
-                                                @endif
-                                            </td>
-                                            <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
-                                            <td>{{ $property->created_at->format('d M Y') }}</td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <form method="POST" action="{{ route('property_destroy', $property->property->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;" data-toggle="tooltip" title="Confirm">
-                                                            <i class="fas fa-check text-success" style="font-size: 16px; line-height: 32px;"></i>
-                                                        </button>
-                                                    </form>
+    @forelse($requestsAsLandlord as $key => $property)
+    <tr>
+        <td>{{ $key + 1 }}</td>
+        <td>
+            {{ $property->property->title ?? 'N/A' }}<br>
+            Tenant Name: 
+            {{ 
+                isset($property->tenant) ? $property->tenant->first_name . ' ' . $property->tenant->last_name : 'N/A'
+            }}<br>
+            Tenant Username: 
+            {{ $property->tenant->username ?? 'N/A' }}<br>
+            Total Price: {{ $property->total_price ?? 'N/A' }}<br>
+            Check-In: {{ $property->check_in ?? 'N/A' }}<br>
+            Check-Out: {{ $property->check_out ?? 'N/A' }}<br>
+            Months: {{ $property->duration ?? 'N/A' }}<br>
+            Guests: {{ $property->guests ?? 'N/A' }}<br>
+        </td>
+        <td>
+            @if($property->property && $property->property->images->count())
+                <img src="{{ asset('storage/uploads/properties/images/' . $property->property->images->first()->image_path) }}" 
+                    alt="Property Image" width="400">
+            @else
+                No Images
+            @endif
+        </td>
+        <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
+        <td>{{ $property->created_at->format('d M Y') }}</td>
+        <td>
+            <div class="d-flex">
+                <form method="POST" action="{{ route('property_destroy', $property->property->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;" data-toggle="tooltip" title="Confirm">
+                        <i class="fas fa-check text-success" style="font-size: 16px; line-height: 32px;"></i>
+                    </button>
+                </form>
 
-                                                    <form method="POST" action="{{ route('property_destroy', $property->property->id) }}" class="ml-2">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
+                <form method="POST" action="{{ route('property_destroy', $property->property->id) }}" class="ml-2">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn btn-danger btn-sm show_confirm" data-toggle="tooltip" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    @empty
+        <tr>
+            <td colspan="7" class="text-center">{{ __('No data available') }}</td>
+        </tr>
+    @endforelse
+</tbody>
 
-                                        </tr>
-
-
-                                        @empty
-                                            <tr>
-                                                <td colspan="7" class="text-center">{{ __('No data available') }}</td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
                                 </table>
                             </div>
                             <div class="justify-content-center">
