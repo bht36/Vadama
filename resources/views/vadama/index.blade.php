@@ -127,8 +127,9 @@
     
             .search-container {
                 margin-top: 1rem;
-                width: 100%;
                 max-width: none;
+                width:900px; 
+                max-width: 800px;
             }
     
             .search-container .form-control {
@@ -157,19 +158,19 @@
     <!-- Hero Section with Slider -->
     <div class="hero-slider">
       <!-- Fixed Content Overlay -->
-      <div class="slider-content px-5"> <!-- Add padding for better view on large width -->
+      <div class="slider-content px-5 text-center"> <!-- Add padding for better view on large width -->
         <h1 class="display-4 fw-bold mb-3">The #1 site real estate professionals trust<sup>*</sup></h1>
        <!--  Home Page Search Bar (functional) -->
       <form method="GET" action="{{ route('searchlist') }}">
-          <div class="search-container position-relative" style="width: 300%;">
-              <input type="text" name="search" class="form-control rounded-pill py-3 ps-4 pe-5 w-100"
-                    placeholder="Address, School, City, Zip or Neighborhood">
-              <button class="btn btn-dark rounded-circle position-absolute end-0 top-50 translate-middle-y me-2"
-                      type="submit" style="width: 46px; height: 46px;">
-                  <i class="fas fa-search"></i>
-              </button>
-          </div>
-      </form>
+    <div class="search-container position-relative mx-auto"> <!-- Centered container -->
+        <input type="text" name="search" class="form-control rounded-pill py-3 ps-4 pe-5 w-100"
+               placeholder="Address, School, City, Zip or Neighborhood">
+        <button class="btn btn-dark rounded-circle position-absolute end-0 top-50 translate-middle-y me-2"
+                type="submit" style="width: 46px; height: 46px;">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</form>
 
       </div>
     
@@ -182,7 +183,7 @@
     </div>
     
 <!-- Rent House Section -->
-<div class="container mt-4">
+<div class="container mt-5">
   <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
   <div class="row justify-content-center g-4">
     @forelse ($houses as $house)
