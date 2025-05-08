@@ -352,6 +352,8 @@
     </div>
   </div>
 </div>
+</div>
+</div>
 
 
   <!-- Script -->
@@ -500,10 +502,5 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCheckoutDate();
 });
 </script>
-
-
-
-    
-
 @include('vadama.layouts.footer')
 @endsection
