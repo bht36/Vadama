@@ -10,26 +10,29 @@ class FrontendController extends Controller
 {
     public function index(Request $request)
     {
-        $banner =Banner::all(); 
+        $banner = Banner::all(); 
 
         $houses = Property::with(['images'])
-        ->where('type', 'house')
-        ->where('status', 'available')
-        ->get();
+            ->where('type', 'house')
+            ->where('status', 'available')
+            ->take(4)
+            ->get();
 
         $rooms = Property::with(['images'])
-        ->where('type', 'room')
-        ->where('status', 'available')
-        ->get();
+            ->where('type', 'room')
+            ->where('status', 'available')
+            ->take(4)
+            ->get();
 
         $apartments = Property::with(['images'])
-        ->where('type', 'apartment')
-        ->where('status', 'available')
-        ->get();
-
+            ->where('type', 'apartment')
+            ->where('status', 'available')
+            ->take(4)
+            ->get();
 
         return view("vadama.index", compact('banner','houses', 'rooms', 'apartments'));
     }
+
     public function signup(Request $request)
     {
         return view("vadama.signup");
