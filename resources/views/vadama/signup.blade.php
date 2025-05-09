@@ -4,17 +4,12 @@
 <div class="container-fluid">
   <div class="row login-container">
     <!-- Left Side: Logo + Image -->
-    <div class="col-md-6 d-none d-md-block image-section">
-    <div class="logo-container text-center">
-    <a href="{{ route('index') }}">
-    <img src="{{ asset('logo/Login.png') }}" alt="Logo">
-      </a>
-       <div class="welcome-message mb-2">
+    <div class="col-md-6 d-none d-md-block image-section text-center">
+       <div class="welcome-message">
         <h1>Find your perfect space</h1>
         <h2>sign up and start your rental journey today</h2>
     </div>
-    </div>
-      <div class="image-holder mt-4">
+      <div class="image-holder">
         <img src="{{ asset('picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: 100%;" alt="...">
       </div> 
     </div>
@@ -172,20 +167,41 @@
     width: 150px;
     margin-left: 200px;
     height: 150px;
-  }
+    margin-bottom: 100px; /* Fixed */
+}
 
-  .image-holder {
+.image-holder {
     position: absolute;
     top: 65%;
     left: 50%;
-    margin-top: 45px;
+    margin-bottom: 100px; /* Fixed */
+    margin-left: 200px;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 390px;
+    background: #ccc;
+    border-radius: 10px;
+}
+.logo-container img {
+    width: 150px;
+    margin-left: 200px;
+    height: 150px;
+    margin-bottom: 200px; /* Fixed */
+}
+
+.image-holder {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    margin-bottom: 200px; /* Fixed */
     margin-left: 100px;
     transform: translate(-50%, -50%);
     width: 500px;
     height: 390px;
     background: #ccc;
     border-radius: 10px;
-  }
+}
+
 
   .login-form {
     height: 700;
@@ -215,7 +231,7 @@
     font-size: 1rem;
   }
   .welcome-message {
-  margin-top: 30px;
+  margin-top: 120px;
   text-align: center;
   white-space: nowrap; 
   overflow: hidden;

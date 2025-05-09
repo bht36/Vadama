@@ -9,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #222;
-            color: white;
+            background-color: #fff;
+            color: black;
             font-family: Arial, sans-serif;
         }
         
@@ -35,7 +35,7 @@
             content: '';
             position: absolute;
             width: 2px;
-            background-color: #555;
+            background-color:rgb(174, 171, 171);
             top: 0;
             bottom: 0;
             left: 50%;
@@ -54,8 +54,8 @@
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            background-color: #b87333;
-            border: 4px solid #222;
+            background-color: #79090F;
+            border: 4px solid #E9E1E1;
             left: 50%;
             top: 50px;
             transform: translateX(-50%);
@@ -64,7 +64,7 @@
         
         .timeline-content {
             padding: 20px;
-            background-color: #333;
+            background-color: #F2EEEE;
             border-radius: 6px;
             width: 45%;
         }
@@ -88,7 +88,7 @@
             position: absolute;
             top: -30px;
             right: 0;
-            background-color: #b87333;
+            background-color: #79090F;
             color: white;
             padding: 5px 15px;
             border-radius: 4px;
@@ -100,7 +100,7 @@
         .image-placeholder {
             width: 100%;
             height: 200px;
-            background-color: #444;
+            background-color: #E9E1E1;
             display: flex;
             align-items: center;
             justify-content: center;

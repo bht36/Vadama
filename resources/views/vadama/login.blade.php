@@ -6,11 +6,7 @@
         <div class="col-md-6 d-none d-md-block image-section">
             <div class="text-center">
                   <!-- Logo -->
-                <div class="logo-container mb-2">
-                <a href="{{ route('index') }}">
-                <img src="{{ asset('logo/Login.png') }}" alt="Logo">
-                </a>
-                </div>
+              
                 <!-- Welcome Message (centered below the logo) -->
                 <div class="welcome-message mb-2">
                     <h1>Welcome back</h1>
@@ -96,39 +92,22 @@
         text-align: center;
         flex: 0 0 50%; 
     }
-
-    .logo-container {
-        position: absolute;
-        top: 20px;
-        left: 70%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        padding: 10px 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
-
-    .logo-container img {
-        width: 150px;
-        height: 150px;
-    }
-
     .welcome-message {
-        position: absolute;
-        top: 35%;
-        left: 70%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(255, 255, 255, 0.8);
-        padding:px;
-        border-radius: 10px;
-        width: 80%;
-        text-align: center;
+    position: absolute;
+    top: 25%; /* Moved up from 35% */
+    left: 50%; /* Centered horizontally from 70% */
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding:px;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
     }
 
     .image-holder {
         position: absolute;
-        top: 15%;
-        left: 70%;
+        top: 10%; /* Moved up from 15% */
+        left: 50%; /* Centered horizontally from 70% */
         transform: translate(-50%, 50%);
         width: 500px;
         height: 350px;

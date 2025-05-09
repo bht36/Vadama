@@ -28,7 +28,7 @@
     <!-- 📂 Properties Listing -->
     <div class="row g-4">
         @forelse ($properties as $property)
-            <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4 mb-4">
                 <a href="{{ route('housing', ['id' => $property->id]) }}" class="text-decoration-none text-dark">
                 <div class="card border-0 shadow-sm h-100 rounded-4 overflow-hidden hover-shadow transition position-relative">
     <div class="position-relative">
