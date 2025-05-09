@@ -3,27 +3,27 @@
 @section('content')
 <div class="container py-5">
 
-    <!-- 🔍 Stylish Search Bar -->
+    <!--Stylish Search Bar -->
     <div class="mb-5 d-flex justify-content-center">
-        <form method="GET" action="{{ route('searchlist') }}" class="input-group" style="max-width: 600px;">
-            <input type="text" name="search" value="{{ request('search') }}" class="form-control form-control-lg rounded-start-pill shadow-sm mr-3" placeholder="Search properties...">
-            <button type="submit" class="btn btn-dark rounded-end-pill px-4">Search</button>
+        <form method="GET" action="{{ route('searchlist') }}" class="d-flex align-items-center position-relative" style="max-width: 600px; width: 100%;">
+            <input type="text" name="search" value="{{ request('search') }}" class="form-control form-control-lg border-0 shadow-sm rounded-pill py-3" placeholder="Search properties..." style="padding-left: 20px; padding-right: 60px;">
+            <button type="submit" class="btn btn-dark rounded-circle position-absolute" style="width: 48px; height: 48px; right: 6px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-search"></i>
+            </button>
         </form>
     </div>
 
     <!-- 📂 Category Tabs -->
-    <div class="d-flex justify-content-end mb-3 position-relative">
-    <div class="custom-dropdown">
-        <button class="btn btn-outline-secondary" id="sortDropdownBtn">Sort by ▼</button>
-        <ul class="dropdown-list list-unstyled border shadow-sm bg-white position-absolute end-0 mt-2 d-none" id="sortDropdownMenu">
-            <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'best']) }}">Best</a></li>
-            <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'high']) }}">High Budget</a></li>
-            <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'low']) }}">Low Budget</a></li>
-        </ul>
+    <div class="d-flex justify-content-end mb-4 position-relative">
+        <div class="custom-dropdown">
+            <button class="btn btn-outline-secondary" id="sortDropdownBtn">Sort by ▼</button>
+            <ul class="dropdown-list list-unstyled border shadow-sm bg-white position-absolute end-0 mt-2 d-none" id="sortDropdownMenu" style="z-index: 1000; min-width: 150px;">
+                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'best']) }}">Best</a></li>
+                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'high']) }}">High Budget</a></li>
+                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'low']) }}">Low Budget</a></li>
+            </ul>
+        </div>
     </div>
-</div>
-
-
 
     <!-- 📂 Properties Listing -->
     <div class="row g-4">
@@ -70,16 +70,40 @@
         transition: all 0.2s ease-in-out;
         box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1) !important;
     }
+    
+    /* Additional styles for the search bar */
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #ced4da;
+        outline: none;
+    }
+    
+    .form-control {
+        background-color: #fff;
+        transition: all 0.2s ease;
+    }
+    
+    .form-control:focus {
+        background-color: #fff;
+    }
+    
+    /* Fix for dropdown menu */
+    .custom-dropdown {
+        position: relative;
+    }
+    
+    .dropdown-list {
+        right: 0;
+        top: 100%;
+        margin-top: 5px !important;
+    }
+    
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+    }
 </style>
 
 </div>
-<style>
-    .hover-shadow:hover {
-        transform: scale(1.02);
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1) !important;
-    }
-</style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const dropdownBtn = document.getElementById('sortDropdownBtn');
