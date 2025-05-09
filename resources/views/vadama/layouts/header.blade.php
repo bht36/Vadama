@@ -105,9 +105,9 @@
                         width="40" height="40">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right mt-2 shadow" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                    {{-- <a class="dropdown-item" href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
-                    </a>
+                    </a> --}}
                     <a class="dropdown-item" href="{{ route('accountprofile') }}">
                         <i class="fas fa-user mr-2"></i> Profile
                     </a>                    

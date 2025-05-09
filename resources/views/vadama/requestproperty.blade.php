@@ -30,7 +30,7 @@
                         <div class="col-12">
 
                             <div class="d-flex justify-content-end mb-3">
-                            <button class="btn btn-rounded btn-md mr-3 collapse-button"
+                            {{-- <button class="btn btn-rounded btn-md mr-3 collapse-button"
                                     type="button"
                                     data-toggle="collapse"
                                     data-target="#collapseExample"
@@ -38,10 +38,10 @@
                                     aria-controls="collapseExample"
                                     style="background-color: #79090f; border-color: #79090f; color: #fff;">
                                 <i class="fa fa-filter" aria-hidden="true" title="Advanced Search"></i>
-                            </button>
+                            </button> --}}
                             </div>
 
-                            <div class="collapse" id="collapseExample">
+                            {{-- <div class="collapse" id="collapseExample">
                                 <div class="card card-body">
                                     <div class="card-header p-1 mb-1">
                                         <h4>Filter Options</h4>
@@ -80,7 +80,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                                                         <div class="card table-responsive">
                                 <table class="table table-bordered table-striped table-hover">
