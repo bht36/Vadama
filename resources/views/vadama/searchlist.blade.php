@@ -19,8 +19,8 @@
             <button class="btn btn-outline-secondary" id="sortDropdownBtn">Sort by ▼</button>
             <ul class="dropdown-list list-unstyled border shadow-sm bg-white position-absolute end-0 mt-2 d-none" id="sortDropdownMenu" style="z-index: 1000; min-width: 150px;">
                 <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'best']) }}">Best</a></li>
-                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'high']) }}">High Budget</a></li>
-                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'low']) }}">Low Budget</a></li>
+                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'high']) }}">High to Low</a></li>
+                <li><a class="dropdown-item px-3 py-2 text-dark d-block" href="{{ route('housing.list', ['sort' => 'low']) }}">Low to High</a></li>
             </ul>
         </div>
     </div>
