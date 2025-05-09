@@ -374,7 +374,7 @@
 <div class="hero-container mt-8">
         <div class="hero-content">
             <div class="category-text">Unique Homes</div>
-            <div class="headline-text">$79 Million Aspen Megamansion With Wild Array of Amenities Including Indoor Pool and 4 Bars Is the Week's Most Expensive Home</div>
+            <div class="headline-text">Nepal’s Finest Rentals Unveiled – Scenic Homes, Modern Amenities, and Unbeatable Comfort</div>
             <div>
                 <button class="btn read-button">Read Article</button>
             </div>
