@@ -257,7 +257,7 @@
             <span class="logo-text"><span class="highlight">Vadama®</span></span>
           </div>
           <p class="description">
-            Your trusted partner in finding the perfect rental property in Nepal.
+            Your trusted partner in finding the perfect rental property in Nepal. Whether you're searching for a cozy room in Kathmandu, a family apartment in Pokhara, or a peaceful home in the hills, Vadama Nepal brings you verified listings you can count on. We connect tenants with landlords directly—no hidden charges, no hassle. Find your ideal space, faster and easier, with the platform made for Nepali renters and property owners.
           </p>
         </div>
 
@@ -266,37 +266,58 @@
           <h3 class="section-title">Quick Links</h3>
           <nav>
             <ul class="nav-links">
-              <li><a href="#"><span class="nav-dot"></span>Home</a></li>
-              <li><a href="#"><span class="nav-dot"></span>About Us</a></li>
-              <li><a href="#"><span class="nav-dot"></span>Properties</a></li>
-              <li><a href="#"><span class="nav-dot"></span>Become a Seller</a></li>
+              <li><a href="{{ route('index') }}"><span class="nav-dot"></span>Home</a></li>
+              <li><a href="{{ route('aboutus') }}"><span class="nav-dot"></span>About Us</a></li>
+              <li><a href="{{ route('searchlist') }}"><span class="nav-dot"></span>Properties</a></li>
+              <li><a href="{{ route('contacts') }}"><span class="nav-dot"></span>Contacts</a></li>
             </ul>
           </nav>
         </div>
 
         <!-- Contact Section -->
         <div class="footer-section">
-          <h3 class="section-title">Contact Us</h3>          <div class="contact-cards">
-            <div class="contact-card">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-info">
-                <h4>Our Location</h4>
-                <p>Kathmandu, Nepal</p>
-              </div>
-            </div>
-            <div class="contact-card">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div class="contact-info">
-                <h4>Phone Number</h4>
-                <p>+977 1234567890</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  <h3 class="section-title">Contact Us</h3>
+  <div class="contact-cards">
+
+    <!-- Location Card with Clickable Map Link -->
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="contact-info">
+        <h4>Our Location</h4>
+        <p>
+          <a href="https://www.google.com/maps?q=Herald+College+Kathmandu" target="_blank" style="color: inherit; text-decoration: none;">
+            Herald College Kathmandu, Nepal
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Phone Card with Copy to Clipboard -->
+    <div class="contact-card" onclick="copyPhoneNumber()" style="cursor: pointer;">
+      <div class="contact-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+      <div class="contact-info">
+        <h4>Phone Number</h4>
+        <p id="phoneNumber">+977 1234567890</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Script to copy phone number -->
+<script>
+  function copyPhoneNumber() {
+    const phoneText = document.getElementById("phoneNumber").innerText;
+    navigator.clipboard.writeText(phoneText).then(() => {
+      alert("Phone number copied to clipboard!");
+    });
+  }
+</script>
+
       </div>
 
       <!-- Footer Bottom -->

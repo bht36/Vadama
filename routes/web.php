@@ -90,6 +90,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/forgetconfirmation', 'forgetconfirmation')->name('forgetconfirmation');
     Route::get('/aboutus', 'aboutus')->name('aboutus');
     Route::get('/housinglist', 'housingList')->name('housing.list');
+    Route::get('/contacts', 'contacts')->name('contacts');
 
     Route::get('/housing/{id}','housing')->name('housing');
     Route::get('/searchlist','searchlist')->name('searchlist');   
