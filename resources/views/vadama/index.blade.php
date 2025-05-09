@@ -262,12 +262,22 @@
 
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-center">
-              <p class="card-text mb-0">Price: रु{{ $room->price_per_month }}</p>
-              <div><i class="bi bi-star-fill text-warning"></i> 4.8</div>
-            </div>
-            <p class="card-text text-muted">{{ $room->location }}</p>
-          </div>
+        <!-- Full-width Title -->
+        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $house->title }}">
+          {{ $house->title }}
+        </h5>
+
+        <!-- Row 2: Price and Rating -->
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <span class="text-muted small">रु{{ $house->price_per_month }}</span>
+          <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+        </div>
+
+        <!-- Row 3: Location -->
+        <p class="card-text text-muted mb-0 text-truncate" title="{{ $house->location }}">
+          {{ $house->location }}
+        </p>
+      </div>
         </div>
       </a>
     </div>
