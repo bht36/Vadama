@@ -215,7 +215,7 @@
         <!-- Row 2: Price and Rating -->
         <div class="d-flex justify-content-between align-items-center mb-1">
           <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
-            रु{{ $house->price_per_month }}
+            रु{{ $house->price_per_month }}/m
           </span>          
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
@@ -277,7 +277,7 @@
         <!-- Row 2: Price and Rating -->
         <div class="d-flex justify-content-between align-items-center mb-1">
           <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
-            रु{{ $room->price_per_month }}
+            रु{{ $room->price_per_month }}/m
           </span>          
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
@@ -340,7 +340,7 @@
             <!-- Row 2: Price and Rating -->
             <div class="d-flex justify-content-between align-items-center mb-1">
               <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
-                रु{{ $apartment->price_per_month }}
+                रु{{ $apartment->price_per_month }}/m
               </span>          
               <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
             </div>
