@@ -390,7 +390,7 @@
             ₨:10.5 Billion Dwarika’s Hotel, Kathmandu: A Heritage Hideaway With Lavish Suites, Newari Craftsmanship, and World-Class Spa
         </div>
         <div>
-            <a href="{{ route('housing', ['id' => $apartment->id]) }}" class="btn read-button">Read Article</a>
+            <a href="{{ route'article' }}" class="btn read-button">Read Article</a>
         </div>
     </div>
 </div>
