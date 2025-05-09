@@ -107,14 +107,6 @@
       height: 200px; 
       object-fit: cover; 
     }
-    .love-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    color: black;
-    cursor: pointer;
-  }
   .card.hover-card:hover {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.6); /* Red shadow */
   transform: scale(1.05); /* Optional: slightly enlarge the card */
@@ -152,6 +144,21 @@
                 box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
                 border: none;
             }
+
+            .see-all-btn {
+                color: #79090f;
+                border: 1px solid #79090f;
+                border-radius: 20px;
+                padding: 5px 15px;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+            
+            .see-all-btn:hover {
+                background-color: #79090f;
+                color: white;
+            }
     </style>
 </head>
 <body>
@@ -184,7 +191,10 @@
     
 <!-- Rent House Section -->
 <div class="container mt-5">
-  <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold m-0" style="font-size: 20px;">Rent House</h2>
+    <a href="" class="btn see-all-btn">See All</a>
+  </div>
   <div class="row justify-content-center g-4">
     @forelse ($houses as $house)
     <div class="col-md-3 col-sm-6">
@@ -205,7 +215,6 @@
                  alt="No Image">
           @endif
 
-          <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
         <!-- Full-width Title -->
         <h5 class="fw-semibold mb-2 text-truncate" title="{{ $house->title }}">
@@ -245,8 +254,11 @@
 </div>
 
 <!-- Rent Room Section -->
-<div class="container mt-4">
-  <h2 class="fw-bold" style="font-size: 20px;">Room Rent</h2>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold m-0" style="font-size: 20px;">Room Rent</h2>
+    <a href="" class="btn see-all-btn">See All</a>
+  </div>
   <div class="row justify-content-center g-4">
     @forelse ($rooms as $room)
     <div class="col-md-3 col-sm-6">
@@ -268,7 +280,6 @@
                  alt="No Image">
           @endif
 
-          <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
         <!-- Full-width Title -->
         <h5 class="fw-semibold mb-2 text-truncate" title="{{ $room->title }}">
@@ -302,12 +313,14 @@
       </div>
     @endforelse
   </div>
-
 </div>
 
 <!-- Rent Apartment Section -->
-<div class="container mt-4" style="margin-bottom: 60px;">
-  <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
+<div class="container mt-5" style="margin-bottom: 60px;">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold m-0" style="font-size: 20px;">Rent Apartment</h2>
+    <a href="" class="btn see-all-btn">See All</a>
+  </div>
   <div class="row justify-content-center g-4">
     @forelse ($apartments as $apartment)
     <div class="col-md-3 col-sm-6">
@@ -328,8 +341,6 @@
                  class="card-img-top img-fluid"
                  alt="No Image">
           @endif
-
-          <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
 
           <div class="card-body d-flex flex-column">
             <!-- Full-width Title -->
@@ -374,7 +385,7 @@
 <div class="hero-container mt-8">
         <div class="hero-content">
             <div class="category-text">Unique Homes</div>
-            <div class="headline-text">Nepal’s Finest Rentals Unveiled – Scenic Homes, Modern Amenities, and Unbeatable Comfort</div>
+            <div class="headline-text">Nepal's Finest Rentals Unveiled – Scenic Homes, Modern Amenities, and Unbeatable Comfort</div>
             <div>
                 <button class="btn read-button">Read Article</button>
             </div>
@@ -403,11 +414,6 @@
                 }, 3000); // Start 3 seconds after page load
             }
         });
-        function toggleLoveIcon(icon) {
-    icon.classList.toggle("bi-bookmark");
-    icon.classList.toggle("bi-bookmark-fill");
-    icon.style.color = icon.classList.contains('bi-bookmark-fill') ? 'white' : 'white';
-  }
     </script>
 </body>
 <!-- Bootstrap JS (Make sure this is included before the script) -->
