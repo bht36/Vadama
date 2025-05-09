@@ -91,9 +91,9 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/aboutus', 'aboutus')->name('aboutus');
     Route::get('/housinglist', 'housingList')->name('housing.list');
     Route::get('/contacts', 'contacts')->name('contacts');
-
     Route::get('/housing/{id}','housing')->name('housing');
-    Route::get('/searchlist','searchlist')->name('searchlist');   
+    Route::get('/searchlist','searchlist')->name('searchlist'); 
+    Route::get('/article','article')->name('article');   
     Route::get('/filterpropertyhouse','filterpropertyhouse')->name('filterpropertyhouse');   
     Route::get('/filterpropertyroom','filterpropertyroom')->name('filterpropertyroom');   
     Route::get('/filterpropertyapartment','filterpropertyapartment')->name('filterpropertyapartment');   

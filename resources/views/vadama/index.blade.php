@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
               .hero-container {
-              background-image: url('https://images.wsj.net/im-553730?width=1280&size=1.770');
+              background-image: url('https://www.remotelands.com/travelogues/app/uploads/2017/11/The-Dwarikahotelnepal.jpg');
               background-size: cover;
               background-position: center;
               height: 450px;
@@ -382,15 +382,19 @@
 </div>
 
 <!-- advertising secton -->
+<!-- advertising section -->
 <div class="hero-container mt-8">
-        <div class="hero-content">
-            <div class="category-text">Unique Homes</div>
-            <div class="headline-text">Nepal's Finest Rentals Unveiled – Scenic Homes, Modern Amenities, and Unbeatable Comfort</div>
-            <div>
-                <button class="btn read-button">Read Article</button>
-            </div>
+    <div class="hero-content">
+        <div class="category-text">Unique Homes</div>
+        <div class="headline-text">
+            ₨:10.5 Billion Dwarika’s Hotel, Kathmandu: A Heritage Hideaway With Lavish Suites, Newari Craftsmanship, and World-Class Spa
+        </div>
+        <div>
+            <a href="{{ route('housing', ['id' => $apartment->id]) }}" class="btn read-button">Read Article</a>
         </div>
     </div>
+</div>
+
     
 @include('vadama.layouts.footer')
     <script>
