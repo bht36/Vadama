@@ -85,6 +85,24 @@ public function searchlist(Request $request)
 
     return view("vadama.searchlist", compact('search', 'properties'));
 }
+    public function filterpropertyhouse(Request $request)
+    {
+        $properties = Property::where('type', 'house')->get();
+
+        return view('vadama.searchlist', compact('properties'));
+    }
+    public function filterpropertyroom(Request $request)
+    {
+        $properties = Property::where('type', 'room')->get();
+
+        return view('vadama.searchlist', compact('properties'));
+    }
+    public function filterpropertyapartment(Request $request)
+    {
+        $properties = Property::where('type', 'apartment')->get();
+
+        return view('vadama.searchlist', compact('properties'));
+    }
 
 public function housingList(Request $request)
 {

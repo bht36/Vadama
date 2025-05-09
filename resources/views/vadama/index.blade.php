@@ -193,7 +193,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="fw-bold m-0" style="font-size: 20px;">Rent House</h2>
-    <a href="" class="btn see-all-btn">See All</a>
+    <a href="{{ route('filterpropertyhouse') }}" class="btn see-all-btn">See All</a>
   </div>
   <div class="row justify-content-center g-4">
     @forelse ($houses as $house)
@@ -257,7 +257,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="fw-bold m-0" style="font-size: 20px;">Room Rent</h2>
-    <a href="" class="btn see-all-btn">See All</a>
+    <a href="{{ route('filterpropertyroom') }}" class="btn see-all-btn">See All</a>
   </div>
   <div class="row justify-content-center g-4">
     @forelse ($rooms as $room)
@@ -319,7 +319,7 @@
 <div class="container mt-5" style="margin-bottom: 60px;">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="fw-bold m-0" style="font-size: 20px;">Rent Apartment</h2>
-    <a href="" class="btn see-all-btn">See All</a>
+    <a href="{{ route('filterpropertyapartment') }}" class="btn see-all-btn">See All</a>
   </div>
   <div class="row justify-content-center g-4">
     @forelse ($apartments as $apartment)
