@@ -188,7 +188,7 @@
   <div class="row justify-content-center g-4">
     @forelse ($houses as $house)
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing', ['id' => $house->id]) }}">
+      <a href="{{ route('housing', ['id' => $house->id]) }}" style="text-decoration: none; color: inherit;">
         <div class="card hover-card position-relative">
           @php
               $firstImage = $house->images->first();
@@ -214,17 +214,23 @@
 
         <!-- Row 2: Price and Rating -->
         <div class="d-flex justify-content-between align-items-center mb-1">
-          <span class="text-muted small">रु{{ $house->price_per_month }}</span>
+          <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
+            रु{{ $house->price_per_month }}
+          </span>          
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
 
         <!-- Row 3: Icon -->
-       <div class="text-muted">
-        <i class="bi bi-people-fill me-1"></i> {{$house->guest}} guests · 
-        <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$house->bedroom}} bedroom · 
-        <i class="bi bi-lamp-fill ms-2 me-1"></i> {{$house->bed}} bed · 
-        <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
-    </div>
+        <div class="text-muted">
+          <div>
+            <i class="bi bi-people-fill me-1"></i> {{ $house->guest }} guests · 
+            <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $house->bedroom }} bedroom
+          </div>
+          <div>
+            <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $house->bed }} bed · 
+            <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
+          </div>
+        </div>
       </div>
 
         </div>
@@ -244,7 +250,7 @@
   <div class="row justify-content-center g-4">
     @forelse ($rooms as $room)
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing', ['id' => $room->id]) }}">
+      <a href="{{ route('housing', ['id' => $room->id]) }}" style="text-decoration: none; color: inherit;">
         <div class="card hover-card position-relative">
 
           @php
@@ -265,23 +271,27 @@
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
         <!-- Full-width Title -->
-        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $house->title }}">
-          {{ $house->title }}
+        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $room->title }}">
+          {{ $room->title }}
         </h5>
-
         <!-- Row 2: Price and Rating -->
         <div class="d-flex justify-content-between align-items-center mb-1">
-          <span class="text-muted small">रु{{ $house->price_per_month }}</span>
+          <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
+            रु{{ $room->price_per_month }}
+          </span>          
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
-
        <!-- Row 3: Icon -->
        <div class="text-muted">
-        <i class="bi bi-people-fill me-1"></i> {{$house->guest}} guests · 
-        <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$house->bedroom}} bedroom · 
-        <i class="bi bi-lamp-fill ms-2 me-1"></i> {{$house->bed}} bed · 
-        <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
-    </div>
+        <div>
+          <i class="bi bi-people-fill me-1"></i> {{ $room->guest }} guests · 
+          <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $room->bedroom }} bedroom
+        </div>
+        <div>
+          <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $room->bed }} bed · 
+          <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $room->bathroom }} bath
+        </div>
+      </div>
       </div>
         </div>
       </a>
@@ -296,12 +306,12 @@
 </div>
 
 <!-- Rent Apartment Section -->
-<div class="container mt-4 "style="margin-bottom: 60px;">
+<div class="container mt-4" style="margin-bottom: 60px;">
   <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
   <div class="row justify-content-center g-4">
     @forelse ($apartments as $apartment)
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing', ['id' => $apartment->id]) }}">
+      <a href="{{ route('housing', ['id' => $apartment->id]) }}" class="text-decoration-none text-dark">
         <div class="card hover-card position-relative">
 
           @php
@@ -320,26 +330,35 @@
           @endif
 
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
+
           <div class="card-body d-flex flex-column">
-        <!-- Full-width Title -->
-        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $apartment->title }}">
-          {{ $apartment->title }}
-        </h5>
+            <!-- Full-width Title -->
+            <h5 class="fw-semibold mb-2 text-truncate" title="{{ $apartment->title }}">
+              {{ $apartment->title }}
+            </h5>
 
-        <!-- Row 2: Price and Rating -->
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <span class="text-muted small">रु{{ $apartment->price_per_month }}</span>
-          <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
-        </div>
+            <!-- Row 2: Price and Rating -->
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
+                रु{{ $apartment->price_per_month }}
+              </span>          
+              <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+            </div>
 
-        <!-- Row 3: Icon -->
-        <div class="text-muted">
-          <i class="bi bi-people-fill me-1"></i> {{$apartment->guest}} guests · 
-          <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$apartment->bedroom}} bedroom · 
-          <i class="bi bi-lamp-fill ms-2 me-1"></i> {{$apartment->bed}} bed · 
-          <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $apartment->bathroom }} bath
-      </div>
-      </div>
+            <!-- Row 3: Icon Info -->
+            <div class="text-muted">
+              <div>
+                <i class="bi bi-people-fill me-1"></i> {{ $apartment->guest }} guests · 
+                <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $apartment->bedroom }} bedroom
+              </div>
+              <div>
+                <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $apartment->bed }} bed · 
+                <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $apartment->bathroom }} bath
+              </div>
+            </div>
+            
+          </div>
+
         </div>
       </a>
     </div>
@@ -350,6 +369,7 @@
     @endforelse
   </div>
 </div>
+
 <!-- advertising secton -->
 <div class="hero-container mt-8">
         <div class="hero-content">

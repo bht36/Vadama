@@ -72,12 +72,7 @@
                             class="img-fluid w-100 gallery-img" alt="Property Image">
                     </div>
                 @endforeach
-            </div>
-    
-            <button class="btn btn-light position-absolute bottom-0 end-0 me-3 mb-3 d-flex align-items-center gap-2 shadow-sm show-photos-btn">
-                <i class="bi bi-grid-3x3-gap-fill"></i>
-                Show all photos
-            </button>
+            </div>      
         </div>
     </div>
 
