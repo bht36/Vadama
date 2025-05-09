@@ -25,29 +25,29 @@
             background-color: white;
         }
         .custom-select {
-                                border-radius: 25px; /* Rounded corners */
-                                padding: 1px 15px; /* Add some padding for better spacing */
-                                font-size: 16px; /* Larger text */
-                                background-color: #f9f9f9; /* Light background */
-                                border: 1px solid #ddd; /* Subtle border */
-                                transition: all 0.3s ease; /* Smooth transition on focus */
-                            }
-                        
-                            .custom-select:focus {
-                                outline: none; /* Remove default outline */
-                                border-color: #79090f; /* Red border on focus */
-                                box-shadow: 0 0 5px rgba(121, 9, 15, 0.4); /* Subtle shadow effect */
-                            }
-                        
-                            .custom-select option {
-                                padding: 10px; /* Add padding for option text */
-                            }
-                            .form-control {
-        border-radius: 25px; /* Rounded corners for inputs */
-        background-color: #f9f9f9; /* Light background */
-        border: 1px solid #ddd; /* Subtle border */
-    }
-        
+    border-radius: 25px;
+    padding: 1px 15px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #79090f;
+    box-shadow: 0 0 5px rgba(121, 9, 15, 0.4);
+}
+
+.custom-select option {
+    padding: 10px;
+}
+
+.form-control {
+    border-radius: 25px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}     
     </style>
 </div>
 
@@ -113,7 +113,7 @@
                     @endif
                 @endforeach
             </div>
-            <h5 class="mt-4 mb-3 fw-bold">Location</h5>
+            <h5 class="mt-4 mb-3 fw-bold ">Location</h5>
             {!! $property->location !!}
         </div>
 
@@ -229,7 +229,7 @@
                             <hr class="my-3">
                             <div class="d-flex justify-content-between fw-bold">
                                 <div>Total before taxes</div>
-                                <div class="text-danger">रु<span id="total-price">{{ number_format($property->price_per_month + 500) }}</span></div>
+                                <div class="text-dark">रु<span id="total-price">{{ number_format($property->price_per_month + 500) }}</span></div>
                             </div>
                         </div>
                     </form>
@@ -246,9 +246,9 @@
 
     <!-- Individual Review -->
     <div class="mb-4 pb-3 border-bottom">
-        <div class="d-flex align-items-center mb-2">
+        <div class="d-flex align-items-center mb-2 ">
             <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="48" height="48" alt="Reviewer">
-            <div>
+            <div class="mx-2">
                 <div class="fw-bold">Emily</div>
                 <div class="text-muted small">March 2023</div>
             </div>
@@ -260,7 +260,7 @@
     <div class="mb-4 pb-3 border-bottom">
         <div class="d-flex align-items-center mb-2">
             <img src="https://randomuser.me/api/portraits/men/44.jpg" class="rounded-circle me-3" width="48" height="48" alt="Reviewer">
-            <div>
+            <div class="mx-2">
                 <div class="fw-bold">James</div>
                 <div class="text-muted small">February 2023</div>
             </div>
@@ -268,9 +268,15 @@
         <p class="mb-0">Friendly host and great location. The guesthouse had everything we needed. Would definitely come back!</p>
     </div>
     
-    <button class="btn btn-outline-dark rounded-pill px-4 mt-2">
-        Show all reviews <i class="bi bi-arrow-right ms-2"></i>
-    </button>
+    <!-- Button -->
+<button class="btn btn-outline-danger rounded-pill px-4 mt-2" onclick="toggleReviewField()">
+    Write Review <i class="bi bi-arrow-right ms-2"></i>
+</button>
+
+    <div id="review-field" class="mt-4" style="display: none;">
+    <textarea class="form-control" rows="4" placeholder="Write your review here..."></textarea>
+    <button class="btn btn-danger mt-4">Submit Review</button>
+</div>
 </div>
 
 <!-- Success Modal -->
@@ -365,6 +371,12 @@
 
 
 <script>
+    // review writing section
+    function toggleReviewField() {
+        const field = document.getElementById('review-field');
+        field.style.display = field.style.display === 'none' ? 'block' : 'none';
+    }
+
 document.addEventListener("DOMContentLoaded", function () {
     let guestCount = 1;
     const maxGuests = {{ $property->guest }}; // Get max number of guests from the database
