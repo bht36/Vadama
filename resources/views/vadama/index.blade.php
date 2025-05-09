@@ -218,10 +218,13 @@
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
 
-        <!-- Row 3: Location -->
-        <p class="card-text text-muted mb-0 text-truncate" title="{{ $house->location }}">
-          {{ $house->location }}
-        </p>
+        <!-- Row 3: Icon -->
+       <div class="text-muted">
+        <i class="bi bi-people-fill me-1"></i> {{$house->guest}} guests · 
+        <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$house->bedroom}} bedroom · 
+        <i class="bi bi-lamp-fill ms-2 me-1"></i> {{$house->bed}} bed · 
+        <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
+    </div>
       </div>
 
         </div>
@@ -234,7 +237,6 @@
     @endforelse
   </div>
 </div>
-
 
 <!-- Rent Room Section -->
 <div class="container mt-4">
@@ -273,10 +275,13 @@
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
 
-        <!-- Row 3: Location -->
-        <p class="card-text text-muted mb-0 text-truncate" title="{{ $house->location }}">
-          {{ $house->location }}
-        </p>
+       <!-- Row 3: Icon -->
+       <div class="text-muted">
+        <i class="bi bi-people-fill me-1"></i> {{$house->guest}} guests · 
+        <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$house->bedroom}} bedroom · 
+        <i class="bi bi-lamp-fill ms-2 me-1"></i> {{$house->bed}} bed · 
+        <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
+    </div>
       </div>
         </div>
       </a>
@@ -287,12 +292,11 @@
       </div>
     @endforelse
   </div>
-</div>
-  </div>
+
 </div>
 
 <!-- Rent Apartment Section -->
-<div class="container mt-4">
+<div class="container mt-4 "style="margin-bottom: 60px;">
   <h2 class="fw-bold" style="font-size: 20px;">Rent Apartment</h2>
   <div class="row justify-content-center g-4">
     @forelse ($apartments as $apartment)
@@ -318,20 +322,23 @@
           <i class="bi bi-bookmark love-icon" onclick="toggleLoveIcon(this)"></i>
           <div class="card-body d-flex flex-column">
         <!-- Full-width Title -->
-        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $house->title }}">
-          {{ $house->title }}
+        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $apartment->title }}">
+          {{ $apartment->title }}
         </h5>
 
         <!-- Row 2: Price and Rating -->
         <div class="d-flex justify-content-between align-items-center mb-1">
-          <span class="text-muted small">रु{{ $house->price_per_month }}</span>
+          <span class="text-muted small">रु{{ $apartment->price_per_month }}</span>
           <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
         </div>
 
-        <!-- Row 3: Location -->
-        <p class="card-text text-muted mb-0 text-truncate" title="{{ $house->location }}">
-          {{ $house->location }}
-        </p>
+        <!-- Row 3: Icon -->
+        <div class="text-muted">
+          <i class="bi bi-people-fill me-1"></i> {{$apartment->guest}} guests · 
+          <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$apartment->bedroom}} bedroom · 
+          <i class="bi bi-lamp-fill ms-2 me-1"></i> {{$apartment->bed}} bed · 
+          <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $apartment->bathroom }} bath
+      </div>
       </div>
         </div>
       </a>

@@ -206,8 +206,8 @@ class AccountController extends Controller
 public function property_upload(Request $request)
 {
     $validatedData = $request->validate([
-        'title' => 'required|string|max:255|unique:properties,title',
-        'location' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
+        'location' => ['required', 'string', 'max:2000', 'regex:/^<iframe.*<\/iframe>$/i'],
         'highlights' => 'nullable|string',
         'description' => 'required|string',
         'price' => 'required|numeric', // Changed from price_per_month to price

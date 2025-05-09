@@ -103,10 +103,6 @@
             <div class="border-bottom pb-4 mb-4">
                 <h2 class="h4 fw-bold mb-3">About this place</h2>
                 <p class="text-muted">{{$property->description}}</p>
-                <button class="btn btn-link text-decoration-underline p-0 fw-bold" style="color: #79090f;">
-                    Show more <i class="bi bi-chevron-down ms-1"></i>
-                </button>
-                
             </div>
 
             <h2 class="h4 fw-bold mb-3">What this place offers</h2>
@@ -124,16 +120,6 @@
             </div>
             <h5 class="mt-4 mb-3 fw-bold">Location</h5>
             {!! $property->location !!}
-            <h5 class="mt-4 mb-3 fw-bold">Location</h5>
-            <iframe 
-                src="https://www.google.com/maps?q={{ urlencode($property->location) }}&output=embed"
-                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-            <h5 class="mt-4 mb-3 fw-bold">Location</h5>
-            <div class="google-map-container">
-                {!! $property->location !!}
-            </div>
-
         </div>
 
         <!-- Right column -->
