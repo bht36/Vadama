@@ -227,7 +227,7 @@
 
 <!-- Rent Room Section -->
 <div class="container mt-4">
-  <h2 class="fw-bold" style="font-size: 20px;">Rent House</h2>
+  <h2 class="fw-bold" style="font-size: 20px;">Room Rent</h2>
   <div class="row justify-content-center g-4">
     @forelse ($rooms as $room)
     <div class="col-md-3 col-sm-6">
