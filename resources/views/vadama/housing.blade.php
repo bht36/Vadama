@@ -243,42 +243,39 @@
 </div>
 
 <!-- Reviews Section -->
-<div class="container px-4 mt-5">
-    <h2 class="h4 fw-bold mb-4"><i class="bi bi-star-fill text-warning"></i> 5.0 · 111 reviews</h2>
+<div>
+    <hr class="my-5">
 
-    <!-- Individual Review -->
-    <div class="mb-4 pb-3 border-bottom">
-        <div class="d-flex align-items-center mb-2 ">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="48" height="48" alt="Reviewer">
-            <div class="mx-2">
-                <div class="fw-bold">Emily</div>
-                <div class="text-muted small">March 2023</div>
+    <h2 class="h4 fw-bold mb-4">
+        <i class="bi bi-star-fill text-warning"></i>
+        @if($property->reviews->count() > 0)
+            {{ number_format($property->reviews->avg('rating'), 1) }} · {{ $property->reviews->count() }} reviews
+        @else
+            No reviews yet
+        @endif
+    </h2>
+
+    @forelse ($property->reviews as $review)
+        <div class="mb-4 pb-3 border-bottom">
+            <div class="d-flex align-items-center mb-2">
+                <img src="{{ $review->tenant && $review->tenant->profile_picture 
+            ? asset('storage/uploads/profile_pictures/' . $review->tenant->profile_picture) 
+            : 'https://ui-avatars.com/api/?name=' . urlencode(($review->tenant->first_name ?? 'Guest') . ' ' . ($review->tenant->last_name ?? '')) }}"
+     class="rounded-circle me-3" width="48" height="48" alt="Reviewer">
+
+                <div class="mx-2">
+                   <div class="fw-bold">
+                        {{ $review->tenant->first_name ?? 'Guest' }} {{ $review->tenant->last_name ?? '' }}
+                    </div>
+
+                    <div class="text-muted small">{{ \Carbon\Carbon::parse($review->created_at)->format('F Y') }}</div>
+                </div>
             </div>
+            <p class="mb-0">{{ $review->description }}</p>
         </div>
-        <p class="mb-0">Amazing stay! The room was clean, cozy, and the view of the Himalayas was breathtaking. Highly recommended!</p>
-    </div>
-
-    <!-- Another Review -->
-    <div class="mb-4 pb-3 border-bottom">
-        <div class="d-flex align-items-center mb-2">
-            <img src="https://randomuser.me/api/portraits/men/44.jpg" class="rounded-circle me-3" width="48" height="48" alt="Reviewer">
-            <div class="mx-2">
-                <div class="fw-bold">James</div>
-                <div class="text-muted small">February 2023</div>
-            </div>
-        </div>
-        <p class="mb-0">Friendly host and great location. The guesthouse had everything we needed. Would definitely come back!</p>
-    </div>
-    
-    <!-- Button -->
-<button class="btn btn-outline-danger rounded-pill px-4 mt-2" onclick="toggleReviewField()">
-    Write Review <i class="bi bi-arrow-right ms-2"></i>
-</button>
-
-    <div id="review-field" class="mt-4" style="display: none;">
-    <textarea class="form-control" rows="4" placeholder="Write your review here..."></textarea>
-    <button class="btn btn-danger mt-4">Submit Review</button>
-</div>
+    @empty
+        <p class="text-muted">Be the first to review this property!</p>
+    @endforelse
 </div>
 
 <!-- Success Modal -->
