@@ -48,6 +48,7 @@
     background-color: #f9f9f9;
     border: 1px solid #ddd;
 }     
+
     </style>
 </div>
 
@@ -81,7 +82,7 @@
         <div class="col-lg-8">
             <div class="d-flex justify-content-between border-bottom pb-4 mb-4">
                 <div>
-                    <h1 class="h2 fw-bold mb-2">{{$property->title}}</h1>
+                <h1 class="h2 fw-bold mb-2" style="color: #79090f;">{{ $property->title }}</h1>
                     <div class="text-muted">
                         <i class="bi bi-people-fill me-1"></i> {{$property->guest}} guests · 
                         <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$property->bedroom}} bedroom · 
@@ -91,15 +92,15 @@
                 </div>
             </div>
 
-            <div class="border-bottom pb-4 mb-4">
-                <div class="fs-5 fw-bold mb-3">{{$property->highlights}}</div>
-            </div>
+         <h5 class="fw-bold mb-2" style="color: #79090f;">Highlights</h5>
+        <div class="text-muted text-wrap text-break mb-4">
+            {{ $property->highlights }}
+        </div>
 
-            <div class="border-bottom pb-4 mb-4">
-                <h2 class="h4 fw-bold mb-3">About this place</h2>
-                <p class="text-muted">{{$property->description}}</p>
-            </div>
-
+        <h5 class="fw-bold mb-2" style="color: #79090f;">Description</h5>
+        <p class="text-muted text-wrap text-break">
+            {{ $property->description }}
+        </p>
             <h2 class="h4 fw-bold mb-3">What this place offers</h2>
             <div class="row mb-3">
                 @foreach($amenitiesList as $amenity)
@@ -123,7 +124,7 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-end mb-3">
                         <div>
-                            <div class="h3 fw-bold">रु{{ number_format($property->price_per_month) }}</div>
+                    <div    class="h3 fw-bold" style="color: #79090f;">रु{{ number_format($property->price_per_month) }}</div>
                             <div class="text-muted">Per month</div>
                         </div>
                         <div class="badge bg-warning text-dark">
