@@ -144,6 +144,8 @@ Route::controller(AccountController::class)->group(function () {
         Route::post('/requestapproved/{id}', 'requestapproved')->name('requestapproved');
         Route::post('/requestcancel/{id}', 'requestcancel')->name('requestcancel');
         Route::get('/reviewform/{id}', 'reviewform')->name('reviewform');
+        Route::post('/submit-review/{id}', 'reviewsubmit')->name('review.submit');
+
     
         // Payments
         Route::post('/process-payment', 'processPayment')->name('process-payment');

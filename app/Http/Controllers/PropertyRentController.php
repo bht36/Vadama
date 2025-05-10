@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Models\RentalRequest;
 use App\Models\Property;
+use App\Models\Review;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -252,9 +253,37 @@ private function generateShortUuid($length = 12)
 
     return $randomString;
 }
-public function reviewform(Request $request)
+public function reviewsubmit(Request $request, $id)
 {
-    dd($request->id);
+    // Step 1: Validate the form input
+    $request->validate([
+        'rating' => 'required|integer|min:1|max:5', // Rating must be between 1 and 5
+        'description' => 'required|string', // Description is required
+        'problem' => 'nullable|string', // Problem is optional
+    ]);
+
+    // Step 2: Retrieve the rental request record based on the ID
+    $rentalRequest = RentalRequest::find($id);
+
+    // Check if the rental request exists
+    if (!$rentalRequest) {
+        return redirect()->back()->with('error', 'Rental request not found!');
+    }
+    // Step 3: Create a new review using data from the rental request
+    Review::create([
+        'tenant_id' => $rentalRequest->tenant_id, // Tenant ID from the rental request
+        'property_id' => $rentalRequest->property_id, // Property ID from the rental request
+        'rating' => $request->rating, // Rating from the form
+        'description' => $request->description, // Description from the form
+        'problem' => $request->problem, // Problem (optional) from the form
+    ]);
+
+    // Step 4: Optionally, update review status in RentalRequest model (if needed)
+    RentalRequest::where('id', $id)->update(['review_status' => 'done']);
+
+    // Step 5: Redirect back with a success message
+    return redirect()->back()->with('success', 'Review submitted successfully!');
 }
+
 
 }
