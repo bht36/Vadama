@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content-wrapper">
-    <div class="content-header px-3">
+    <div class="content-header px-3 mt-4 ">
         <div class="container-fluid">
             <div class="row mb-2 mx-1">
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <section class="content px-3">
+    <section class="content px-3 ">
         <div class="container-fluid">
             <div class="content">
                 <div class="container-fluid">
@@ -30,57 +30,7 @@
                         <div class="col-12">
 
                             <div class="d-flex justify-content-end mb-3">
-                            <button class="btn btn-rounded btn-md mr-3 collapse-button"
-                                    type="button"
-                                    data-toggle="collapse"
-                                    data-target="#collapseExample"
-                                    aria-expanded="false"
-                                    aria-controls="collapseExample"
-                                    style="background-color: #79090f; border-color: #79090f; color: #fff;">
-                                <i class="fa fa-filter" aria-hidden="true" title="Advanced Search"></i>
-                            </button>
-                            </div>
-
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <div class="card-header p-1 mb-1">
-                                        <h4>Filter Options</h4>
-                                    </div>
-                                    <div class="card-body p-0">
-                                        <form action="{{ route('view_leaseproperty') }}" method="GET" id="filterForm">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                                        Title
-                                                    </div>
-                                                    <input type="text" name="title" placeholder="Property Title"
-                                                           class="form-control form-control-solid w-250px"
-                                                           value="{{ request('title') }}"
-                                                           style="background-color: rgb(245, 245, 245);">
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                                        Location
-                                                    </div>
-                                                    <input type="text" name="location" placeholder="Location"
-                                                           class="form-control form-control-solid w-250px"
-                                                           value="{{ request('location') }}"
-                                                           style="background-color: rgb(245, 245, 245);">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12 mb-3">
-                                                    <div class="d-flex justify-content-end">
-                                                        <button type="button" class="btn btn-secondary mr-2" onclick="resetForm()">Reset</button>
-                                                        <button type="submit" class="btn btn-primary">Apply Filters</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                
 
                                                         <div class="card table-responsive">
                                 <table class="table table-bordered table-striped table-hover">
