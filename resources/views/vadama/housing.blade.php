@@ -128,7 +128,8 @@
                             <div class="text-muted">Per month</div>
                         </div>
                         <div class="badge bg-warning text-dark">
-                            <i class="bi bi-star-fill me-1"></i> 5.0 · 111 reviews
+                            <i class="bi bi-star-fill me-1"></i> 
+                            {{ number_format($property->reviews->avg('rating'), 1) }} · {{ $property->reviews->count() }} reviews
                         </div>
                     </div>
                     <!-- Always show the form (for both logged-in and guest users) -->
