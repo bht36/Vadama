@@ -137,21 +137,22 @@
         <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
         
         <td>
-        <div class="d-flex">
-                    <form method="POST" action="{{ route('requestapproved', $property->property->id) }}">
-    @csrf
-    <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;" data-toggle="tooltip" title="Approve">
-        <i class="fas fa-check text-success" style="font-size: 16px;"></i>
-    </button>
-</form>
+       <div class="d-flex">
+    <form method="POST" action="{{ route('requestapproved', $property->id) }}">
+        @csrf
+        <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;" data-toggle="tooltip" title="Approve">
+            <i class="fas fa-check text-success" style="font-size: 16px;"></i>
+        </button>
+    </form>
 
-                  <form method="POST" action="{{ route('requestcancel', $property->property->id) }}" class="ml-2">
-                    @csrf
-                    <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Reject" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;">
-                        <i class="fas fa-times" style="font-size: 18px; line-height: 32px;"></i>
-                    </button>
-                </form>
-                </div>
+    <form method="POST" action="{{ route('requestcancel', $property->id) }}" class="ml-2">
+        @csrf
+        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Reject" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;">
+            <i class="fas fa-times" style="font-size: 18px; line-height: 32px;"></i>
+        </button>
+    </form>
+</div>
+
         </td>
     </tr>
     @empty
