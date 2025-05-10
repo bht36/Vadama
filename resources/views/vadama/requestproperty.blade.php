@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content-wrapper">
-    <div class="content-header px-3">
+    <div class="content-header px-3 mt-4">
         <div class="container-fluid">
             <div class="row mb-2 mx-1">
                 <div class="col-sm-6">
@@ -88,9 +88,9 @@
                                         <tr>
                                             <th class="text-uppercase">#</th>
                                             <th>Title</th>
+                                            <th>User Profile</th>
                                             <th>Image</th>
                                             <th>Type</th>
-                                            <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -113,30 +113,44 @@
             Guests: {{ $property->guests ?? 'N/A' }}<br>
         </td>
         <td>
+            @if($property->tenant && $property->tenant->profile_picture)
+                <img src="{{ asset('storage/uploads/profile_pictures/' . $property->tenant->profile_picture) }}"
+                    alt="Tenant Image"
+                    class="rounded-circle"
+                    width="200" height="200">
+            @else
+                <img src="{{ asset('logo/User.png') }}"
+                    alt="Default Image"
+                    class="rounded-circle"
+                    width="200" height="200">
+            @endif
+        </td>
+
+        <td>
             @if($property->property && $property->property->images->count())
                 <img src="{{ asset('storage/uploads/properties/images/' . $property->property->images->first()->image_path) }}" 
-                    alt="Property Image" width="400">
+                    alt="Property Image" width="200">
             @else
                 No Images
             @endif
         </td>
         <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
-        <td>{{ $property->created_at->format('d M Y') }}</td>
+        
         <td>
         <div class="d-flex">
                     <form method="POST" action="{{ route('requestapproved', $property->property->id) }}">
-                        @csrf
-                        <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px;" data-toggle="tooltip" title="Approve">
-                            <i class="fas fa-check text-success" style="font-size: 16px; line-height: 32px;"></i>
-                        </button>
-                    </form>
+    @csrf
+    <button type="submit" class="btn btn-light btn-sm" style="border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;" data-toggle="tooltip" title="Approve">
+        <i class="fas fa-check text-success" style="font-size: 16px;"></i>
+    </button>
+</form>
 
-                    <form method="POST" action="{{ route('requestcancel', $property->property->id) }}" class="ml-2">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Reject">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
+                  <form method="POST" action="{{ route('requestcancel', $property->property->id) }}" class="ml-2">
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Reject" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;">
+                        <i class="fas fa-times" style="font-size: 18px; line-height: 32px;"></i>
+                    </button>
+                </form>
                 </div>
         </td>
     </tr>
