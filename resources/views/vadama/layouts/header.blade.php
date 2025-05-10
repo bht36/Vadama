@@ -112,9 +112,14 @@
                         <i class="fas fa-user mr-2"></i> Profile
                     </a>                    
                     @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'seller')
-                        <a class="dropdown-item" href="{{ route('leaseproperty') }}">
-                            <i class="fas fa-home mr-2"></i> Lease Property
-                        </a>
+                     <a class="dropdown-item" href="{{ route('leaseproperty') }}">
+                        <i class="fas fa-plus "></i>
+                        <i class="fas fa-home mr-2"></i>
+                        Lease Property
+                    </a>
+
+
+
                     @endif
                     @if(Auth::guard('account')->check() && Auth::guard('account')->user()->user_type === 'seller')
                         <a class="dropdown-item" href="{{ route('view_leaseproperty') }}">
