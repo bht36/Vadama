@@ -22,6 +22,7 @@ class RentalRequest extends Model
         'check_out',
         'duration',
         'guests',
+        'review_status',
         ];
 
     // Define the relationship with the Tenant (Account) model

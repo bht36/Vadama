@@ -173,6 +173,8 @@ class PropertyRentController extends Controller
    
     public function paymentsuccess(Request $request)
     {
+        //Mail Here
+
         // You need a way to identify which rental request to update
         $rentalRequestId = $request->query('request_id'); // or use session/auth if you pass it differently
 
@@ -250,6 +252,9 @@ private function generateShortUuid($length = 12)
 
     return $randomString;
 }
-
+public function reviewform(Request $request)
+{
+    dd($request->id);
+}
 
 }

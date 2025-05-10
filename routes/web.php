@@ -143,6 +143,7 @@ Route::controller(AccountController::class)->group(function () {
         // Approve/Reject buttons (note: controller name is corrected here)
         Route::post('/requestapproved/{id}', 'requestapproved')->name('requestapproved');
         Route::post('/requestcancel/{id}', 'requestcancel')->name('requestcancel');
+        Route::get('/reviewform/{id}', 'reviewform')->name('reviewform');
     
         // Payments
         Route::post('/process-payment', 'processPayment')->name('process-payment');

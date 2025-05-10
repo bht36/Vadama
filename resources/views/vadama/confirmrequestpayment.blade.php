@@ -68,24 +68,32 @@
     <td>{{ strtoupper($property->property->type ?? 'N/A') }}</td>
     <td>{{ $property->created_at->format('d M Y') }}</td>
     <td>{{ $property->payment ?? 'N/A' }}</td>
-    <td>
-    <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
-    <input type="hidden" name="amount" value="{{ $property->total_price }}">
-    <input type="hidden" name="tax_amount" value="0">
-    <input type="hidden" name="total_amount" value="{{ $property->total_price }}">
-    <input type="hidden" name="transaction_uuid" value="{{ $property->uuid }}">
-    <input type="hidden" name="product_code" value="EPAYTEST">
-    <input type="hidden" name="product_service_charge" value="0">
-    <input type="hidden" name="product_delivery_charge" value="0">
-    <input type="hidden" name="success_url" value="{{ route('payment-success', ['request_id' => $property->id]) }}">
-    <input type="hidden" name="failure_url" value="{{ route('payment-fail') }}">
-    <input type="hidden" name="signed_field_names" value="{{ $property->signed_field_names }}">
-    <input type="hidden" name="signature" value="{{ $property->signature }}">
-    <button type="submit" class="btn btn-success btn-sm">Pay with eSewa</button>
-</form>
+   <td>
+    @if($property->payment == 'Paid' && $property->review_status == 'not_done')
+        <a href="{{ route('reviewform', $property->id) }}" class="btn btn-primary btn-sm">
+            Time to review your experience
+        </a>
+    @elseif($property->payment == 'Paid' && $property->rentalRequest->review_status == 'done')
+        <span class="badge bg-success">Complete</span>
+    @else
+        <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
+            <input type="hidden" name="amount" value="{{ $property->total_price }}">
+            <input type="hidden" name="tax_amount" value="0">
+            <input type="hidden" name="total_amount" value="{{ $property->total_price }}">
+            <input type="hidden" name="transaction_uuid" value="{{ $property->uuid }}">
+            <input type="hidden" name="product_code" value="EPAYTEST">
+            <input type="hidden" name="product_service_charge" value="0">
+            <input type="hidden" name="product_delivery_charge" value="0">
+            <input type="hidden" name="success_url" value="{{ route('payment-success', ['request_id' => $property->id]) }}">
+            <input type="hidden" name="failure_url" value="{{ route('payment-fail') }}">
+            <input type="hidden" name="signed_field_names" value="{{ $property->signed_field_names }}">
+            <input type="hidden" name="signature" value="{{ $property->signature }}">
+            <button type="submit" class="btn btn-success btn-sm">Pay with eSewa</button>
+        </form>
+    @endif
+</td>
 
 
-    </td>
 </tr>
 @empty
 
