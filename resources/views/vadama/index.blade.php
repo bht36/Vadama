@@ -196,60 +196,67 @@
     <a href="{{ route('filterpropertyhouse') }}" class="btn see-all-btn">See All</a>
   </div>
   <div class="row justify-content-center g-4">
-    @forelse ($houses as $house)
+@foreach ($houses as $house) 
     <div class="col-md-3 col-sm-6">
-      <a href="{{ route('housing', ['id' => $house->id]) }}" style="text-decoration: none; color: inherit;">
-        <div class="card hover-card position-relative">
-          @php
-              $firstImage = $house->images->first();
-          @endphp
+        <a href="{{ route('housing', ['id' => $house->id]) }}" style="text-decoration: none; color: inherit;">
+            <div class="card hover-card position-relative">
+                @php
+                    $firstImage = $house->images->first();
+                    $averageRating = $house->reviews->avg('rating');
+                @endphp
 
-          @if ($firstImage)
-            <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
-                 class="card-img-top img-fluid object-cover"
-                 alt="{{ $house->title }}"
-                 style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
-          @else
-            <img src="{{ asset('images/no-image.jpg') }}"
-                 class="card-img-top img-fluid"
-                 alt="No Image">
-          @endif
+                @if ($firstImage)
+                    <img src="{{ asset('storage/uploads/properties/images/' . $firstImage->image_path) }}"
+                         class="card-img-top img-fluid object-cover"
+                         alt="{{ $house->title }}"
+                         style="aspect-ratio: 4/3; object-fit: cover; width: 100%; border-radius: 8px;">
+                @else
+                    <img src="{{ asset('images/no-image.jpg') }}"
+                         class="card-img-top img-fluid"
+                         alt="No Image">
+                @endif
 
-          <div class="card-body d-flex flex-column">
-        <!-- Full-width Title -->
-        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $house->title }}">
-          {{ $house->title }}
-        </h5>
+                <!-- 👆 Top-left Featured Badge -->
+                <div class="position-absolute top-0 start-0 m-3">
+                    <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill">
+                  {{ strtoupper($house->status) }}
+                    </span>
+                </div>
 
-        <!-- Row 2: Price and Rating -->
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
-            रु{{ $house->price_per_month }}/m
-          </span>          
-          <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
-        </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="fw-semibold mb-2 text-truncate" title="{{ $house->title }}">
+                        {{ $house->title }}
+                    </h5>
 
-        <!-- Row 3: Icon -->
-        <div class="text-muted">
-          <div>
-            <i class="bi bi-people-fill me-1"></i> {{ $house->guest }} guests · 
-            <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $house->bedroom }} bedroom
-          </div>
-          <div>
-            <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $house->bed }} bed · 
-            <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
-          </div>
-        </div>
-      </div>
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
+                            रु{{ $house->price_per_month }}/m
+                        </span>          
+                        <span class="text-muted small">
+                            <i class="bi bi-star-fill text-warning"></i> 
+                            {{ $averageRating ? number_format($averageRating, 1) : 'No ratings' }}
+                        </span>
+                    </div>
 
-        </div>
-      </a>
+                    <div class="text-muted">
+                        <div>
+                            <i class="bi bi-people-fill me-1"></i> {{ $house->guest }} guests · 
+                            <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $house->bedroom }} bedroom
+                        </div>
+                        <div>
+                            <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $house->bed }} bed · 
+                            <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $house->bathroom }} bath
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
     </div>
-    @empty
-      <div class="text-center mt-4">
-        <h5>Coming Soon . . .</h5>
-      </div>
-    @endforelse
+@endforeach
+
+
+
   </div>
 </div>
 
@@ -267,6 +274,7 @@
 
           @php
               $firstImage = $room->images->first();
+              $averageRating = $room->reviews->avg('rating');
           @endphp
 
           @if ($firstImage)
@@ -280,30 +288,43 @@
                  alt="No Image">
           @endif
 
+          <!-- 👆 Top-left Status Badge -->
+          <div class="position-absolute top-0 start-0 m-3">
+              <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill">
+                  {{ strtoupper($room->status) }}
+              </span>
+          </div>
+
           <div class="card-body d-flex flex-column">
-        <!-- Full-width Title -->
-        <h5 class="fw-semibold mb-2 text-truncate" title="{{ $room->title }}">
-          {{ $room->title }}
-        </h5>
-        <!-- Row 2: Price and Rating -->
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
-            रु{{ $room->price_per_month }}/m
-          </span>          
-          <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
-        </div>
-       <!-- Row 3: Icon -->
-       <div class="text-muted">
-        <div>
-          <i class="bi bi-people-fill me-1"></i> {{ $room->guest }} guests · 
-          <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $room->bedroom }} bedroom
-        </div>
-        <div>
-          <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $room->bed }} bed · 
-          <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $room->bathroom }} bath
-        </div>
-      </div>
-      </div>
+            <!-- Title -->
+            <h5 class="fw-semibold mb-2 text-truncate" title="{{ $room->title }}">
+              {{ $room->title }}
+            </h5>
+
+            <!-- Price and Rating -->
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
+                रु{{ $room->price_per_month }}/m
+              </span>          
+              <span class="text-muted small">
+                <i class="bi bi-star-fill text-warning"></i>
+                {{ $averageRating ? number_format($averageRating, 1) : 'No ratings' }}
+              </span>
+            </div>
+
+            <!-- Details -->
+            <div class="text-muted">
+              <div>
+                <i class="bi bi-people-fill me-1"></i> {{ $room->guest }} guests · 
+                <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{ $room->bedroom }} bedroom
+              </div>
+              <div>
+                <i class="bi bi-lamp-fill me-1 mt-1"></i> {{ $room->bed }} bed · 
+                <i class="bi bi-droplet-fill ms-2 me-1"></i> {{ $room->bathroom }} bath
+              </div>
+            </div>
+          </div>
+
         </div>
       </a>
     </div>
@@ -314,6 +335,7 @@
     @endforelse
   </div>
 </div>
+
 
 <!-- Rent Apartment Section -->
 <div class="container mt-5" style="margin-bottom: 60px;">
@@ -329,6 +351,7 @@
 
           @php
               $firstImage = $apartment->images->first();
+              $averageRating = $apartment->reviews->avg('rating');
           @endphp
 
           @if ($firstImage)
@@ -342,21 +365,31 @@
                  alt="No Image">
           @endif
 
+          <!-- 👆 Top-left Status Badge -->
+          <div class="position-absolute top-0 start-0 m-3">
+            <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill">
+              {{ strtoupper($apartment->status) }}
+            </span>
+          </div>
+
           <div class="card-body d-flex flex-column">
-            <!-- Full-width Title -->
+            <!-- Title -->
             <h5 class="fw-semibold mb-2 text-truncate" title="{{ $apartment->title }}">
               {{ $apartment->title }}
             </h5>
 
-            <!-- Row 2: Price and Rating -->
+            <!-- Price and Rating -->
             <div class="d-flex justify-content-between align-items-center mb-1">
               <span style="font-weight: bold; font-size: 1.5rem; color: #79090f;">
                 रु{{ $apartment->price_per_month }}/m
               </span>          
-              <span class="text-muted small"><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+              <span class="text-muted small">
+                <i class="bi bi-star-fill text-warning"></i> 
+                {{ $averageRating ? number_format($averageRating, 1) : 'No ratings' }}
+              </span>
             </div>
 
-            <!-- Row 3: Icon Info -->
+            <!-- Guests, Bed, Bath -->
             <div class="text-muted">
               <div>
                 <i class="bi bi-people-fill me-1"></i> {{ $apartment->guest }} guests · 
@@ -381,7 +414,8 @@
   </div>
 </div>
 
-<!-- advertising secton -->
+
+
 <!-- advertising section -->
 <div class="hero-container mt-8">
     <div class="hero-content">

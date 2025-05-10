@@ -41,4 +41,10 @@ class Property extends Model
     {
         return $this->hasMany(PropertyImage::class, 'property_id');
     }
+    // Property.php
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }
