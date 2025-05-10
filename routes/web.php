@@ -91,6 +91,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/aboutus', 'aboutus')->name('aboutus');
     Route::get('/housinglist', 'housingList')->name('housing.list');
     Route::get('/contacts', 'contacts')->name('contacts');
+    Route::post('/contacts_email', 'contacts_email')->name('contacts_email');
     Route::get('/housing/{id}','housing')->name('housing');
     Route::get('/searchlist','searchlist')->name('searchlist'); 
     Route::get('/article','article')->name('article');   

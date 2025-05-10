@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Property;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactEmail;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -69,6 +71,26 @@ class FrontendController extends Controller
     {
         return view("vadama.article");
     }
+    public function contacts_email(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required|string',
+        ]);
+
+        Mail::to('vadamacollab@gmail.com')->send(new ContactEmail(
+            $request->name,
+            $request->email,
+            $request->phone,
+            $request->message
+        ));
+
+        return back()->with('success', 'Message sent successfully!');
+    }
+
+
     public function housing($id)
 {
     $property = Property::with('images')->findOrFail($id);
