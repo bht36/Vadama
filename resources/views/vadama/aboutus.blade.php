@@ -137,7 +137,7 @@
                 <div class="timeline-content" style="margin-right: 5%;">
                     <div class="image-container">
                         <div class="year-label">Anil Bhatta</div>
-                        <div class="image-placeholder">Project manager</div>
+                        <div class="image-placeholder"><img src="{{ asset('picture/anill.jpg') }}" alt="Anil Bhatta" style="width: 100%; max-width: 200px; border-radius: 8px;"></div>
                     </div>
                 </div>
                 <div class="timeline-marker"></div>
@@ -157,7 +157,7 @@
                 <div class="timeline-content" style="margin-left: 5%;">
                     <div class="image-container">
                         <div class="year-label">Suman Shrestha</div>
-                        <div class="image-placeholder">Business Analysis</div>
+                        <div class="image-placeholder"><img src="{{ asset('picture/suman.png') }}" alt="Anil Bhatta" style="width: 100%; max-width: 200px; border-radius: 8px;"></div>
                     </div>
                 </div>
             </div>
@@ -167,7 +167,7 @@
                 <div class="timeline-content" style="margin-right: 5%;">
                     <div class="image-container">
                         <div class="year-label">Rijen Maharjan</div>
-                        <div class="image-placeholder">Frontend Developer</div>
+                        <div class="image-placeholder"><img src="{{ asset('picture/rijen.png') }}" alt="Anil Bhatta" style="width: 100%; max-width: 200px; border-radius: 8px;"></div>
                     </div>
                 </div>
                 <div class="timeline-marker"></div>
@@ -187,7 +187,7 @@
                 <div class="timeline-content" style="margin-left: 5%;">
                     <div class="image-container">
                         <div class="year-label">Johit Thabe</div>
-                        <div class="image-placeholder">Frontend Developer</div>
+                        <div class="image-placeholder"><img src="{{ asset('picture/johit.png') }}" alt="Anil Bhatta" style="width: 100%; max-width: 200px; border-radius: 8px;"></div>
                     </div>
                 </div>
             </div>
@@ -197,7 +197,7 @@
                 <div class="timeline-content" style="margin-right: 5%;">
                     <div class="image-container">
                         <div class="year-label">Swoyam Suwal</div>
-                        <div class="image-placeholder">Backend Developer</div>
+                        <div class="image-placeholder"><img src="{{ asset('picture/swoyam.png') }}" alt="Anil Bhatta" style="width: 100%; max-width: 200px; border-radius: 8px;"></div>
                     </div>
                 </div>
                 <div class="timeline-marker"></div>
