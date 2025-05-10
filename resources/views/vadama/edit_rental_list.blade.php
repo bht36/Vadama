@@ -58,7 +58,7 @@
         <!-- Price and Type -->
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="price" class="form-label">Price per Night (रु)</label>
+                <label for="price" class="form-label">Price per Month (रु)</label>
                 <input type="number" class="form-control" id="price" name="price" value="{{ old('price', $property->price_per_month) }}" required>
             </div>
             <div class="col-md-6">

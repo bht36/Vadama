@@ -9,27 +9,33 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
    public function index(Request $request)
-    {
-        $banner = Banner::all(); 
+{
+    $banner = Banner::all(); 
 
-        // Fetch properties with their images and reviews
-        $houses = Property::with(['images', 'reviews'])  // Adding 'reviews' relation
-            ->where('type', 'house')
-            ->take(4)
-            ->get();
+    // Fetch the last 4 house properties
+    $houses = Property::with(['images', 'reviews'])
+        ->where('type', 'house')
+        ->orderBy('created_at', 'desc')
+        ->take(4)
+        ->get();
 
-        $rooms = Property::with(['images', 'reviews'])
-            ->where('type', 'room')
-            ->take(4)
-            ->get();
+    // Fetch the last 4 room properties
+    $rooms = Property::with(['images', 'reviews'])
+        ->where('type', 'room')
+        ->orderBy('created_at', 'desc')
+        ->take(4)
+        ->get();
 
-        $apartments = Property::with(['images', 'reviews'])
-            ->where('type', 'apartment')
-            ->take(4)
-            ->get();
+    // Fetch the last 4 apartment properties
+    $apartments = Property::with(['images', 'reviews'])
+        ->where('type', 'apartment')
+        ->orderBy('created_at', 'desc')
+        ->take(4)
+        ->get();
 
-        return view("vadama.index", compact('banner', 'houses', 'rooms', 'apartments'));
-    }
+    return view("vadama.index", compact('banner', 'houses', 'rooms', 'apartments'));
+}
+
 
     public function signup(Request $request)
     {

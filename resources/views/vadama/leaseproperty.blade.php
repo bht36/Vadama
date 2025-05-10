@@ -84,7 +84,7 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="price" class="form-label">Price per Night (रु)</label>
+                            <label for="price" class="form-label">Price per Month (रु)</label>
                             <input type="number" class="form-control" id="price" name="price" min="1" value="{{ old('price') }}" required>
                         </div>
                         <div class="col-md-6">
