@@ -203,7 +203,7 @@
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
                     <h3>Backend Developer</h3>
-                    <p>Swoyam Suwal is responsible for developing the backend functionality of the project, including handling database operations, server-side logic, and API integrations. Swoyam ensures that the application runs smoothly and securely.</p>
+                    <p>Swoyam Suwal is responsible for developing the backend functionality of the project, including handling database operations and server-side logic. Swoyam ensures that the application runs smoothly and securely.</p>
                 </div>
             </div>
         </div>
