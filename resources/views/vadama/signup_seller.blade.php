@@ -11,8 +11,8 @@
           <h1>List your property for rent with us</h1>
         </div>
       </div>
-      <div class="image-holder mt-4">
-        <img src="{{ asset('picture/house_rental.png') }}" class="d-block w-100" style="max-width: 100%; height: 100%;" alt="...">
+      <div class="image-holder mb-4">
+        <img src="{{ asset(path: 'picture/image.png') }}" class="d-block w-100" style="max-width: 100%; height: 100%;" alt="...">
       </div> 
     </div>
 
@@ -174,7 +174,7 @@
     position: absolute;
     top: 65%;
     left: 50%;
-    margin-top: 45px;
+    margin-bottom: 45px;
     margin-left: 100px;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -212,7 +212,8 @@
   }
 
   .welcome-message {
-    margin-top: 30px;
+    margin-top: 80px;
+    margin-left: 100px;
     text-align: center;
     white-space: nowrap; 
     overflow: hidden;

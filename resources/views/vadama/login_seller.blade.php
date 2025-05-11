@@ -5,14 +5,9 @@
         <!-- Left Side: Logo + Welcome Message + Image -->
         <div class="col-md-6 d-none d-md-block image-section">
             <div class="text-center">
-                <!-- Logo -->
-                <div class="logo-container mb-2">
-                <a href="{{ route('index') }}">
-                    <img src="{{ asset('logo/Login.png') }}" alt="Logo">
-                </a>
-                </div>
+
                 <!-- Welcome Message -->
-                <div class="welcome-message mb-2">
+                <div class="welcome-message mb-5">
                     <h1>Welcome Seller</h1>
                     <p>Login to manage your rental listings</p>
                 </div>
@@ -86,6 +81,7 @@
         height: 100vh;
         display: flex;
         justify-content: space-between;
+        margin-bottom:150px;
     }
 
     .image-section {
@@ -94,34 +90,19 @@
         text-align: center;
         flex: 0 0 50%;
     }
+   .welcome-message {
+    position: absolute;
+    top: 35%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px; /* <-- fixed */
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    margin-bottom: 100px;
+}
 
-    .logo-container {
-        position: absolute;
-        top: 20px;
-        left: 70%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        padding: 10px 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
-
-    .logo-container img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .welcome-message {
-        position: absolute;
-        top: 35%;
-        left: 70%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(255, 255, 255, 0.8);
-        padding:px;
-        border-radius: 10px;
-        width: 80%;
-        text-align: center;
-    }
 
     .image-holder {
         position: absolute;
