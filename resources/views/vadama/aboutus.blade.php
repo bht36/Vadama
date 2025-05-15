@@ -129,7 +129,7 @@
 </head>
 <body>
     <div class="timeline-container">
-        <h1 class="timeline-title">Team Timeline</h1>
+        <h1 class="timeline-title">About Team</h1>
         
         <div class="timeline">
             <!-- Project Manager -->
@@ -212,5 +212,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
+@include('vadama.layouts.footer')
 @endsection

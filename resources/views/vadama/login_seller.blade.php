@@ -5,10 +5,16 @@
         <!-- Left Side: Logo + Welcome Message + Image -->
         <div class="col-md-6 d-none d-md-block image-section">
             <div class="text-center">
+                <!-- Logo -->
+                <div class="logo-container mb-2">
+                <a href="{{ route('index') }}">
+                    <img src="{{ asset('logo/Login.png') }}" alt="Logo">
+                </a>
+                </div>
                 <!-- Welcome Message -->
-                <div class="welcome-message mb-5">
-                    <h1>Welcome Back, Seller</h1>
-                <p>Log in to manage your rental listings.</p>
+                <div class="welcome-message mb-2">
+                    <h1>Welcome Seller</h1>
+                    <p>Login to manage your rental listings</p>
                 </div>
             </div>
             <!-- Image Section -->
@@ -80,6 +86,7 @@
         height: 100vh;
         display: flex;
         justify-content: space-between;
+        margin-bottom:150px;
     }
 
     .image-section {
@@ -109,7 +116,6 @@
         position: absolute;
         top: 35%;
         left: 70%;
-        margin-bottom:200px;
         transform: translate(-50%, -50%);
         background-color: rgba(255, 255, 255, 0.8);
         padding:px;

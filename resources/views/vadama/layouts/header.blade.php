@@ -91,7 +91,7 @@
                     @endif
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="#">Contacts</a>
+                    <a class="nav-link font-weight-bold" href="{{ route('contacts') }}">Contacts</a>
                 </li>
             </ul>
 

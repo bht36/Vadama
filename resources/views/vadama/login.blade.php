@@ -56,7 +56,6 @@
                         @enderror
                     </div>
                     <div class="d-flex justify-content-between">
-                    <a href="{{ route('forgetpassword') }}" class="text-decoration-none">Forgot Password?</a>
                     </div>
 
                     <!-- Submit Button -->
