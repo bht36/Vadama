@@ -7,6 +7,7 @@ use App\Models\Property;
 use App\Models\PropertyImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Verify;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -101,8 +102,6 @@ class AccountController extends Controller
         'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'citizenship_document' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
     ]);
-   
-
     // Get the authenticated user (optional, depends on your authorization logic)
     $user = Auth::guard('account')->user();
 
@@ -348,6 +347,49 @@ public function property_destroy($id)
     $property->delete();
 
     return back()->with('success', 'Property deleted successfully!');
+}
+
+public function sendverify(Request $request)
+{
+    $user = Auth::guard('account')->user(); // Use your 'account' guard
+
+    // Check if verification already requested
+    $alreadySent = Verify::where('account_id', $user->id)->first();
+    if ($alreadySent) {
+        return back()->with('error', 'You have already requested verification.');
+    }
+
+    // Validate file upload
+    $validated = $request->validate([
+        'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    $picture_name = null;
+
+    if ($request->hasFile('picture')) {
+        $picture_file = $request->file('picture');
+        $picture_name = time() . '_' . $picture_file->getClientOriginalName();
+        $path = public_path('storage/uploads/verify_pictures/');
+
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        $moved = $picture_file->move($path, $picture_name);
+
+        if (!$moved) {
+            return back()->with('error', 'Failed to upload picture.');
+        }
+    }
+
+    // Save to DB
+    Verify::create([
+        'account_id' => $user->id,
+        'picture_name' => $picture_name,
+        'action' => 'notdone',
+    ]);
+
+    return back()->with('success', 'Verification request sent successfully.');
 }
 
 

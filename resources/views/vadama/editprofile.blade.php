@@ -164,12 +164,13 @@
                         </div>
                 
                         <!-- Citizenship Upload -->
-                        <div class="col-6">
+                        {{-- <div class="col-6">
                             <div class="dashed-box text-center py-3" onclick="document.getElementById('citizenUpload').click()" style="cursor: pointer; border: 2px dashed #aaa;">
                                 <i class="fa-solid fa-upload" style="color: #aaa; font-size: 14px;"></i>
                                 <span class="dashed-box-text">Upload Citizenship</span>
+                                <span class="dashed-box-text">Approved and get Veriffication</span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 

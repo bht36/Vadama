@@ -69,7 +69,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::prefix('verify')->as('verify.')->controller(VerifyController::class)->group(function () {
             Route::get('/index', 'index')->name('index');
-            Route::get('/sendverify', 'sendverify')->name('sendverify');
             Route::get('/approveverify', 'approveverify')->name('approveverify');
         });
     
@@ -123,6 +122,9 @@ Route::controller(AccountController::class)->group(function () {
         Route::get('/editprofile', 'editprofile')->name('editprofile');
         Route::put('/update/{id}', 'update')->name('update'); // Update route
         Route::get('/leaseproperty', 'leaseProperty')->name('leaseproperty');
+
+        Route::post('/sendverify','sendverify')->name('sendverify');
+
 
         Route::post('/property_upload', 'property_upload')->name('property_upload');
         Route::get('/view_leaseproperty', 'view_leaseproperty')->name('view_leaseproperty');

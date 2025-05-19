@@ -126,18 +126,48 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-6">
-                        <div class="dashed-box">
-                            <span class="dashed-box-text">User Profile</span>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="dashed-box">
-                            <i class="fa-solid fa-upload" style="color: #aaa; font-size: 14px;"></i>
-                            <span class="dashed-box-text">Citizen Documents</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-6">
+        <div class="dashed-box">
+            <span class="dashed-box-text">User Profile</span>
+        </div>
+    </div>
+    <div class="col-6">
+        <form action="{{ route('sendverify') }}" method="POST" enctype="multipart/form-data" id="verificationForm">
+            @csrf
+
+            <div class="dashed-box text-center py-3" 
+                 onclick="document.getElementById('citizenUpload').click()" 
+                 style="cursor: pointer; border: 2px dashed #aaa; position: relative;">
+                <i class="fa-solid fa-upload" style="color: #aaa; font-size: 14px;"></i>
+                <span class="dashed-box-text d-block mt-2">Upload Citizenship</span>
+
+                <!-- Hidden file input inside the form -->
+                <input type="file" name="picture" id="citizenUpload" hidden accept="image/*" onchange="handleFileSelect(this)">
+            </div>
+
+            <!-- Verification section that appears after file selection -->
+            <div id="verificationSection" style="display: none; margin-top: 15px;">
+                <span class="dashed-box-text">Approved and get Verification</span>
+                <button type="submit" class="mt-2" 
+                        style="display: block; width: 100%; background-color: #79090f; color: white; border: none; padding: 10px; border-radius: 6px;">
+                    Verify Now
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function handleFileSelect(input) {
+            const verificationSection = document.getElementById('verificationSection');
+            if (input.files && input.files.length > 0) {
+                verificationSection.style.display = 'block';
+            } else {
+                verificationSection.style.display = 'none';
+            }
+        }
+    </script>
+</div>
+
             </div>
 
             <div class="col-md-6">
