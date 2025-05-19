@@ -101,7 +101,7 @@
           </div>
     
           <div class="text-center mt-3">
-            <p class="mb-0">Already have an account? <a href="{{ route('login') }}">Login</a></p>
+            <p class="mb-0">Already have an account? <a href="{{ route('login_seller') }}">Login</a></p>
           </div>
         </form>
       </div>
