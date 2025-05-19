@@ -11,7 +11,7 @@
                             <h3 class="mb-0">{{('Dashboard')}}</h3> 
                             <h6 class="box-title"> Registration Overview</h6>
                         </div>
-                        <h3 class="mb-0 text-primary mt-xl-2"><b>Sales : </b></h2>
+                       
                     </div>
                 </div>
                 <div class="col-sm-4 col-xxl-6">
@@ -39,30 +39,32 @@
             <div class="row g-3">
     <!-- Total Users -->
     <div class="col-md-4 col-6">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <i class="fa fa-users fa-3x text-primary"></i>
-                <h5 class="card-title mt-2">Total Users</h5>
-                <p><strong>150</strong> : Registered Users</p>
-                <p><strong>30</strong> : Active Users</p>
-            </div>
+    <div class="card text-center shadow-sm">
+        <div class="card-body">
+            <i class="fa fa-users fa-3x text-primary"></i>
+            <h5 class="card-title mt-2">Total Users</h5>
+            <p><strong>{{ $totalUsers }}</strong> : Registered Users</p>
+            <p><strong>{{ $verifiedUsers }}</strong> : Verified Users</p>
         </div>
     </div>
+</div>
+
 
     <!-- Active Listings -->
-    <div class="col-md-4 col-6">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <i class="fa fa-building fa-3x text-success"></i>
-                <h5 class="card-title mt-2">Active Listings</h5>
-                <p><strong>50</strong> : Available Properties</p>
-                <p><strong>20</strong> : Booked Properties</p>
-            </div>
+   <div class="col-md-4 col-6">
+    <div class="card text-center shadow-sm">
+        <div class="card-body">
+            <i class="fa fa-building fa-3x text-success"></i>
+            <h5 class="card-title mt-2">Active Listings</h5>
+            <p><strong>{{ $availableProperties }}</strong> : Available Properties</p>
+            <p><strong>{{ $bookedProperties }}</strong> : Booked Properties</p>
         </div>
     </div>
+</div>
+
 
     <!-- Subscriptions -->
-    <div class="col-md-4 col-6">
+    {{-- <div class="col-md-4 col-6">
         <div class="card text-center shadow-sm">
             <div class="card-body">
                 <i class="fa fa-credit-card fa-3x text-success"></i>
@@ -71,7 +73,7 @@
                 <p><strong>20</strong> : Expired Subscriptions</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Bookings -->
     <div class="col-md-4 col-6">
@@ -79,26 +81,27 @@
             <div class="card-body">
                 <i class="fa fa-calendar-check fa-3x text-danger"></i>
                 <h5 class="card-title mt-2">Bookings</h5>
-                <p><strong>100</strong> : Completed Bookings</p>
-                <p><strong>15</strong> : Pending Bookings</p>
+                <p><strong>{{ $approvedRental }}</strong> : Completed Bookings</p>
+                <p><strong>{{ $pendingRental }}</strong> : Pending Bookings</p>
             </div>
         </div>
     </div>
 
     <!-- Revenue -->
-    <div class="col-md-4 col-6">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <i class="fa fa-dollar-sign fa-3x text-warning"></i>
-                <h5 class="card-title mt-2">Revenue</h5>
-                <p><strong>$15,000</strong> : Total Revenue</p>
-                <p><strong>$2,500</strong> : This Month</p>
-            </div>
+   <div class="col-md-4 col-6">
+    <div class="card text-center shadow-sm">
+        <div class="card-body">
+            <i class="fa fa-dollar-sign fa-3x text-warning"></i>
+            <h5 class="card-title mt-2">Revenue</h5>
+            <p><strong>Rs. {{ number_format($totalRevenue, 2) }}</strong> : Total Revenue</p>
+            <p><strong>Rs. {{ number_format($thisMonthRevenue, 2) }}</strong> : This Month</p>
         </div>
     </div>
+</div>
+
 
     <!-- Support Tickets -->
-    <div class="col-md-4 col-6">
+    {{-- <div class="col-md-4 col-6">
         <div class="card text-center shadow-sm">
             <div class="card-body">
                 <i class="fa fa-ticket-alt fa-3x text-info"></i>
@@ -107,9 +110,23 @@
                 <p><strong>20</strong> : Resolved Tickets</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <!-- System Status -->
+    
+
+    <!-- Pending Rent Payments -->
+    <div class="col-md-4 col-6">
+    <div class="card text-center shadow-sm">
+        <div class="card-body">
+            <i class="fa fa-money-bill-wave fa-3x text-danger"></i>
+            <h5 class="card-title mt-2">Pending Rent Payments</h5>
+            <p><strong>{{ $pendingPayments }}</strong> : Pending Payments</p>
+            <p><strong>Rs. {{ number_format($totalPendingAmount, 2) }}</strong> : Total Pending</p>
+        </div>
+    </div>
+</div>
+
+<!-- System Status -->
     <div class="col-md-4 col-6">
         <div class="card text-center shadow-sm">
             <div class="card-body">
@@ -121,17 +138,6 @@
         </div>
     </div>
 
-    <!-- Pending Rent Payments -->
-    <div class="col-md-4 col-6">
-        <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <i class="fa fa-money-bill-wave fa-3x text-danger"></i>
-                <h5 class="card-title mt-2">Pending Rent Payments</h5>
-                <p><strong>10</strong> : Pending Payments</p>
-                <p><strong>$5,000</strong> : Total Pending</p>
-            </div>
-        </div>
-    </div>
 </div>
 
 </div>

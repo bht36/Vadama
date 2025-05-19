@@ -10,6 +10,7 @@ use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyRentController;
+use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -64,6 +65,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::put('/update/{id}', 'update')->name('update');
             Route::delete('/destroy/{id}', 'destroy')->name('delete');
+        });
+
+        Route::prefix('verify')->as('verify.')->controller(VerifyController::class)->group(function () {
+            Route::get('/index', 'index')->name('index');
+            Route::get('/sendverify', 'sendverify')->name('sendverify');
+            Route::get('/approveverify', 'approveverify')->name('approveverify');
         });
     
     });

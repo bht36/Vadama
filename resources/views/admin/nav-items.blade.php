@@ -13,10 +13,10 @@
         <i class="right fas fa-angle-left"></i>
     </a>
     <ul class="nav nav-treeview pl-3">
-        <li class="nav-item <?= @$child_nav == 'hoodie' ? 'active bg-gray' : '' ?>">
-            <a href="{{ route('admin.hoodie.index') }}" class="nav-link">
+        <li class="nav-item <?= @$child_nav == 'verify' ? 'active bg-gray' : '' ?>">
+            <a href="{{ route('admin.verify.index') }}" class="nav-link">
                 <i class="far fa-file-alt nav-icon"></i>
-                <p>{{ __('Hello') }}</p>
+                <p>{{ __('Verify User') }}</p>
             </a>
         </li>
         <li class="nav-item <?= @$child_nav == 'banner' ? 'active bg-gray' : '' ?>">
