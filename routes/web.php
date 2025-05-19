@@ -69,7 +69,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::prefix('verify')->as('verify.')->controller(VerifyController::class)->group(function () {
             Route::get('/index', 'index')->name('index');
-            Route::get('/approveverify', 'approveverify')->name('approveverify');
+            Route::post('/approveverify/{id}', 'approveverify')->name('approveverify');
+            Route::post('/declineverify/{id}', 'declineverify')->name('declineverify');
         });
     
     });

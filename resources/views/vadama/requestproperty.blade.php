@@ -99,11 +99,15 @@
     <tr>
         <td>{{ $key + 1 }}</td>
         <td>
-            {{ $property->property->title ?? 'N/A' }}<br>
+        {{ $property->property->title ?? 'N/A' }}<br>
             Tenant Name: 
             {{ 
                 isset($property->tenant) ? $property->tenant->first_name . ' ' . $property->tenant->last_name : 'N/A'
-            }}<br>
+            }}
+            @if ($property->tenant->verified === 'done')
+    <i class="fas fa-check-circle" title="Verified" style="color: #79090f; margin-left: 8px;"></i>
+@endif
+<br>
             Tenant Username: 
             {{ $property->tenant->username ?? 'N/A' }}<br>
             Total Price: {{ $property->total_price ?? 'N/A' }}<br>

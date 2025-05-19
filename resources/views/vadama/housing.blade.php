@@ -82,7 +82,11 @@
         <div class="col-lg-8">
             <div class="d-flex justify-content-between border-bottom pb-4 mb-4">
                 <div>
-                <h1 class="h2 fw-bold mb-2" style="color: #79090f;">{{ $property->title }}</h1>
+                <h1 class="h2 fw-bold mb-2" style="color: #79090f;">{{ $property->title }}
+                 @if ($property->account->verified === 'done')
+                <i class="fas fa-check-circle" title="Verified" style="color: #79090f; margin-left: 8px;"></i>
+            @endif
+                </h1>
                     <div class="text-muted">
                         <i class="bi bi-people-fill me-1"></i> {{$property->guest}} guests · 
                         <i class="bi bi-door-closed-fill ms-2 me-1"></i> {{$property->bedroom}} bedroom · 
