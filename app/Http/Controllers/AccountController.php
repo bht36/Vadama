@@ -49,7 +49,7 @@ class AccountController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:accounts,username', // Ensures username is unique
-            'phone_number' => 'required|string|regex:/^\d{7,15}$/', // Only digits, 7 to 15 characters long
+            'phone_number' => 'required|string|regex:/^\d{10,15}$/', // Only digits, 7 to 15 characters long
             'email' => 'required|email|max:255|unique:accounts,email', // Ensures valid email and uniqueness
             'password' => 'required|string|min:8|confirmed', // Enforces strong password rule
         ]);
@@ -179,7 +179,7 @@ class AccountController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:accounts,username', // Ensures username is unique
-            'phone_number' => 'required|string|regex:/^\d{7,15}$/', // Only digits, 7 to 15 characters long
+            'phone_number' => 'required|string|regex:/^\d{10,15}$/', // Only digits, 7 to 15 characters long
             'email' => 'required|email|max:255|unique:accounts,email', // Ensures valid email and uniqueness
             'password' => 'required|string|min:8|confirmed', // Enforces strong password rule
         ]);
